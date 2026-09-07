@@ -76,7 +76,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
   <main class="grid" id="appGrid"></main>
 
   <footer class="footer">
-    <div>Version 1.3 • Dometic Tidaholm • Intern appportal</div>
+    <div>Version 1.4 • Dometic Tidaholm • Intern appportal</div>
     <div>Uppdatera appar i AppLinks.xlsx • Bilder placeras i mappen bilder</div>
   </footer>
 
@@ -84,6 +84,14 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 
 <script>
 const excelFile = "AppLinks.xlsx";
+const manualApps = [
+  {
+    name: "Ergonomianalys KIM 2",
+    desc: "Digital riskbedömning av skjuta- och draarbete enligt KIM II. Beräknar riskpoäng och skapar en komplett A4-rapport.",
+    url: "https://mrmartinpet.github.io/KIM2/",
+    image: "bilder/Ergonomianalys%20KIM%202.svg"
+  }
+];
 let apps = [];
 
 function normalizeKey(row){
@@ -112,7 +120,7 @@ function render(list){
     const name = safeText(app.name);
     const desc = safeText(app.desc);
     const url = safeText(app.url);
-    const img = imagePath(app.name);
+    const img = safeText(app.image || imagePath(app.name));
 
     return `
       <article class="card">
@@ -132,6 +140,17 @@ function render(list){
   }).join("");
 }
 
+function addManualApps(){
+  manualApps.forEach(app => {
+    const exists = apps.some(a => a.name.toLowerCase() === app.name.toLowerCase());
+    if(exists) return;
+
+    const kim1Index = apps.findIndex(a => a.name.toLowerCase() === "ergonomianalys kim 1");
+    const insertAt = kim1Index >= 0 ? kim1Index + 1 : apps.length;
+    apps.splice(insertAt, 0, app);
+  });
+}
+
 function parseWorkbook(arrayBuffer){
   const wb = XLSX.read(arrayBuffer, {type:"array"});
   const ws = wb.Sheets[wb.SheetNames[0]];
@@ -147,6 +166,7 @@ function parseWorkbook(arrayBuffer){
     };
   }).filter(a => a.name && a.url);
 
+  addManualApps();
   render(apps);
 }
 
@@ -163,8 +183,9 @@ async function loadExcel(){
 
   }catch(err){
     document.getElementById("notice").style.display = "block";
-    document.getElementById("notice").textContent = "Kunde inte läsa AppLinks.xlsx. Kontrollera att filen ligger i samma mapp som index.html på GitHub.";
-    render([]);
+    document.getElementById("notice").textContent = "Kunde inte läsa AppLinks.xlsx. Visar appar som lagts till direkt i portalen.";
+    apps = [...manualApps];
+    render(apps);
   }
 }
 
