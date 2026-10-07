@@ -53,6 +53,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 @media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:720px){.wrapper{padding:22px 14px;}.hero{align-items:flex-start;flex-direction:column;}.toolbar{align-items:flex-start;flex-direction:column;}.grid{grid-template-columns:1fr;}h1{font-size:28px;}.footer{flex-direction:column;}}
 .languages{display:flex;flex-wrap:wrap;gap:8px}.languages button{display:inline-flex;align-items:center;gap:8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;font-size:14px;cursor:pointer}.languages button[aria-pressed="true"]{border-color:#7dd3fc;background:#156082}button:focus-visible{outline:3px solid #7dd3fc}
+.app-category{margin-bottom:32px}.category-title{font-size:20px;letter-spacing:.04em;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--text)}
 </style>
 </head>
 
@@ -75,7 +76,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
   </section>
 
   <div class="notice" id="notice"></div>
-  <main class="grid" id="appGrid"></main>
+  <main id="appGrid"></main>
 
   <footer class="footer">
     <div>Version 1.4 • Dometic Tidaholm • Intern appportal</div>
@@ -124,6 +125,8 @@ function imagePath(appName){
   return "bilder/" + encodeURIComponent(String(appName).trim()) + ".jpg";
 }
 
+const categoryLabels={en:{process:'PROCESS OBSERVATIONS',other:'OTHER'},sv:{process:'PROCESSOBSERVATIONER',other:'ÖVRIGT'},de:{process:'PROZESSBEOBACHTUNGEN',other:'SONSTIGES'}};
+function appCategory(app){const path=new URL(app.url,location.href).pathname.toLowerCase();const otherRepos=['dometicpersonalhandbok','dometic-employee-handbook','funktionsplaneraren','tolkkalibrering','flagg-generator','frekvensanalys'];const names=['personalhandbok','funktionsplaneraren','tolkkalibrering','flagg-generator','flagg generator','frekvensanalys'];return otherRepos.some(repo=>path.split('/').includes(repo))||names.includes(app.name.toLowerCase().trim())?'other':'process';}
 function render(list){
   const grid = document.getElementById("appGrid");
 
@@ -132,7 +135,7 @@ function render(list){
     return;
   }
 
-  grid.innerHTML = list.map(app => {
+  const renderCard = app => {
     const original=app;app=localized(app);
     const name = safeText(app.name);
     const desc = safeText(app.desc);
@@ -146,7 +149,7 @@ function render(list){
         </div>
         <div class="content">
           <span class="tag"><span class="dot"></span>${t(3)}</span>
-          <h2 class="app-title">${name}</h2>
+          <h3 class="app-title">${name}</h3>
           <div class="desc">${desc}</div>
           <div class="actions">
             <a class="btn" href="${url}" target="_blank" rel="noopener">${t(4)}</a>
@@ -154,7 +157,8 @@ function render(list){
           </div>
         </div>
       </article>`;
-  }).join("");
+  };
+  grid.innerHTML=['process','other'].map(category=>{const group=list.filter(app=>appCategory(app)===category);if(!group.length)return '';return `<section class="app-category" aria-labelledby="category-${category}"><h2 class="category-title" id="category-${category}">${categoryLabels[lang][category]}</h2><div class="grid">${group.map(renderCard).join('')}</div></section>`;}).join('');
 }
 
 function addManualApps(){
