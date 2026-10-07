@@ -52,7 +52,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 .empty{grid-column:1/-1;padding:24px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;color:var(--muted);text-align:center;}
 @media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:720px){.wrapper{padding:22px 14px;}.hero{align-items:flex-start;flex-direction:column;}.toolbar{align-items:flex-start;flex-direction:column;}.grid{grid-template-columns:1fr;}h1{font-size:28px;}.footer{flex-direction:column;}}
-.languages{display:flex;flex-wrap:wrap;gap:8px}.languages button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;font-size:14px;cursor:pointer}.languages button[aria-pressed="true"]{border-color:#7dd3fc;background:#156082}button:focus-visible{outline:3px solid #7dd3fc}
+.languages{display:flex;flex-wrap:wrap;gap:8px}.languages button{display:inline-flex;align-items:center;gap:8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;font-size:14px;cursor:pointer}.languages button[aria-pressed="true"]{border-color:#7dd3fc;background:#156082}button:focus-visible{outline:3px solid #7dd3fc}
 </style>
 </head>
 
@@ -67,7 +67,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
         <div class="subtitle">Intern startsida för digitala verktyg, processstöd och förbättringsarbete.</div>
       </div>
     </div>
-    <nav class="languages" aria-label="Language"><button data-lang="sv" lang="sv">🇸🇪 Svenska</button><button data-lang="en" lang="en">🇬🇧 English</button><button data-lang="de" lang="de">🇩🇪 Deutsch</button></nav>
+    <nav class="languages" aria-label="Language"><button data-lang="sv" lang="sv"><svg aria-hidden="true" viewBox="0 0 60 40" width="30" height="20"><rect width="60" height="40" fill="#006aa7"/><path d="M0 20H60M21 0V40" stroke="#fecc00" stroke-width="8"/></svg> Svenska</button><button data-lang="en" lang="en"><svg aria-hidden="true" viewBox="0 0 60 40" width="30" height="20"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#c8102e" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#c8102e" stroke-width="7"/></svg> English</button><button data-lang="de" lang="de"><svg aria-hidden="true" viewBox="0 0 60 40" width="30" height="20"><path fill="#000" d="M0 0H60V14H0Z"/><path fill="#d00" d="M0 14H60V27H0Z"/><path fill="#ffce00" d="M0 27H60V40H0Z"/></svg> Deutsch</button></nav>
   </section>
 
   <section class="toolbar">
