@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,6 +52,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 .empty{grid-column:1/-1;padding:24px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;color:var(--muted);text-align:center;}
 @media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:720px){.wrapper{padding:22px 14px;}.hero{align-items:flex-start;flex-direction:column;}.toolbar{align-items:flex-start;flex-direction:column;}.grid{grid-template-columns:1fr;}h1{font-size:28px;}.footer{flex-direction:column;}}
+.languages{display:flex;flex-wrap:wrap;gap:8px}.languages button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;font-size:14px;cursor:pointer}.languages button[aria-pressed="true"]{border-color:#7dd3fc;background:#156082}button:focus-visible{outline:3px solid #7dd3fc}
 </style>
 </head>
 
@@ -66,6 +67,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
         <div class="subtitle">Intern startsida för digitala verktyg, processstöd och förbättringsarbete.</div>
       </div>
     </div>
+    <nav class="languages" aria-label="Language"><button data-lang="sv" lang="sv">🇸🇪 Svenska</button><button data-lang="en" lang="en">🇬🇧 English</button><button data-lang="de" lang="de">🇩🇪 Deutsch</button></nav>
   </section>
 
   <section class="toolbar">
@@ -83,6 +85,14 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 </div>
 
 <script>
+const portalTexts={"en": ["Internal home page for digital tools, process support and continuous improvement.", "Search apps…", "No apps found.", "Internal app", "Open app", "Version 1.5 • Dometic Tidaholm • Internal app portal", "Update apps in AppLinks.xlsx • Images are stored in the bilder folder", "Could not load AppLinks.xlsx. Showing apps added directly to the portal."], "sv": ["Intern startsida för digitala verktyg, processstöd och förbättringsarbete.", "Sök app…", "Inga appar hittades.", "Intern app", "Öppna app", "Version 1.5 • Dometic Tidaholm • Intern appportal", "Uppdatera appar i AppLinks.xlsx • Bilder placeras i mappen bilder", "Kunde inte läsa AppLinks.xlsx. Visar appar som lagts till direkt i portalen."], "de": ["Interne Startseite für digitale Werkzeuge, Prozessunterstützung und kontinuierliche Verbesserung.", "Apps suchen…", "Keine Apps gefunden.", "Interne App", "App öffnen", "Version 1.5 • Dometic Tidaholm • Internes App-Portal", "Apps in AppLinks.xlsx aktualisieren • Bilder im Ordner bilder ablegen", "AppLinks.xlsx konnte nicht geladen werden. Direkt hinzugefügte Apps werden angezeigt."]};
+const appTranslations={"ErgonomicAnalysis": {"en": {"name": "Ergonomics analysis KIM 1", "desc": "Digital risk assessment for lifting and carrying according to KIM I. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 1", "desc": "Digitale Risikobewertung für Heben und Tragen gemäß KIM I. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "KIM2": {"en": {"name": "Ergonomics analysis KIM 2", "desc": "Digital risk assessment for pushing and pulling according to KIM II. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 2", "desc": "Digitale Risikobewertung für Schieben und Ziehen gemäß KIM II. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "KIM3": {"en": {"name": "Ergonomics analysis KIM 3", "desc": "Digital risk assessment for repetitive work according to KIM III. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 3", "desc": "Digitale Risikobewertung für repetitive Arbeit gemäß KIM III. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "Frekvensanalys": {"en": {"name": "Process observations", "desc": "Visualizes how time and activities are distributed across roles or processes. Reveals imbalances, overload and improvement opportunities."}, "de": {"name": "Prozessbeobachtungen", "desc": "Zeigt die Verteilung von Zeit und Tätigkeiten auf Rollen oder Prozesse. Macht Ungleichgewichte, Überlastung und Verbesserungspotenziale sichtbar."}}, "20CycleCheck": {"en": {"name": "20 Cycle Check", "desc": "Digital support for 20 Cycle Check and process observation. Captures variation, deviations and adherence to standards directly at the process."}, "de": {"name": "20 Cycle Check", "desc": "Digitale Unterstützung für 20 Cycle Check und Prozessbeobachtung. Erfasst Streuung, Abweichungen und die Einhaltung von Standards direkt am Prozess."}}, "steptimer": {"en": {"name": "Step Timer", "desc": "Measures cycle time per process step in real time. Provides a quick overview of bottlenecks, variation and deviations from takt time."}, "de": {"name": "Schritt-Timer", "desc": "Misst die Zykluszeit je Prozessschritt in Echtzeit. Zeigt Engpässe, Streuung und Abweichungen von der Taktzeit."}}, "Funktionsplaneraren": {"en": {"name": "Function planner", "desc": "Visualizes responsibilities and workload for indirect functions. Helps distribute tasks and maintain the right focus."}, "de": {"name": "Funktionsplaner", "desc": "Zeigt Verantwortlichkeiten und Arbeitsbelastung indirekter Funktionen. Unterstützt die Aufgabenverteilung und richtige Priorisierung."}}, "Tolkkalibrering": {"en": {"name": "Gauge calibration", "desc": "Digital app for calibrating hole gauges. Records measurements, calculates the largest deviation from ±0.02 mm and gives an immediate pass or fail result."}, "de": {"name": "Lehrenkalibrierung", "desc": "Digitale App zur Kalibrierung von Lochlehren. Erfasst Messwerte, berechnet die größte Abweichung von ±0,02 mm und zeigt sofort bestanden oder nicht bestanden."}}, "Flagg-generator": {"en": {"name": "Pallet label generator", "desc": "Generates and prints labels for tool pallets. Standardized labeling for clear identification and production traceability."}, "de": {"name": "Palettenetiketten-Generator", "desc": "Erstellt und druckt Kennzeichnungen für Werkzeugpaletten. Standardisierte Kennzeichnung für eindeutige Identifikation und Rückverfolgbarkeit in der Produktion."}}, "DometicPersonalHandbok": {"en": {"name": "Employee handbook", "desc": "Search procedures and employee information. Read Word and PowerPoint on your phone or open the original documents."}, "de": {"name": "Mitarbeiterhandbuch", "desc": "Suchen Sie nach Arbeitsanweisungen und Mitarbeiterinformationen. Lesen Sie Word und PowerPoint auf dem Smartphone oder öffnen Sie die Originaldokumente."}}};
+let lang='en';try{const v=localStorage.getItem('dometic-language');if(portalTexts[v])lang=v;}catch(e){}
+const t=i=>portalTexts[lang][i];
+let loadFailed=false;
+function localized(app){const key=Object.keys(appTranslations).find(k=>app.url.toLowerCase().includes('/'+k.toLowerCase()+'/'));const custom=Object.fromEntries(Object.entries(app.i18n?.[lang]||{}).filter(([,v])=>v));return {...app,...appTranslations[key]?.[lang],...custom};}
+function filterApps(){const q=document.getElementById('search').value.toLocaleLowerCase().trim();render(apps.filter(a=>{const b=localized(a);return (b.name+' '+b.desc+' '+a.name).toLocaleLowerCase().includes(q);}));}
+function applyLanguage(){document.documentElement.lang=lang;document.querySelector('.subtitle').textContent=t(0);document.getElementById('search').placeholder=t(1);document.getElementById('search').setAttribute('aria-label',t(1));document.querySelector('.footer div').textContent=t(5);document.querySelector('.footer div:last-child').textContent=t(6);if(loadFailed)document.getElementById('notice').textContent=t(7);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));filterApps();}
 const excelFile = "AppLinks.xlsx";
 const manualApps = [
   {
@@ -118,15 +128,16 @@ function render(list){
   const grid = document.getElementById("appGrid");
 
   if(!list.length){
-    grid.innerHTML = '<div class="empty">Inga appar hittades.</div>';
+    grid.innerHTML = '<div class="empty">'+t(2)+'</div>';
     return;
   }
 
   grid.innerHTML = list.map(app => {
+    const original=app;app=localized(app);
     const name = safeText(app.name);
     const desc = safeText(app.desc);
-    const url = safeText(app.url);
-    const img = safeText(app.image || imagePath(app.name));
+    let target=app.url;if(/\/20CycleCheck\//i.test(target)){const u=new URL(target);u.searchParams.set('lang',lang);target=u.href;}const url = safeText(target);
+    const img = safeText(original.image || imagePath(original.name));
 
     return `
       <article class="card">
@@ -134,11 +145,11 @@ function render(list){
           <img src="${img}" alt="${name}" onerror="this.style.display='none'">
         </div>
         <div class="content">
-          <span class="tag"><span class="dot"></span>Intern app</span>
+          <span class="tag"><span class="dot"></span>${t(3)}</span>
           <h2 class="app-title">${name}</h2>
           <div class="desc">${desc}</div>
           <div class="actions">
-            <a class="btn" href="${url}" target="_blank" rel="noopener">Öppna app</a>
+            <a class="btn" href="${url}" target="_blank" rel="noopener">${t(4)}</a>
             <span class="linktext">${url.replace(/^https?:\/\//,'')}</span>
           </div>
         </div>
@@ -167,13 +178,14 @@ function parseWorkbook(arrayBuffer){
 
     return {
       name: String(x["appnamn"] || "").trim(),
-      desc: String(x["beskrivning"] || "").trim(),
+      desc: String(x["beskrivning"] || x["description"] || "").trim(),
+      i18n:{en:{name:x["appnamn_en"],desc:x["beskrivning_en"]},de:{name:x["appnamn_de"],desc:x["beskrivning_de"]}},
       url: String(x["länk"] || x["link"] || "").trim()
     };
   }).filter(a => a.name && a.url);
 
   addManualApps();
-  render(apps);
+  filterApps();
 }
 
 async function loadExcel(){
@@ -189,17 +201,15 @@ async function loadExcel(){
 
   }catch(err){
     document.getElementById("notice").style.display = "block";
-    document.getElementById("notice").textContent = "Kunde inte läsa AppLinks.xlsx. Visar appar som lagts till direkt i portalen.";
+    loadFailed=true;document.getElementById("notice").textContent=t(7);
     apps = [...manualApps];
-    render(apps);
+    filterApps();
   }
 }
 
-document.getElementById("search").addEventListener("input", e => {
-  const q = e.target.value.toLowerCase().trim();
-  render(apps.filter(a => (a.name + " " + a.desc).toLowerCase().includes(q)));
-});
-
+document.getElementById('search').addEventListener('input',filterApps);
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;try{localStorage.setItem('dometic-language',lang);}catch(e){}applyLanguage();}));
+applyLanguage();
 loadExcel();
 </script>
 
