@@ -91,11 +91,13 @@ const appTranslations={"ErgonomicAnalysis": {"en": {"name": "Ergonomics analysis
 let lang='en';try{const v=localStorage.getItem('dometic-language');if(portalTexts[v])lang=v;}catch(e){}
 const t=i=>portalTexts[lang][i];
 let loadFailed=false;
+appTranslations['Dometic-AnalyzeMovements']={"sv":{"name":"Rörelser & Gångvägar","desc":"Kartlägg operatörens gångvägar i ett spagettidiagram. Följ sträcka, steg och gångtid under en processobservation."},"en":{"name":"Movements & Paths","desc":"Map operator walking paths in a spaghetti diagram. Track distance, steps and walking time during a process observation."},"de":{"name":"Bewegungen & Wege","desc":"Gehwege in einem Spaghetti-Diagramm erfassen. Strecke, Schritte und Gehzeit während einer Prozessbeobachtung verfolgen."}};
 function localized(app){const key=Object.keys(appTranslations).find(k=>app.url.toLowerCase().includes('/'+k.toLowerCase()+'/'));const custom=Object.fromEntries(Object.entries(app.i18n?.[lang]||{}).filter(([,v])=>v));return {...app,...appTranslations[key]?.[lang],...custom};}
 function filterApps(){const q=document.getElementById('search').value.toLocaleLowerCase().trim();render(apps.filter(a=>{const b=localized(a);return (b.name+' '+b.desc+' '+a.name).toLocaleLowerCase().includes(q);}));}
 function applyLanguage(){document.documentElement.lang=lang;document.querySelector('.subtitle').textContent=t(0);document.getElementById('search').placeholder=t(1);document.getElementById('search').setAttribute('aria-label',t(1));document.querySelector('.footer div').textContent=t(5);document.querySelector('.footer div:last-child').textContent=t(6);if(loadFailed)document.getElementById('notice').textContent=t(7);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));filterApps();}
 const excelFile = "AppLinks.xlsx";
 const manualApps = [
+  {"name":"Rörelser & Gångvägar","desc":"Kartlägg operatörens gångvägar i ett spagettidiagram. Följ sträcka, steg och gångtid under en processobservation.","url":"https://mrmartinpet.github.io/Dometic-AnalyzeMovements/","image":"bilder/Movements.svg"},
   {
     name: "Ergonomianalys KIM 2",
     desc: "Digital riskbedömning av skjuta- och draarbete enligt KIM II. Beräknar riskpoäng och skapar en komplett A4-rapport.",
@@ -139,7 +141,7 @@ function render(list){
     const original=app;app=localized(app);
     const name = safeText(app.name);
     const desc = safeText(app.desc);
-    let target=app.url;if(/\/(20CycleCheck|steptimer)\//i.test(target)){const u=new URL(target);u.searchParams.set('lang',lang);target=u.href;}const url = safeText(target);
+    let target=app.url;if(/\/(20CycleCheck|steptimer|Dometic-AnalyzeMovements)\//i.test(target)){const u=new URL(target);u.searchParams.set('lang',lang);target=u.href;}const url = safeText(target);
     const img = safeText(original.image || imagePath(original.name));
 
     return `
