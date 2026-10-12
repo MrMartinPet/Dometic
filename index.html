@@ -52,6 +52,7 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 .tutorial-button:hover{background:#156082}.tutorial-button:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}.actions .linktext{min-width:0;flex:1;}
 .tutorial-dialog{width:min(1000px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:0;overflow:auto;color:var(--text);background:#111827;border:1px solid #475569;border-radius:18px;box-shadow:0 24px 80px #0008;}
 .tutorial-dialog::backdrop{background:rgba(3,7,18,.85)}.tutorial-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px}.tutorial-heading h2{font-size:20px;margin:0}.tutorial-close{width:44px;height:44px;flex-shrink:0;border:1px solid #64748b;border-radius:10px;background:#1e293b;color:white;font-size:28px;cursor:pointer}.tutorial-dialog video{display:block;width:100%;aspect-ratio:16/9;background:#000}.tutorial-note{margin:0;padding:12px 20px 16px;font-size:13px;color:var(--muted)}body.tutorial-open{overflow:hidden;}
+.tutorial-links{margin:0;padding:0 20px 18px;font-size:14px}.tutorial-links a{display:inline-block;color:#b4e9ff;text-decoration:underline;text-underline-offset:3px;padding:6px 0}.tutorial-links a:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}
 .footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;color:var(--muted);font-size:12px;}
 .empty{grid-column:1/-1;padding:24px;border:1px dashed rgba(255,255,255,.18);border-radius:18px;color:var(--muted);text-align:center;}
 @media(max-width:1050px){.grid{grid-template-columns:repeat(2,1fr);}}
@@ -91,11 +92,12 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 
 <dialog id="tutorialDialog" class="tutorial-dialog" aria-labelledby="tutorialTitle" aria-describedby="tutorialNote">
   <div class="tutorial-heading"><h2 id="tutorialTitle">Twenty Cycle Check – instruktionsfilm</h2><button id="closeTutorial" class="tutorial-close" type="button" aria-label="Stäng filmen">×</button></div>
-  <video id="tutorialVideo" controls playsinline preload="none" poster="media/20-cycle-check-tutorial-poster.jpg?v=gibson-kurt-v4-20261012">
-    <source src="media/20-cycle-check-tutorial-sv.mp4?v=gibson-kurt-v4-20261012" type="video/mp4">
-    <track kind="captions" src="media/20-cycle-check-tutorial-sv.vtt?v=gibson-kurt-v4-20261012" srclang="sv" label="Svenska">
+  <video id="tutorialVideo" controls playsinline preload="none" poster="media/20-cycle-check-tutorial-poster-r2.jpg">
+    <source src="media/20-cycle-check-tutorial-sv-kurt-v4-r2.mp4" type="video/mp4">
+    <track kind="captions" src="media/20-cycle-check-tutorial-sv-r2.vtt" srclang="sv" label="Svenska">
   </video>
   <p id="tutorialNote" class="tutorial-note">Svensk berättarröst och textning.</p>
+  <p class="tutorial-links"><a id="tutorialDirect" href="media/20-cycle-check-tutorial-sv-kurt-v4-r2.mp4" target="_blank" rel="noopener">Öppna filmen direkt</a></p>
 </dialog>
 <script>
 const portalTexts={"en": ["Internal home page for digital tools, process support and continuous improvement.", "Search apps…", "No apps found.", "Internal app", "Open app", "Version 1.5 • Dometic Tidaholm • Internal app portal", "Update apps in AppLinks.xlsx • Images are stored in the bilder folder", "Could not load AppLinks.xlsx. Showing apps added directly to the portal."], "sv": ["Intern startsida för digitala verktyg, processstöd och förbättringsarbete.", "Sök app…", "Inga appar hittades.", "Intern app", "Öppna app", "Version 1.5 • Dometic Tidaholm • Intern appportal", "Uppdatera appar i AppLinks.xlsx • Bilder placeras i mappen bilder", "Kunde inte läsa AppLinks.xlsx. Visar appar som lagts till direkt i portalen."], "de": ["Interne Startseite für digitale Werkzeuge, Prozessunterstützung und kontinuierliche Verbesserung.", "Apps suchen…", "Keine Apps gefunden.", "Interne App", "App öffnen", "Version 1.5 • Dometic Tidaholm • Internes App-Portal", "Apps in AppLinks.xlsx aktualisieren • Bilder im Ordner bilder ablegen", "AppLinks.xlsx konnte nicht geladen werden. Direkt hinzugefügte Apps werden angezeigt."]};
@@ -140,9 +142,9 @@ function imagePath(appName){
 }
 
 const tutorialTexts = {
-  sv: {open: 'Se instruktionsfilm för Twenty Cycle Check', title: 'Twenty Cycle Check – instruktionsfilm', close: 'Stäng filmen', note: 'Svensk berättarröst och textning. Använd helskärm för bästa visning.'},
-  en: {open: 'Watch the Twenty Cycle Check tutorial', title: 'Twenty Cycle Check – tutorial', close: 'Close video', note: 'Swedish narration and captions. Use full screen for best viewing.'},
-  de: {open: 'Anleitung für Twenty Cycle Check ansehen', title: 'Twenty Cycle Check – Anleitung', close: 'Video schließen', note: 'Schwedischer Sprechertext und Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.'}
+  sv: {open: 'Se instruktionsfilm för Twenty Cycle Check', title: 'Twenty Cycle Check – instruktionsfilm', close: 'Stäng filmen', note: 'Svensk berättarröst och textning. Använd helskärm för bästa visning.', direct: 'Öppna filmen direkt'},
+  en: {open: 'Watch the Twenty Cycle Check tutorial', title: 'Twenty Cycle Check – tutorial', close: 'Close video', note: 'Swedish narration and captions. Use full screen for best viewing.', direct: 'Open the video directly'},
+  de: {open: 'Anleitung für Twenty Cycle Check ansehen', title: 'Twenty Cycle Check – Anleitung', close: 'Video schließen', note: 'Schwedischer Sprechertext und Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.', direct: 'Video direkt öffnen'}
 };
 const tutorialDialog = document.getElementById('tutorialDialog');
 const tutorialVideo = document.getElementById('tutorialVideo');
@@ -152,10 +154,12 @@ function openTutorial(button) {
   const texts = tutorialTexts[lang];
   document.getElementById('tutorialTitle').textContent = texts.title;
   document.getElementById('tutorialNote').textContent = texts.note;
+  document.getElementById('tutorialDirect').textContent = texts.direct;
   document.getElementById('closeTutorial').setAttribute('aria-label', texts.close);
   tutorialDialog.showModal();
   document.body.classList.add('tutorial-open');
   document.getElementById('closeTutorial').focus();
+  tutorialVideo.preload = 'auto';
   tutorialVideo.play().catch(() => {});
 }
 document.getElementById('appGrid').addEventListener('click', event => {
