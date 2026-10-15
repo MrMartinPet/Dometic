@@ -50,6 +50,8 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 .linktext{font-size:12px;color:#93c5fd;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px;}
 .tutorial-button{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;flex:0 0 46px;padding:0;color:#d9f3ff;background:rgba(21,96,130,.32);border:1px solid rgba(159,227,255,.45);border-radius:11px;cursor:pointer;transition:background .18s ease;}
 .tutorial-button:hover{background:#156082}.tutorial-button:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}.actions .linktext{min-width:0;flex:1;}
+.tutorial-choices{display:inline-flex;gap:6px;flex-shrink:0}.tutorial-choices .tutorial-button{width:52px;flex-basis:52px;gap:5px}.tutorial-flag{width:22px;height:15px;border-radius:2px}.tutorial-play{width:11px;height:12px}
+@media(max-width:380px){.actions:has(.tutorial-choices) .linktext{display:none}}
 .tutorial-dialog{width:min(1000px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:0;overflow:auto;color:var(--text);background:#111827;border:1px solid #475569;border-radius:18px;box-shadow:0 24px 80px #0008;}
 .tutorial-dialog::backdrop{background:rgba(3,7,18,.85)}.tutorial-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 20px}.tutorial-heading h2{font-size:20px;margin:0}.tutorial-close{width:44px;height:44px;flex-shrink:0;border:1px solid #64748b;border-radius:10px;background:#1e293b;color:white;font-size:28px;cursor:pointer}.tutorial-dialog video{display:block;width:100%;aspect-ratio:16/9;background:#000}.tutorial-note{margin:0;padding:12px 20px 16px;font-size:13px;color:var(--muted)}body.tutorial-open{overflow:hidden;}
 .tutorial-links{margin:0;padding:0 20px 18px;font-size:14px}.tutorial-links a{display:inline-block;color:#b4e9ff;text-decoration:underline;text-underline-offset:3px;padding:6px 0}.tutorial-links a:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}
@@ -142,9 +144,17 @@ function imagePath(appName){
 }
 
 const tutorialTexts = {
-  sv: {open: 'Se instruktionsfilm för Twenty Cycle Check', title: 'Twenty Cycle Check – instruktionsfilm', close: 'Stäng filmen', note: 'Svensk berättarröst och textning. Använd helskärm för bästa visning.', direct: 'Öppna filmen direkt'},
-  en: {open: 'Watch the Twenty Cycle Check tutorial', title: 'Twenty Cycle Check – tutorial', close: 'Close video', note: 'Swedish narration and captions. Use full screen for best viewing.', direct: 'Open the video directly'},
-  de: {open: 'Anleitung für Twenty Cycle Check ansehen', title: 'Twenty Cycle Check – Anleitung', close: 'Video schließen', note: 'Schwedischer Sprechertext und Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.', direct: 'Video direkt öffnen'}
+  sv: {open: {sv: 'Se instruktionsfilm för Twenty Cycle Check på svenska', en: 'Se instruktionsfilm för Twenty Cycle Check på engelska'}, title: 'Twenty Cycle Check – instruktionsfilm', close: 'Stäng filmen', languages: {sv: 'Svenska', en: 'English'}, group: 'Välj språk för instruktionsfilmen', notes: {sv: 'Svensk berättarröst. Svensk textning kan slås på i spelaren. Använd helskärm för bästa visning.', en: 'Engelsk berättarröst. Engelsk textning kan slås på i spelaren. Använd helskärm för bästa visning.'}, direct: 'Öppna filmen direkt'},
+  en: {open: {sv: 'Watch the Twenty Cycle Check tutorial in Swedish', en: 'Watch the Twenty Cycle Check tutorial in English'}, title: 'Twenty Cycle Check – tutorial', close: 'Close video', languages: {sv: 'Svenska', en: 'English'}, group: 'Choose the tutorial language', notes: {sv: 'Swedish narration and optional Swedish captions. Use full screen for best viewing.', en: 'English narration and optional English captions. Use full screen for best viewing.'}, direct: 'Open the video directly'},
+  de: {open: {sv: 'Anleitung für Twenty Cycle Check auf Schwedisch ansehen', en: 'Anleitung für Twenty Cycle Check auf Englisch ansehen'}, title: 'Twenty Cycle Check – Anleitung', close: 'Video schließen', languages: {sv: 'Svenska', en: 'English'}, group: 'Sprache der Anleitung auswählen', notes: {sv: 'Schwedischer Sprechertext und zuschaltbare schwedische Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.', en: 'Englischer Sprechertext und zuschaltbare englische Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.'}, direct: 'Video direkt öffnen'}
+};
+const tutorialMedia = {
+  sv: {video: 'media/20-cycle-check-tutorial-sv-modern-m3.mp4', captions: 'media/20-cycle-check-tutorial-sv-modern-m3.vtt', poster: 'media/20-cycle-check-tutorial-poster-modern-m3.jpg', label: 'Svenska'},
+  en: {video: 'media/20-cycle-check-tutorial-en-modern-e1.mp4', captions: 'media/20-cycle-check-tutorial-en-modern-e1.vtt', poster: 'media/20-cycle-check-tutorial-poster-en-modern-e1.jpg', label: 'English'}
+};
+const tutorialFlags = {
+  sv: '<svg class="tutorial-flag" aria-hidden="true" viewBox="0 0 60 40"><rect width="60" height="40" fill="#006aa7"/><path d="M0 20H60M21 0V40" stroke="#fecc00" stroke-width="8"/></svg>',
+  en: '<svg class="tutorial-flag" aria-hidden="true" viewBox="0 0 60 40"><rect width="60" height="40" fill="#012169"/><path d="M0 0L60 40M60 0L0 40" stroke="#fff" stroke-width="8"/><path d="M0 0L60 40M60 0L0 40" stroke="#c8102e" stroke-width="3"/><path d="M30 0V40M0 20H60" stroke="#fff" stroke-width="13"/><path d="M30 0V40M0 20H60" stroke="#c8102e" stroke-width="7"/></svg>'
 };
 const tutorialDialog = document.getElementById('tutorialDialog');
 const tutorialVideo = document.getElementById('tutorialVideo');
@@ -152,9 +162,25 @@ let tutorialOpener = null;
 function openTutorial(button) {
   tutorialOpener = button;
   const texts = tutorialTexts[lang];
-  document.getElementById('tutorialTitle').textContent = texts.title;
-  document.getElementById('tutorialNote').textContent = texts.note;
+  const videoLanguage = button.dataset.tutorialLanguage === 'en' ? 'en' : 'sv';
+  const media = tutorialMedia[videoLanguage];
+  if (tutorialVideo.dataset.language !== videoLanguage) {
+    tutorialVideo.pause();
+    tutorialVideo.querySelector('source').src = media.video;
+    tutorialVideo.poster = media.poster;
+    const captions = tutorialVideo.querySelector('track');
+    captions.src = media.captions;
+    captions.srclang = videoLanguage;
+    captions.label = media.label;
+    captions.default = false;
+    tutorialVideo.dataset.language = videoLanguage;
+    tutorialVideo.load();
+  }
+  for (const track of tutorialVideo.textTracks) track.mode = 'disabled';
+  document.getElementById('tutorialTitle').textContent = texts.title + ' · ' + texts.languages[videoLanguage];
+  document.getElementById('tutorialNote').textContent = texts.notes[videoLanguage];
   document.getElementById('tutorialDirect').textContent = texts.direct;
+  document.getElementById('tutorialDirect').href = media.video;
   document.getElementById('closeTutorial').setAttribute('aria-label', texts.close);
   tutorialDialog.showModal();
   document.body.classList.add('tutorial-open');
@@ -192,7 +218,7 @@ function render(list){
     const img = safeText(original.image || imagePath(original.name));
     const hasTutorial = new URL(original.url, location.href).pathname.replace(/\/$/, '').toLowerCase() === '/20cyclecheck';
     const videoText = tutorialTexts[lang];
-    const tutorialButton = hasTutorial ? `<button class="tutorial-button" type="button" data-tutorial="20-cycle-check" aria-label="${safeText(videoText.open)}" title="${safeText(videoText.open)}"><svg aria-hidden="true" width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10 8L16 12L10 16V8Z" fill="currentColor"/></svg></button>` : '';
+    const tutorialButton = hasTutorial ? `<span class="tutorial-choices" role="group" aria-label="${safeText(videoText.group)}">${['sv', 'en'].map(videoLanguage => `<button class="tutorial-button" type="button" data-tutorial="20-cycle-check" data-tutorial-language="${videoLanguage}" aria-label="${safeText(videoText.open[videoLanguage])}" title="${safeText(videoText.open[videoLanguage])}">${tutorialFlags[videoLanguage]}<svg class="tutorial-play" aria-hidden="true" viewBox="0 0 12 14"><path d="M1 1L11 7L1 13Z" fill="currentColor"/></svg></button>`).join('')}</span>` : '';
 
 
     return `
