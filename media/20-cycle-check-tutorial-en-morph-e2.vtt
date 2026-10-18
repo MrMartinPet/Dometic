@@ -1,0 +1,190 @@
+WEBVTT
+
+1
+00:00:00.707 --> 00:00:04.180
+Open Twenty Cycle Check in
+Dometic App Portal on your phone,
+
+2
+00:00:04.240 --> 00:00:05.420
+and choose English.
+
+3
+00:00:05.840 --> 00:00:08.980
+Enter the process you are
+observing, and the station as the
+
+4
+00:00:09.000 --> 00:00:10.145
+subprocess.
+
+5
+00:00:10.160 --> 00:00:12.465
+Today's date is already filled in.
+
+6
+00:00:12.480 --> 00:00:16.785
+Under Standard Work CT, enter
+a known cycle time in seconds
+
+7
+00:00:16.800 --> 00:00:18.225
+as your reference line.
+
+8
+00:00:18.240 --> 00:00:20.945
+If the time is unknown, enter zero.
+
+9
+00:00:20.960 --> 00:00:24.580
+Annual volume and available
+production hours per week determine
+
+10
+00:00:24.720 --> 00:00:26.145
+customer takt time.
+
+11
+00:00:26.160 --> 00:00:29.505
+Enter the number of products
+per cycle, usually one.
+
+12
+00:00:29.520 --> 00:00:33.265
+The calculation assumes forty-five
+production weeks per year.
+
+13
+00:00:33.280 --> 00:00:36.465
+Choose the shift and check
+its start and end times.
+
+14
+00:00:36.480 --> 00:00:40.465
+Enter planned stops, such as breaks,
+plus the number of changeovers
+
+15
+00:00:40.480 --> 00:00:42.145
+and minutes per changeover.
+
+16
+00:00:42.160 --> 00:00:44.065
+Count each stop once.
+
+17
+00:00:44.080 --> 00:00:47.540
+These inputs provide available
+running time and the basis for a
+
+18
+00:00:47.560 --> 00:00:48.625
+shift target.
+
+19
+00:00:48.640 --> 00:00:51.620
+Tap the information icon for help with a field.
+
+20
+00:00:51.680 --> 00:00:53.905
+Use a consistent cycle boundary:
+
+21
+00:00:53.920 --> 00:00:56.945
+for example, from one press of
+the machine's start button to
+
+22
+00:00:56.960 --> 00:00:57.905
+the next.
+
+23
+00:00:57.920 --> 00:00:59.540
+Tap Start in the app.
+
+24
+00:00:59.840 --> 00:01:02.860
+At each cycle boundary, tap Next cycle.
+
+25
+00:01:02.960 --> 00:01:04.940
+Timing continues immediately.
+
+26
+00:01:05.040 --> 00:01:07.140
+On a computer, press the spacebar.
+
+27
+00:01:07.600 --> 00:01:11.425
+Measure twenty cycles and comment
+on deviations, such as waiting
+
+28
+00:01:11.440 --> 00:01:14.020
+for material or an extra quality check.
+
+29
+00:01:14.160 --> 00:01:17.140
+Record the final cycle before tapping Stop.
+
+30
+00:01:17.364 --> 00:01:21.829
+The results show mean cycle time,
+best repeatable cycle time, B
+
+31
+00:01:21.844 --> 00:01:24.549
+R C T, and disturbance rate.
+
+32
+00:01:24.564 --> 00:01:27.589
+BRCT is the average of the five fastest
+
+33
+00:01:27.604 --> 00:01:28.264
+cycles.
+
+34
+00:01:28.564 --> 00:01:32.344
+Disturbance rate shows the
+percentage gap between BRCT
+
+35
+00:01:32.404 --> 00:01:33.384
+and the mean.
+
+36
+00:01:33.524 --> 00:01:37.624
+Assess the suggested shift target
+against real operating conditions.
+
+37
+00:01:38.307 --> 00:01:41.749
+Choose PDF for a summary of
+key figures, the chart and
+
+38
+00:01:41.764 --> 00:01:42.424
+comments.
+
+39
+00:01:42.724 --> 00:01:46.584
+Excel provides cycle data and
+comments for further analysis.
+
+40
+00:01:46.724 --> 00:01:49.989
+Share the file through your
+phone's share menu, for example by
+
+41
+00:01:50.004 --> 00:01:51.624
+email, or download it.
+
+42
+00:01:52.309 --> 00:01:54.624
+Scan the QR code to open the portal.
+
+43
+00:01:54.804 --> 00:01:57.246
+Measure, understand and improve.
