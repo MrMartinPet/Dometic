@@ -1,0 +1,52 @@
+name: Update Lunchkollen menus
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 5-14 * * 1-5'
+    - cron: '17 17 * * 0'
+  push:
+    branches: [main]
+    paths:
+      - 'lunchkollen/**'
+      - '.github/workflows/lunchkollen-refresh.yml'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: lunchkollen-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch restaurant menus
+        run: node lunchkollen/scripts/update.mjs
+      - name: Check menus and restaurant order
+        run: node lunchkollen/scripts/check.mjs
+      - name: Commit current menus
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add lunchkollen/data.json lunchkollen/images
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh Lunchkollen menus'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Publish refreshed GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_API: ${{ github.api_url }}
+          GH_REPOSITORY: ${{ github.repository }}
+        run: |
+          curl --fail-with-body --silent --show-error --request POST \
+            --header "Authorization: Bearer $GH_TOKEN" \
+            --header 'Accept: application/vnd.github+json' \
+            "$GH_API/repos/$GH_REPOSITORY/pages/builds"

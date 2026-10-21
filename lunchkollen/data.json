@@ -1,0 +1,401 @@
+{
+  "checkedAt": "2026-10-21T12:15:17.345Z",
+  "restaurants": [
+    {
+      "id": "jives",
+      "name": "JIVEs Kök & Café",
+      "initial": "J",
+      "type": "Husmanskost · Lunchbuffé",
+      "source": "https://jives.se/lunchmeny/",
+      "address": "Kyrkogatan 1",
+      "phone": "050212012",
+      "description": "",
+      "coupon": true,
+      "daily": true,
+      "facebook": "https://www.facebook.com/jivestidaholm/",
+      "menu": {
+        "week": 43,
+        "year": null,
+        "days": {
+          "Måndag": {
+            "dishes": [
+              "Kålpudding serveras med kokt potatis, gräddsås och lingon",
+              "Husets fiskgratäng toppad med handskalade räkor och dill serveras med kokt potatis",
+              "Extrarätt: Krämig pasta med fläskkött och grönpepparsås"
+            ],
+            "dessert": ""
+          },
+          "Tisdag": {
+            "dishes": [
+              "Stekt fläsk serveras med raggmunk alt. löksås och kokt potatis",
+              "Bakad fiskfilé med persilijekokt potatis och vitvinssås"
+            ],
+            "dessert": ""
+          },
+          "Onsdag": {
+            "dishes": [
+              "Fläskschnitzel serveras med sekt potatis, bearnaise, skysås & gröna ärtor",
+              "Fiskgryta serveras med ris/kokt potatis"
+            ],
+            "dessert": ""
+          },
+          "Torsdag": {
+            "dishes": [
+              "Ärtsoppa serveras med pannkakor",
+              "Kokt fisk serveras med haricoverts, kokt potatis och hummersås"
+            ],
+            "dessert": ""
+          },
+          "Fredag": {
+            "dishes": [
+              "Helstekt kotlettrad serveras med potatisgratäng och svampsås",
+              "Fish and chips serveras med husets kalla sås"
+            ],
+            "dessert": "Jives toscakaka"
+          }
+        },
+        "vegetarian": "Vegoburgare med pommes och aioli",
+        "price": 139,
+        "includes": "måltidsdryck, kaffe & kaka",
+        "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
+      },
+      "state": "parsed",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 1,
+      "imageData": []
+    },
+    {
+      "id": "ehns",
+      "name": "Ehn’s kök",
+      "initial": "E",
+      "type": "Husmanskost · Lunch",
+      "source": "https://www.facebook.com/ehnskok/posts/1780033190794531/",
+      "address": "Västra Drottningvägen 15",
+      "phone": "0730536214",
+      "description": "",
+      "coupon": true,
+      "daily": true,
+      "facebook": "https://www.facebook.com/ehnskok/",
+      "menu": {
+        "week": 43,
+        "year": 2026,
+        "days": {
+          "Måndag": {
+            "dishes": [
+              "Pannbiff med stekt lök serveras gräddsås, kokt potatis och lingon",
+              "Sej med dillsås serveras med kokt potatis"
+            ],
+            "dessert": ""
+          },
+          "Tisdag": {
+            "dishes": [
+              "Stekt fläsk med bruna bönor alt. löksås, kokt potatis och lingon",
+              "Hokifilé med dragon och citronsås serveras med kokt potatis",
+              "Pasta med köttfärsröra med vitlök och paprika"
+            ],
+            "dessert": ""
+          },
+          "Onsdag": {
+            "dishes": [
+              "Örtstekt kotlett med klyftpotatis, bearnaisesås och gröna ärtor",
+              "Fiskgratäng med sparris och dill"
+            ],
+            "dessert": ""
+          },
+          "Torsdag": {
+            "dishes": [
+              "Lasagne al forno serveras med hemgjord ketchup",
+              "Panerad spätta med dansk remoulad serveras med kokt potatis"
+            ],
+            "dessert": ""
+          },
+          "Fredag": {
+            "dishes": [
+              "Jägarschnitzel serveras med kantarellsås, stekt potatis och gröna ärtor",
+              "Ugnsbakad laxfilé med kall romsås serveras med kokt potatis och ärtor"
+            ],
+            "dessert": ""
+          }
+        },
+        "vegetarian": "Pasta med fetaost och soltorkade tomater",
+        "price": null,
+        "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
+        "note": ""
+      },
+      "week": 43,
+      "publishedAt": "2026-10-18T18:24:21.000Z",
+      "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
+      "hours": "11:30-14:00",
+      "imageData": [],
+      "imageWeek": 43,
+      "imageYear": 2026,
+      "state": "parsed",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 2
+    },
+    {
+      "id": "lafamiglia",
+      "name": "La Famiglia",
+      "initial": "LF",
+      "type": "Italienskt · Lunchbuffé",
+      "source": "https://www.facebook.com/lafamigliatidaholm/posts/1728390382622102/",
+      "address": "Gamla torget 3B",
+      "phone": "050214257",
+      "description": "",
+      "coupon": true,
+      "daily": true,
+      "facebook": "https://www.facebook.com/lafamigliatidaholm/",
+      "menu": null,
+      "week": 43,
+      "publishedAt": "2026-10-18T17:57:48.000Z",
+      "includes": "fräsch sallad, pizzaslice, bröd, smör, måltidsdryck samt kaffe och kaka",
+      "hours": "11:30 - 15:00",
+      "imageData": [
+        "images/lafamiglia-2026-w43-1-b5567e5fc8c8.jpg"
+      ],
+      "imageWeek": 43,
+      "imageYear": 2026,
+      "state": "image",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 3
+    },
+    {
+      "id": "thaipalatset",
+      "name": "Thaipalatset",
+      "initial": "TP",
+      "type": "Asiatiskt · Lunchbuffé",
+      "source": "https://www.vastsverige.com/tidaholm/produkter/thaipalatset/",
+      "address": "Stallängsvägen 6",
+      "phone": "050212760",
+      "description": "Lunchbuffé med förrätt, huvudrätt och dessert.",
+      "coupon": true,
+      "daily": false,
+      "menu": null,
+      "state": "general",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
+      "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
+      "rank": 4,
+      "imageData": []
+    },
+    {
+      "id": "eddies",
+      "name": "Eddies Pizzeria",
+      "initial": "EP",
+      "type": "Pizza · Kebab · Sallad",
+      "source": "https://www.facebook.com/pages/Eddies-Pizzeria/116192175115669",
+      "address": "Stallängsvägen 13",
+      "phone": "050214646",
+      "description": "Pizza, kebab och sallader. Lunch från ordinarie meny på vardagar. Aktuellt pris och utbud finns hos restaurangen.",
+      "coupon": true,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 5,
+      "imageData": []
+    },
+    {
+      "id": "fyran",
+      "name": "4:an-huset",
+      "initial": "4",
+      "type": "Lunch · Fika · Festvåning",
+      "source": "https://www.fyranhuset.se/",
+      "address": "Bruksgatan 4",
+      "phone": "050271117",
+      "description": "Lunch och fika. Schnitzellunch på utvalda onsdagar – kontrollera aktuella datum och meny hos 4:an.",
+      "coupon": true,
+      "daily": false,
+      "facebook": "https://www.facebook.com/fyranhuset/",
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 6,
+      "imageData": []
+    },
+    {
+      "id": "helliden",
+      "name": "Hellidens Slott",
+      "initial": "H",
+      "type": "Husmanskost · Vegetariskt",
+      "source": "https://hellidensslott.se/veckans-lunch/",
+      "address": "Hellidens Slott",
+      "phone": "050217806",
+      "description": "",
+      "coupon": false,
+      "daily": true,
+      "menu": {
+        "week": 43,
+        "year": null,
+        "days": {
+          "Måndag": {
+            "dishes": [
+              "Biff stroganoff med champinjoner samt ris",
+              "Vegetariskt: Lins och sötpotatisgryta med kokosmjölk och spenat serveras med ris"
+            ],
+            "dessert": ""
+          },
+          "Tisdag": {
+            "dishes": [
+              "Krämig fisk och skaldjursgryta med aioli och kokt potatis",
+              "Vegetariskt: Pasta med ugnsrostade tomatsås smak av vitlök och basilika toppad med mozzarella."
+            ],
+            "dessert": ""
+          },
+          "Onsdag": {
+            "dishes": [
+              "Köttbullar med kokt potatis gräddsås och rårörda lingon samt inlagd gurka",
+              "Vegetariskt: Marry me butterbeans serveras med rostad potatis"
+            ],
+            "dessert": ""
+          },
+          "Torsdag": {
+            "dishes": [
+              "Grynkorv med kokt potatis och senapssås",
+              "Pulled pork i tortillabröd med vitlökssås",
+              "Vegetariskt: Biffar på gula ärter och rotfrukter, serveras med krämig svampstuvning och kokt potatis"
+            ],
+            "dessert": ""
+          },
+          "Fredag": {
+            "dishes": [
+              "Pankopanerad kyckling med potatisgratäng och rödvinssås",
+              "Vegetariskt: Auberginerullar fyllda med kryddiga linser samt toppade med fröpesto"
+            ],
+            "dessert": "Dessert: Silviakaka"
+          }
+        },
+        "vegetarian": "",
+        "price": 135,
+        "includes": "Dagens soppa , två varmrätter varav en vegetarisk , ett generöst salladsbord , hembakat bröd och kaka eller dessert samt kaffe .",
+        "note": ""
+      },
+      "state": "parsed",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 7,
+      "imageData": []
+    },
+    {
+      "id": "turbinen",
+      "name": "Turbinen",
+      "initial": "T",
+      "type": "Lunch · Bageri & café",
+      "source": "https://www.turbinentidaholm.se/vart-sortiment-2",
+      "address": "Museigatan 3",
+      "phone": "050213080",
+      "description": "Lunch, smörgåsar, pajer, sallader och fika. Se originalmenyn för aktuellt utbud.",
+      "coupon": false,
+      "daily": false,
+      "menu": null,
+      "state": "unavailable",
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 8,
+      "imageData": []
+    },
+    {
+      "id": "happytime",
+      "name": "Pizzeria Happy Time",
+      "initial": "HT",
+      "type": "Pizza · Kebab · Lunch",
+      "source": "https://happytimetidaholm.se/",
+      "address": "Torggatan 6C",
+      "phone": "050215171",
+      "description": "Pizza, kebab, sallader och à la carte. Lunch erbjuds på vardagar.",
+      "coupon": false,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 9,
+      "imageData": []
+    },
+    {
+      "id": "dana",
+      "name": "Dana Pizzeria",
+      "initial": "D",
+      "type": "Pizza · Kebab · Hamburgare",
+      "source": "https://danapizzeria.se/",
+      "address": "Norra Kungsvägen 3",
+      "phone": "050212228",
+      "description": "Pizza, kebab, hamburgare och vegetariska alternativ. Se originalmenyn för aktuella priser.",
+      "coupon": false,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 10,
+      "imageData": []
+    },
+    {
+      "id": "ricardos",
+      "name": "Ricardos Pizzeria",
+      "initial": "R",
+      "type": "Pizza · Kebab",
+      "source": "https://www.facebook.com/100054394005339/",
+      "address": "Gamla torget 1",
+      "phone": "0502650890",
+      "description": "Pizza och kebab. Se restaurangens meny och aktuella erbjudanden.",
+      "coupon": false,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 11,
+      "imageData": []
+    },
+    {
+      "id": "rimona",
+      "name": "Pizzeria Rimona",
+      "initial": "PR",
+      "type": "Pizza · Kebab · Sallad",
+      "source": "https://www.vastsverige.com/tidaholm/produkter/pizzeria-rimona/",
+      "address": "Södra Kungsvägen 7",
+      "phone": "050215155",
+      "description": "Pizza, kebab och sallader. Lunch erbjuds på vardagar.",
+      "coupon": false,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 12,
+      "imageData": []
+    },
+    {
+      "id": "rossies",
+      "name": "Rossies Gatukök",
+      "initial": "RG",
+      "type": "Hamburgare · Korv · Gatukök",
+      "source": "https://www.vastsverige.com/tidaholm/produkter/rossies-gatukok/",
+      "address": "Hägnelundsvägen 1",
+      "phone": "050210861",
+      "description": "Hamburgare, korv och tillbehör. På vardagar erbjuds lunch från menyn.",
+      "coupon": false,
+      "daily": false,
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 13,
+      "imageData": []
+    },
+    {
+      "id": "atita",
+      "name": "Atita Thai Food",
+      "initial": "AT",
+      "type": "Thaimat · Snabbmat",
+      "source": "https://www.facebook.com/atitathaifood/",
+      "address": "Björklövsvägen 17",
+      "phone": "0761698194",
+      "description": "Thailändsk mat och aktuella erbjudanden. Se menyn hos Atita.",
+      "coupon": false,
+      "daily": false,
+      "facebook": "https://www.facebook.com/atitathaifood/",
+      "state": "general",
+      "menu": null,
+      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "rank": 14,
+      "imageData": []
+    }
+  ],
+  "hosting": "GitHub Pages",
+  "updateMethod": "GitHub Actions"
+}
