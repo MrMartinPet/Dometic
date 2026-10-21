@@ -36,7 +36,7 @@ const FACEBOOK_POSTS={
 function stockWeek(){return isoWeek(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));}
 export function facebookImageUrls(html){
  const high=[...html.matchAll(/"contentUrl":"((?:\\.|[^"\\])*)"/g)].map(m=>{try{return JSON.parse('"'+m[1]+'"')}catch{return ''}}).filter(u=>{try{return new URL(u).hostname.endsWith('.fbcdn.net')}catch{return false}});
- return [...html.matchAll(/<img\b[^>]*>/gi)].map(m=>m[0]).filter(tag=>/scaledImage/i.test(tag)).map(tag=>{const url=decode(tag.match(/\bsrc="([^"]+)"/i)?.[1]||'');const file=url.split('?')[0].split('/').pop();return {url:high.find(u=>u.split('?')[0].split('/').pop()===file)||url,alt:decode(tag.match(/\balt="([^"]*)"/i)?.[1]||'')};}).filter(x=>{try{return new URL(x.url).hostname.endsWith('.fbcdn.net')}catch{return false}}).sort((a,b)=>Number(/bild av text/i.test(b.alt))-Number(/bild av text/i.test(a.alt))).slice(0,3);
+ return [...html.matchAll(/<img\b[^>]*>/gi)].map(m=>m[0]).filter(tag=>/scaledImage/i.test(tag)).map(tag=>{const url=decode(tag.match(/\bsrc="([^"]+)"/i)?.[1]||'');const file=url.split('?')[0].split('/').pop();return {url:high.find(u=>u.split('?')[0].split('/').pop()===file)||url,alt:decode(tag.match(/\balt="([^"]*)"/i)?.[1]||'')};}).filter(x=>{try{return new URL(x.url).hostname.endsWith('.fbcdn.net')}catch{return false}}).reverse().sort((a,b)=>Number(/bild av text|image of text/i.test(b.alt))-Number(/bild av text|image of text/i.test(a.alt))).slice(0,3);
 }
 export function parseFacebookPost(html){
  const text=textFromHtml(html).split(/\nVisa mer|\nKommentar|\nDela/)[0].replace(/\.\.\.\s*/g,'').replace(/\n(\d+)\s*$/,'');

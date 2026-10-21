@@ -151,13 +151,14 @@
       "includes": "fräsch sallad, pizzaslice, bröd, smör, måltidsdryck samt kaffe och kaka",
       "hours": "11:30 - 15:00",
       "imageData": [
-        "images/lafamiglia-2026-w43-1-25f709e3d918.jpg"
+        "images/lafamiglia-2026-w43-1-b5567e5fc8c8.jpg"
       ],
       "imageWeek": 43,
       "imageYear": 2026,
       "state": "image",
       "checkedAt": "2026-10-21T13:52:36.449Z",
-      "rank": 3
+      "rank": 3,
+      "snapshot": true
     },
     {
       "id": "thaipalatset",
