@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-21T12:15:17.345Z",
+  "checkedAt": "2026-10-21T13:52:36.449Z",
   "restaurants": [
     {
       "id": "jives",
@@ -60,7 +60,7 @@
         "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
       },
       "state": "parsed",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 1,
       "imageData": []
     },
@@ -130,7 +130,7 @@
       "imageWeek": 43,
       "imageYear": 2026,
       "state": "parsed",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 2
     },
     {
@@ -151,12 +151,12 @@
       "includes": "fräsch sallad, pizzaslice, bröd, smör, måltidsdryck samt kaffe och kaka",
       "hours": "11:30 - 15:00",
       "imageData": [
-        "images/lafamiglia-2026-w43-1-b5567e5fc8c8.jpg"
+        "images/lafamiglia-2026-w43-1-25f709e3d918.jpg"
       ],
       "imageWeek": 43,
       "imageYear": 2026,
       "state": "image",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 3
     },
     {
@@ -172,7 +172,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -191,7 +191,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 5,
       "imageData": []
     },
@@ -209,7 +209,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 6,
       "imageData": []
     },
@@ -270,10 +270,12 @@
         "includes": "Dagens soppa , två varmrätter varav en vegetarisk , ett generöst salladsbord , hembakat bröd och kaka eller dessert samt kaffe .",
         "note": ""
       },
-      "state": "parsed",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "state": "snapshot",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 7,
-      "imageData": []
+      "imageData": [],
+      "snapshot": true,
+      "menuFetchedAt": "2026-10-21T12:15:17.345Z"
     },
     {
       "id": "turbinen",
@@ -283,12 +285,18 @@
       "source": "https://www.turbinentidaholm.se/vart-sortiment-2",
       "address": "Museigatan 3",
       "phone": "050213080",
-      "description": "Lunch, smörgåsar, pajer, sallader och fika. Se originalmenyn för aktuellt utbud.",
+      "description": "Lunch, smörgåsar, pajer och sallader. Se aktuell meny hos Turbinen.",
       "coupon": false,
       "daily": false,
       "menu": null,
-      "state": "unavailable",
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "state": "general",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
+      "images": [
+        "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
+        "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
+      ],
+      "dessert": "Bakverk och fika finns. Dagens sort och vad som ingår i lunchen är inte bekräftat.",
+      "includes": "Menyn kan publiceras som bild. Öppna originalmenyn för priser och aktuellt utbud.",
       "rank": 8,
       "imageData": []
     },
@@ -305,7 +313,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 9,
       "imageData": []
     },
@@ -322,7 +330,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 10,
       "imageData": []
     },
@@ -339,7 +347,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 11,
       "imageData": []
     },
@@ -356,7 +364,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 12,
       "imageData": []
     },
@@ -373,7 +381,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 13,
       "imageData": []
     },
@@ -391,7 +399,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-21T12:15:17.345Z",
+      "checkedAt": "2026-10-21T13:52:36.449Z",
       "rank": 14,
       "imageData": []
     }
