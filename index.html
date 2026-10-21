@@ -113,6 +113,7 @@ function filterApps(){const q=document.getElementById('search').value.toLocaleLo
 function applyLanguage(){document.documentElement.lang=lang;document.querySelector('.subtitle').textContent=t(0);document.getElementById('search').placeholder=t(1);document.getElementById('search').setAttribute('aria-label',t(1));document.querySelector('.footer div').textContent=t(5);document.querySelector('.footer div:last-child').textContent=t(6);if(loadFailed)document.getElementById('notice').textContent=t(7);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));filterApps();}
 const excelFile = "AppLinks.xlsx";
 const manualApps = [
+  {"name":"Lunchkollen · Tidaholm","desc":"Dagens lunch, veckomenyer, efterrätter och fika från La Famiglia, Jives, Ehn’s, Helliden, Turbinen och Thaipalatset. Spara favoriter och öppna restaurangernas originalmenyer.","url":"https://lunchkollen-tidaholm.makemartin.chatgpt.site","image":"bilder/Lunchkollen.svg","category":"other","i18n":{"en":{"name":"Lunchkollen · Tidaholm","desc":"Daily lunches, weekly menus, desserts and coffee treats from six restaurants in Tidaholm. Save favorites and open the restaurants’ original menus."},"de":{"name":"Lunchkollen · Tidaholm","desc":"Mittagsgerichte, Wochenmenüs, Desserts und Gebäck von sechs Restaurants in Tidaholm. Favoriten speichern und Originalmenüs öffnen."}}},
   {"name":"Rörelser & Gångvägar","desc":"Kartlägg operatörens gångvägar i ett spagettidiagram. Följ sträcka, steg och gångtid under en processobservation.","url":"https://mrmartinpet.github.io/Dometic-AnalyzeMovements/","image":"bilder/Movements.svg"},
   {
     name: "Ergonomianalys KIM 2",
@@ -201,7 +202,7 @@ tutorialDialog.addEventListener('close', () => {
 });
 
 const categoryLabels={en:{process:'PROCESS OBSERVATIONS',other:'OTHER'},sv:{process:'PROCESSOBSERVATIONER',other:'ÖVRIGT'},de:{process:'PROZESSBEOBACHTUNGEN',other:'SONSTIGES'}};
-function appCategory(app){const path=new URL(app.url,location.href).pathname.toLowerCase();const otherRepos=['dometicpersonalhandbok','dometic-employee-handbook','funktionsplaneraren','tolkkalibrering','flagg-generator','frekvensanalys'];const names=['personalhandbok','funktionsplaneraren','tolkkalibrering','flagg-generator','flagg generator','frekvensanalys'];return otherRepos.some(repo=>path.split('/').includes(repo))||names.includes(app.name.toLowerCase().trim())?'other':'process';}
+function appCategory(app){if(app.category === "other" || app.category === "process")return app.category;const path=new URL(app.url,location.href).pathname.toLowerCase();const otherRepos=['dometicpersonalhandbok','dometic-employee-handbook','funktionsplaneraren','tolkkalibrering','flagg-generator','frekvensanalys'];const names=['personalhandbok','funktionsplaneraren','tolkkalibrering','flagg-generator','flagg generator','frekvensanalys'];return otherRepos.some(repo=>path.split('/').includes(repo))||names.includes(app.name.toLowerCase().trim())?'other':'process';}
 function render(list){
   const grid = document.getElementById("appGrid");
 
