@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-23T15:09:25.474Z",
+  "checkedAt": "2026-10-25T19:40:27.863Z",
   "restaurants": [
     {
       "id": "jives",
@@ -60,7 +60,7 @@
         "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
       },
       "state": "snapshot",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 1,
       "imageData": [],
       "snapshot": true,
@@ -132,7 +132,7 @@
       "imageWeek": 43,
       "imageYear": 2026,
       "state": "parsed",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 2
     },
     {
@@ -158,8 +158,10 @@
       "imageWeek": 43,
       "imageYear": 2026,
       "state": "image",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
-      "rank": 3
+      "checkedAt": "2026-10-25T19:40:27.863Z",
+      "rank": 3,
+      "snapshot": true,
+      "menuFetchedAt": "2026-10-23T15:09:25.474Z"
     },
     {
       "id": "thaipalatset",
@@ -174,7 +176,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -193,7 +195,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 5,
       "imageData": []
     },
@@ -211,7 +213,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 6,
       "imageData": []
     },
@@ -273,7 +275,7 @@
         "note": ""
       },
       "state": "snapshot",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 7,
       "imageData": [],
       "snapshot": true,
@@ -292,7 +294,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -315,7 +317,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 9,
       "imageData": []
     },
@@ -332,7 +334,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 10,
       "imageData": []
     },
@@ -349,7 +351,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 11,
       "imageData": []
     },
@@ -366,7 +368,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 12,
       "imageData": []
     },
@@ -383,7 +385,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 13,
       "imageData": []
     },
@@ -401,7 +403,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-23T15:09:25.474Z",
+      "checkedAt": "2026-10-25T19:40:27.863Z",
       "rank": 14,
       "imageData": []
     }
