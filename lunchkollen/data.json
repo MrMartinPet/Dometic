@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-26T16:33:07.798Z",
+  "checkedAt": "2026-10-26T17:25:27.020Z",
   "restaurants": [
     {
       "id": "jives",
@@ -61,8 +61,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
-      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
+      "menuFetchedAt": "2026-10-26T17:25:27.020Z",
       "lastFetchError": null,
       "fetchSource": "Webbsida",
       "rank": 1,
@@ -134,8 +134,8 @@
       "imageWeek": 44,
       "imageYear": 2026,
       "state": "parsed",
-      "checkedAt": "2026-10-26T16:33:07.798Z",
-      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
+      "menuFetchedAt": "2026-10-26T17:25:27.020Z",
       "rank": 2
     },
     {
@@ -162,8 +162,8 @@
       "imageWeek": 44,
       "imageYear": 2026,
       "state": "image",
-      "checkedAt": "2026-10-26T16:33:07.798Z",
-      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
+      "menuFetchedAt": "2026-10-26T17:25:27.020Z",
       "rank": 3
     },
     {
@@ -179,7 +179,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -198,7 +198,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 5,
       "imageData": []
     },
@@ -216,7 +216,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 6,
       "imageData": []
     },
@@ -279,8 +279,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
-      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
+      "menuFetchedAt": "2026-10-26T17:25:27.020Z",
       "lastFetchError": null,
       "fetchSource": "WordPress-API",
       "rank": 7,
@@ -299,7 +299,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -322,7 +322,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 9,
       "imageData": []
     },
@@ -339,7 +339,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 10,
       "imageData": []
     },
@@ -356,7 +356,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 11,
       "imageData": []
     },
@@ -373,7 +373,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 12,
       "imageData": []
     },
@@ -390,7 +390,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 13,
       "imageData": []
     },
@@ -408,7 +408,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "checkedAt": "2026-10-26T17:25:27.020Z",
       "rank": 14,
       "imageData": []
     }
