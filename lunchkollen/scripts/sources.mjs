@@ -52,36 +52,57 @@ export function parseFacebookPost(html){
 }
 async function htmlGet(url){const response=await fetch(url,{signal:AbortSignal.timeout(8000),headers:{Accept:'text/html'}});if(!response.ok)throw Error('Source unavailable');return response.text();}
 async function imageInline(url){const response=await fetch(url,{signal:AbortSignal.timeout(7000)});if(!response.ok||!/^image\/(?:jpeg|png|webp)/i.test(response.headers.get('content-type')||''))throw Error('Image unavailable');const bytes=new Uint8Array(await response.arrayBuffer());if(bytes.length>900000)throw Error('Image too large');let binary='';for(let i=0;i<bytes.length;i+=8192)binary+=String.fromCharCode(...bytes.subarray(i,i+8192));return 'data:'+response.headers.get('content-type').split(';')[0]+';base64,'+btoa(binary);}
+// Discover both numeric post IDs and newer pfbid links, including JSON-escaped links.
+export function facebookPostLinks(html,page){
+ const normalized=decode(html).replace(/\\u002[fF]/g,'/').replace(/\\\//g,'/');
+ const found=[];
+ for(const m of normalized.matchAll(/(?:https?:\/\/(?:www\.|m\.)?facebook\.com)?\/([a-z0-9._-]+)\/posts\/(pfbid[a-z0-9]+|\d{8,})/gi)){
+  if(m[1].toLowerCase()!==page.toLowerCase())continue;
+  const url='https://www.facebook.com/'+page+'/posts/'+m[2]+'/';
+  if(!found.includes(url))found.push(url);
+ }
+ return found.slice(0,12);
+}
 async function facebookMenu(r,checkedAt){
  const expected=stockWeek(),seed=FACEBOOK_POSTS[r.id],page=new URL(r.facebook).pathname.split('/').filter(Boolean)[0];
  const candidates=[];
  if(seed&&seed.week===expected.week&&seed.year===expected.year)candidates.push(seed.url);
- // Only inspect public links from this restaurant's page; no login/session is used.
- try{if(candidates.length)throw Error('Known current-week post');const html=await htmlGet(r.facebook);const links=[...html.matchAll(new RegExp('(?:https?:\\/\\/www\\.facebook\\.com)?\\/'+page+'\\/posts\\/(?:[^"<>\\s]*?\\/)?(\\d{8,})\\/?','g'))];for(const link of links.slice(0,6)){const url='https://www.facebook.com/'+page+'/posts/'+link[1]+'/';if(!candidates.includes(url))candidates.push(url);}}catch{}
- for(const source of candidates.slice(0,4)){
+ // Public Facebook pages do not reliably expose posts. Check several public views,
+ // verify the week and date, and keep a safe profile link when discovery fails.
+ const pages=[
+  r.facebook,
+  'https://m.facebook.com/'+page+'/',
+  'https://www.facebook.com/plugins/page.php?href='+encodeURIComponent(r.facebook)+'&tabs=timeline&width=500&height=900'
+ ];
+ const discovered=await Promise.allSettled(pages.map(htmlGet));
+ for(const item of discovered){
+  if(item.status!=='fulfilled')continue;
+  for(const url of facebookPostLinks(item.value,page))if(!candidates.includes(url))candidates.push(url);
+ }
+ for(const postUrl of candidates.slice(0,8)){
   try{
-   const html=await htmlGet('https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(source)+'&show_text=true&width=500');
+   const html=await htmlGet('https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(postUrl)+'&show_text=true&width=500');
    const parsed=parseFacebookPost(html);if(parsed.week!==expected.week||!parsed.publishedAt)continue;
    const age=Date.now()-new Date(parsed.publishedAt).getTime();if(age< -86400000||age>14*86400000)continue;
    const imageData=[];
    if(!parsed.menu)for(const pic of parsed.images.slice(0,1)){try{imageData.push(await imageInline(pic.url))}catch{}}
    if(!parsed.menu&&!imageData.length)continue;
-   return {...r,...parsed,images:undefined,source,imageData,imageWeek:parsed.week,imageYear:expected.year,state:parsed.menu?'parsed':'image',checkedAt};
+   return {...r,...parsed,images:undefined,postUrl,imageData,imageWeek:parsed.week,imageYear:expected.year,state:parsed.menu?'parsed':'image',checkedAt,menuFetchedAt:checkedAt};
   }catch{}
  }
  const old=SNAPSHOT[r.id];
- if(old)return {...old,snapshot:true,state:old.menu?'snapshot':'image',checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt};
+ if(old)return {...r,...old,source:r.source,facebook:r.facebook,postUrl:old.postUrl||(/\/posts\//.test(old.source||'')?old.source:null),snapshot:true,state:old.menu?'snapshot':old.imageData?.length?'image':'unavailable',checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt};
  return {...r,state:'unavailable',menu:null,checkedAt};
 }
 
-export function restorePrevious(records){for(const r of records||[]){if(r.menu||r.imageData?.length)SNAPSHOT[r.id]=r;}}
+export function restorePrevious(records){for(const r of records||[]){if(r.menu||r.imageData?.length){const old=structuredClone(r);if(old.menu&&!old.menu.year&&(old.menuFetchedAt||old.checkedAt))old.menu.year=isoWeek((old.menuFetchedAt||old.checkedAt).slice(0,10)).year;SNAPSHOT[r.id]=old;}}}
 export const initialSnapshots=SNAPSHOT;
 export async function fetchMenus(){
  const checkedAt=new Date().toISOString();
  const results=await Promise.all(RESTAURANTS.map(async r=>{
   try {
    if(!r.daily && !['turbinen','thaipalatset'].includes(r.id))return {...r,state:'general',menu:null,checkedAt};
-   if(FACEBOOK_POSTS[r.id])return await facebookMenu(r,checkedAt);
+   if(r.daily&&r.facebook&&/facebook\.com/i.test(r.source))return await facebookMenu(r,checkedAt);
    const response=await fetch(r.source,{signal:AbortSignal.timeout(12000),headers:{'User-Agent':'Lunchkollen/1.0 (+Tidaholm lunch menu reader)','Accept':'text/html'}});
    if(!response.ok)throw Error('Källan svarade inte');
    const html=await response.text();const text=textFromHtml(html);const menu=r.daily?parseMenu(text):null;
