@@ -95,6 +95,40 @@ async function facebookMenu(r,checkedAt){
  return {...r,state:'unavailable',menu:null,checkedAt};
 }
 
+
+/** Fetch the published lunch menu; retry independent public WordPress and no-cache endpoints. */
+export async function fetchWebsiteMenu(r,checkedAt,request=fetch,expected=stockWeek()){
+ const problems=[];
+ const main=new URL(r.source),slug=main.pathname.split('/').filter(Boolean).at(-1);
+ const targets=[{name:'Webbsida',url:r.source}];
+ if(r.id==='helliden'){
+  targets.push({name:'WordPress-API',url:new URL('/wp-json/wp/v2/pages?slug='+encodeURIComponent(slug)+'&_fields=content%2Cmodified',main).href});
+  targets.push({name:'Utan cache',url:r.source+(r.source.includes('?')?'&':'?')+'lunchkollen='+encodeURIComponent(checkedAt.slice(0,16))});
+ }
+ for(const target of targets){
+  try{
+   const response=await request(target.url,{cache:'no-store',signal:AbortSignal.timeout(16000),headers:{'Accept':target.name==='WordPress-API'?'application/json':'text/html,application/xhtml+xml','User-Agent':'Mozilla/5.0 (compatible; Lunchkollen/1.0; +https://github.com/MrMartinPet/Dometic)'}});
+   if(!response.ok)throw Error('HTTP '+response.status);
+   let html;
+   if(target.name==='WordPress-API'){
+    const pages=await response.json();
+    if(!Array.isArray(pages)||!pages[0]?.content?.rendered)throw Error('Ingen publicerad WordPress-text');
+    html=pages[0].content.rendered;
+   }else html=await response.text();
+   const menu=parseMenu(textFromHtml(html));
+   if(menu?.week===expected.week&&(menu.year==null||menu.year===expected.year)){
+    return {...r,menu:{...menu,year:expected.year},state:'parsed',snapshot:false,checkedAt,menuFetchedAt:checkedAt,lastFetchError:null,fetchSource:target.name};
+   }
+   problems.push(target.name+': '+(menu?'visar vecka '+menu.week:'kunde inte tolka menyn'));
+  }catch(e){problems.push(target.name+': '+String(e?.message||e).slice(0,90));}
+ }
+ const diagnostic=problems.join(' | ').slice(0,360);
+ console.warn('Lunchkollen '+r.id+': '+diagnostic);
+ const old=SNAPSHOT[r.id];
+ if(old)return {...r,...old,source:r.source,state:'snapshot',snapshot:true,checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt,lastFetchError:diagnostic};
+ return {...r,state:'unavailable',menu:null,checkedAt,lastFetchError:diagnostic};
+}
+
 export function restorePrevious(records){for(const r of records||[]){if(r.menu||r.imageData?.length){const old=structuredClone(r);if(old.menu&&!old.menu.year&&(old.menuFetchedAt||old.checkedAt))old.menu.year=isoWeek((old.menuFetchedAt||old.checkedAt).slice(0,10)).year;SNAPSHOT[r.id]=old;}}}
 export const initialSnapshots=SNAPSHOT;
 export async function fetchMenus(){
@@ -103,10 +137,10 @@ export async function fetchMenus(){
   try {
    if(!r.daily && !['turbinen','thaipalatset'].includes(r.id))return {...r,state:'general',menu:null,checkedAt};
    if(r.daily&&r.facebook&&/facebook\.com/i.test(r.source))return await facebookMenu(r,checkedAt);
+   if(r.daily)return await fetchWebsiteMenu(r,checkedAt);
    const response=await fetch(r.source,{signal:AbortSignal.timeout(12000),headers:{'User-Agent':'Lunchkollen/1.0 (+Tidaholm lunch menu reader)','Accept':'text/html'}});
    if(!response.ok)throw Error('Källan svarade inte');
-   const html=await response.text();const text=textFromHtml(html);const menu=r.daily?parseMenu(text):null;
-   if(r.daily)return {...r,menu,state:menu?'parsed':'unavailable',checkedAt};
+   const html=await response.text();const text=textFromHtml(html);
    if(r.id==='thaipalatset')return {...r,menu:null,state:'general',checkedAt,description:/lunchbuffé[^.]*dessert/i.test(text)?'Lunchbuffé med förrätt, huvudrätt och dessert.':'Asiatisk lunchbuffé. Se restaurangens uppgifter.',dessert:'Dessert ingår enligt turistinformationen. Sort anges inte.',includes:'Allmän information – dagens exakta bufférätter och pris är inte bekräftade.'};
    const imageTags=[...html.matchAll(/<img\b[^>]*src=["']([^"']+)["'][^>]*>/gi)].map(m=>({url:new URL(decode(m[1]),r.source).href,tag:m[0]}));
    const images=imageTags.filter(x=>/meny/i.test(x.url)&&!/(logo|t[aå]rt)/i.test(x.url)).slice(0,2).map(x=>x.url);

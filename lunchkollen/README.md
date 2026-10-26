@@ -17,3 +17,5 @@ Only images actually returned by the source are used. Higher-resolution contentU
 Ordinary offerings for other restaurants are informational, not a claim of today's opening hours, prices or changing dishes. No manual menu entry exists. Favorites are browser-local. Menu images are opened inside the app; cards use consistent text/vector typography, including Jives.
 
 Run `node lunchkollen/scripts/update.mjs` from the repository root to refresh. Run `node lunchkollen/scripts/check.mjs` for essential assertions. Node 22+.
+
+Helliden: If the regular webpage cannot be fetched or parsed for the current week, the updater also checks the site's public WordPress REST page content and then retries the webpage without cache. The workflow logs all attempts and saves `lastFetchError` to the restaurant record. A menu from the wrong ISO week is never considered current. This cannot bypass a fully unavailable website.
