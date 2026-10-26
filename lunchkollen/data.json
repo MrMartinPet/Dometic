@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-26T11:11:08.044Z",
+  "checkedAt": "2026-10-26T16:21:35.717Z",
   "restaurants": [
     {
       "id": "jives",
@@ -15,7 +15,7 @@
       "facebook": "https://www.facebook.com/jivestidaholm/",
       "menu": {
         "week": 44,
-        "year": null,
+        "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
@@ -59,17 +59,19 @@
         "includes": "måltidsdryck, kaffe & kaka",
         "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
       },
-      "state": "parsed",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "state": "snapshot",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 1,
-      "imageData": []
+      "imageData": [],
+      "snapshot": true,
+      "menuFetchedAt": "2026-10-26T11:11:08.044Z"
     },
     {
       "id": "ehns",
       "name": "Ehn’s kök",
       "initial": "E",
       "type": "Husmanskost · Lunch",
-      "source": "https://www.facebook.com/ehnskok/posts/1780033190794531/",
+      "source": "https://www.facebook.com/ehnskok/",
       "address": "Västra Drottningvägen 15",
       "phone": "0730536214",
       "description": "",
@@ -77,70 +79,69 @@
       "daily": true,
       "facebook": "https://www.facebook.com/ehnskok/",
       "menu": {
-        "week": 43,
+        "week": 44,
         "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
-              "Pannbiff med stekt lök serveras gräddsås, kokt potatis och lingon",
-              "Sej med dillsås serveras med kokt potatis"
+              "Köttfärslimpa med gräddsås serveras med kokt potatis och lingon",
+              "Sej med räksås serveras med kokt potatis"
             ],
             "dessert": ""
           },
           "Tisdag": {
             "dishes": [
-              "Stekt fläsk med bruna bönor alt. löksås, kokt potatis och lingon",
-              "Hokifilé med dragon och citronsås serveras med kokt potatis",
-              "Pasta med köttfärsröra med vitlök och paprika"
+              "Stekt fläsk med raggmunk alt. löksås serveras med kokt potatis och lingon",
+              "Hoki i citronsås serveras med kokt potatis",
+              "Korvstroganoff med ris"
             ],
             "dessert": ""
           },
           "Onsdag": {
             "dishes": [
-              "Örtstekt kotlett med klyftpotatis, bearnaisesås och gröna ärtor",
-              "Fiskgratäng med sparris och dill"
+              "Skomakarlåda på kotlett serveras med potatismos och pressgurka",
+              "Kummel med gräddstuvad vitkål serveras med örtolja och kokt potatis"
             ],
             "dessert": ""
           },
           "Torsdag": {
             "dishes": [
-              "Lasagne al forno serveras med hemgjord ketchup",
-              "Panerad spätta med dansk remoulad serveras med kokt potatis"
+              "Allahelgona-Buffé",
+              "160: -/Person"
             ],
-            "dessert": ""
+            "dessert": "Dessert: chokladpudding med grädde"
           },
           "Fredag": {
             "dishes": [
-              "Jägarschnitzel serveras med kantarellsås, stekt potatis och gröna ärtor",
-              "Ugnsbakad laxfilé med kall romsås serveras med kokt potatis och ärtor"
+              "Stängt"
             ],
             "dessert": ""
           }
         },
-        "vegetarian": "Pasta med fetaost och soltorkade tomater",
+        "vegetarian": "Omelett med svamp och bakad lök",
         "price": null,
         "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
         "note": ""
       },
-      "week": 43,
-      "publishedAt": "2026-10-18T18:24:21.000Z",
+      "week": 44,
+      "publishedAt": "2026-10-25T18:11:51.000Z",
       "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
-      "hours": "11:30-14:00",
+      "hours": "",
+      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid02Wrqdr9xXXqKWW2at19jax7TgsDuHKizEfBNJR4bzDSHzL2fJRcaWkE8qTY5sdfbNl/",
       "imageData": [],
-      "imageWeek": 43,
+      "imageWeek": 44,
       "imageYear": 2026,
-      "state": "snapshot",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
-      "rank": 2,
-      "snapshot": true,
-      "menuFetchedAt": "2026-10-25T19:40:27.863Z"
+      "state": "parsed",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "menuFetchedAt": "2026-10-26T16:21:35.717Z",
+      "rank": 2
     },
     {
       "id": "lafamiglia",
       "name": "La Famiglia",
       "initial": "LF",
       "type": "Italienskt · Lunchbuffé",
-      "source": "https://www.facebook.com/lafamigliatidaholm/posts/1728390382622102/",
+      "source": "https://www.facebook.com/lafamigliatidaholm/",
       "address": "Gamla torget 3B",
       "phone": "050214257",
       "description": "",
@@ -148,20 +149,20 @@
       "daily": true,
       "facebook": "https://www.facebook.com/lafamigliatidaholm/",
       "menu": null,
-      "week": 43,
-      "publishedAt": "2026-10-18T17:57:48.000Z",
+      "week": 44,
+      "publishedAt": "2026-10-25T12:15:34.000Z",
       "includes": "fräsch sallad, pizzaslice, bröd, smör, måltidsdryck samt kaffe och kaka",
       "hours": "11:30 - 15:00",
+      "postUrl": "https://www.facebook.com/lafamigliatidaholm/posts/pfbid0dWgNmQLStq1Y3Jf8tJMspghWhin8eyEUZ6Sg7nd6c6mQQKPwS58CiKZCGJ2vBCitl/",
       "imageData": [
-        "images/lafamiglia-2026-w43-1-b5567e5fc8c8.jpg"
+        "images/lafamiglia-2026-w44-1-b5f768d5ef27.jpg"
       ],
-      "imageWeek": 43,
+      "imageWeek": 44,
       "imageYear": 2026,
       "state": "image",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
-      "rank": 3,
-      "snapshot": true,
-      "menuFetchedAt": "2026-10-23T15:09:25.474Z"
+      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "menuFetchedAt": "2026-10-26T16:21:35.717Z",
+      "rank": 3
     },
     {
       "id": "thaipalatset",
@@ -176,7 +177,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -195,7 +196,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 5,
       "imageData": []
     },
@@ -213,7 +214,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 6,
       "imageData": []
     },
@@ -230,7 +231,7 @@
       "daily": true,
       "menu": {
         "week": 43,
-        "year": null,
+        "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
@@ -275,7 +276,7 @@
         "note": ""
       },
       "state": "snapshot",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 7,
       "imageData": [],
       "snapshot": true,
@@ -294,7 +295,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -317,7 +318,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 9,
       "imageData": []
     },
@@ -334,7 +335,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 10,
       "imageData": []
     },
@@ -351,7 +352,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 11,
       "imageData": []
     },
@@ -368,7 +369,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 12,
       "imageData": []
     },
@@ -385,7 +386,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 13,
       "imageData": []
     },
@@ -403,7 +404,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T11:11:08.044Z",
+      "checkedAt": "2026-10-26T16:21:35.717Z",
       "rank": 14,
       "imageData": []
     }
