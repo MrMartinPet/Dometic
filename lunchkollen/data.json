@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-26T16:21:35.717Z",
+  "checkedAt": "2026-10-26T16:33:07.798Z",
   "restaurants": [
     {
       "id": "jives",
@@ -59,12 +59,14 @@
         "includes": "måltidsdryck, kaffe & kaka",
         "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
       },
-      "state": "snapshot",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "state": "parsed",
+      "snapshot": false,
+      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "lastFetchError": null,
+      "fetchSource": "Webbsida",
       "rank": 1,
-      "imageData": [],
-      "snapshot": true,
-      "menuFetchedAt": "2026-10-26T11:11:08.044Z"
+      "imageData": []
     },
     {
       "id": "ehns",
@@ -132,8 +134,8 @@
       "imageWeek": 44,
       "imageYear": 2026,
       "state": "parsed",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
-      "menuFetchedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
       "rank": 2
     },
     {
@@ -160,8 +162,8 @@
       "imageWeek": 44,
       "imageYear": 2026,
       "state": "image",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
-      "menuFetchedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
       "rank": 3
     },
     {
@@ -177,7 +179,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -196,7 +198,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 5,
       "imageData": []
     },
@@ -214,7 +216,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 6,
       "imageData": []
     },
@@ -230,44 +232,44 @@
       "coupon": false,
       "daily": true,
       "menu": {
-        "week": 43,
+        "week": 44,
         "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
-              "Biff stroganoff med champinjoner samt ris",
-              "Vegetariskt: Lins och sötpotatisgryta med kokosmjölk och spenat serveras med ris"
+              "Panerad flundrafilé med kokt potatis och slottets remouladsås",
+              "Vegetariskt: Champinjon bourgogne med potatismos"
             ],
             "dessert": ""
           },
           "Tisdag": {
             "dishes": [
-              "Krämig fisk och skaldjursgryta med aioli och kokt potatis",
-              "Vegetariskt: Pasta med ugnsrostade tomatsås smak av vitlök och basilika toppad med mozzarella."
+              "Morotspannkaka alt kokt potatis och löksås med stekt fläsk och rårörda lingon",
+              "Vegetariskt: Rökig bönröra, ugnsrostad aubergine toppad med örtbaserad tahini"
             ],
             "dessert": ""
           },
           "Onsdag": {
             "dishes": [
-              "Köttbullar med kokt potatis gräddsås och rårörda lingon samt inlagd gurka",
-              "Vegetariskt: Marry me butterbeans serveras med rostad potatis"
+              "Stekt kyckling med dijonsås serveras med ugnsrostad potatis",
+              "Vegetariskt: Rostad fänkål, ugnsbakade rotfrukter serveras med vispad fetaoströra"
             ],
             "dessert": ""
           },
           "Torsdag": {
             "dishes": [
-              "Grynkorv med kokt potatis och senapssås",
-              "Pulled pork i tortillabröd med vitlökssås",
-              "Vegetariskt: Biffar på gula ärter och rotfrukter, serveras med krämig svampstuvning och kokt potatis"
+              "Kalops med kokt potatis & rödbetor",
+              "Ärtsoppa och pannkako r",
+              "Vegetariskt: Halloumipasta med röd pesto, tomat och vitlök"
             ],
             "dessert": ""
           },
           "Fredag": {
             "dishes": [
-              "Pankopanerad kyckling med potatisgratäng och rödvinssås",
-              "Vegetariskt: Auberginerullar fyllda med kryddiga linser samt toppade med fröpesto"
+              "Wallenbergare med potatismos, brynt smör & rårörda lingon",
+              "Vegetariskt: Tacopaj med salsasås och cremé fraiche"
             ],
-            "dessert": "Dessert: Silviakaka"
+            "dessert": "Dessert: Chokladpudding med lättvispad grädde"
           }
         },
         "vegetarian": "",
@@ -275,12 +277,14 @@
         "includes": "Dagens soppa , två varmrätter varav en vegetarisk , ett generöst salladsbord , hembakat bröd och kaka eller dessert samt kaffe .",
         "note": ""
       },
-      "state": "snapshot",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "state": "parsed",
+      "snapshot": false,
+      "checkedAt": "2026-10-26T16:33:07.798Z",
+      "menuFetchedAt": "2026-10-26T16:33:07.798Z",
+      "lastFetchError": null,
+      "fetchSource": "WordPress-API",
       "rank": 7,
-      "imageData": [],
-      "snapshot": true,
-      "menuFetchedAt": "2026-10-21T12:15:17.345Z"
+      "imageData": []
     },
     {
       "id": "turbinen",
@@ -295,7 +299,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -318,7 +322,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 9,
       "imageData": []
     },
@@ -335,7 +339,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 10,
       "imageData": []
     },
@@ -352,7 +356,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 11,
       "imageData": []
     },
@@ -369,7 +373,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 12,
       "imageData": []
     },
@@ -386,7 +390,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 13,
       "imageData": []
     },
@@ -404,7 +408,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-10-26T16:21:35.717Z",
+      "checkedAt": "2026-10-26T16:33:07.798Z",
       "rank": 14,
       "imageData": []
     }
