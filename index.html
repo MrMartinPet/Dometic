@@ -61,6 +61,8 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
 @media(max-width:720px){.wrapper{padding:22px 14px;}.hero{align-items:flex-start;flex-direction:column;}.toolbar{align-items:flex-start;flex-direction:column;}.grid{grid-template-columns:1fr;}h1{font-size:28px;}.footer{flex-direction:column;}}
 .languages{display:flex;flex-wrap:wrap;gap:8px}.languages button{display:inline-flex;align-items:center;gap:8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px;font-size:14px;cursor:pointer}.languages button[aria-pressed="true"]{border-color:#7dd3fc;background:#156082}button:focus-visible{outline:3px solid #7dd3fc}
 .app-category{margin-bottom:32px}.category-title{font-size:20px;letter-spacing:.04em;margin:0 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--text)}
+
+.presentation-card{max-width:540px;min-height:0}.presentation-card .image-wrap{height:auto;aspect-ratio:16/9}.presentation-card .desc{min-height:0}.presentation-actions{justify-content:flex-start;flex-wrap:wrap}.presentation-actions button{cursor:pointer}.presentation-direct{color:#b4e9ff;font-size:14px;text-underline-offset:3px}#presentationsfilmer{scroll-margin-top:24px}
 </style>
 </head>
 
@@ -85,6 +87,23 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
   <div class="notice" id="notice"></div>
   <main id="appGrid"></main>
 
+
+  <section id="presentationsfilmer" class="app-category" aria-labelledby="presentationHeading">
+    <h2 id="presentationHeading" class="category-title" data-presentation-text="heading">PRESENTATION VIDEOS</h2>
+    <article class="card presentation-card">
+      <div class="image-wrap"><img src="media/rtm-tidaholm-poster-en.jpg" alt="RTM 3.0 – Tidaholm" loading="lazy"></div>
+      <div class="content">
+        <span class="tag">2:00 · English · Full HD</span>
+        <h3 class="app-title">RTM 3.0 – Tidaholm</h3>
+        <p class="desc" data-presentation-text="description">A shared view of production, safety, quality and improvement work at Dometic Tidaholm.</p>
+        <div class="actions presentation-actions">
+          <button id="openPresentation" type="button" class="btn" data-presentation-text="watch">Watch video</button>
+          <a class="presentation-direct" href="media/rtm-tidaholm-en.mp4" target="_blank" rel="noopener" data-presentation-text="direct">Open video directly</a>
+        </div>
+      </div>
+    </article>
+  </section>
+
   <footer class="footer">
     <div>Version 1.4 • Dometic Tidaholm • Intern appportal</div>
     <div>Uppdatera appar i AppLinks.xlsx • Bilder placeras i mappen bilder</div>
@@ -101,6 +120,17 @@ h1{margin:0;font-size:34px;letter-spacing:.2px;}
   <p id="tutorialNote" class="tutorial-note">Svensk berättarröst och textning.</p>
   <p class="tutorial-links"><a id="tutorialDirect" href="media/20-cycle-check-tutorial-sv-modern-m3.mp4" target="_blank" rel="noopener">Öppna filmen direkt</a></p>
 </dialog>
+
+<dialog id="presentationDialog" class="tutorial-dialog" aria-labelledby="presentationTitle" aria-describedby="presentationNote">
+  <div class="tutorial-heading"><h2 id="presentationTitle">RTM 3.0 – Tidaholm · English</h2><button id="closePresentation" class="tutorial-close" type="button" aria-label="Close video">×</button></div>
+  <video id="presentationVideo" controls playsinline preload="none" poster="media/rtm-tidaholm-poster-en.jpg">
+    <source src="media/rtm-tidaholm-en.mp4" type="video/mp4">
+    <track kind="captions" src="media/rtm-tidaholm-en.vtt" srclang="en" label="English">
+  </video>
+  <p id="presentationNote" class="tutorial-note" data-presentation-text="note">English narration and optional English captions. Use full screen for best viewing.</p>
+  <p class="tutorial-links"><a href="media/rtm-tidaholm-en.mp4" target="_blank" rel="noopener" data-presentation-text="direct">Open video directly</a></p>
+</dialog>
+
 <script>
 const portalTexts={"en": ["Internal home page for digital tools, process support and continuous improvement.", "Search apps…", "No apps found.", "Internal app", "Open app", "Version 1.5 • Dometic Tidaholm • Internal app portal", "Update apps in AppLinks.xlsx • Images are stored in the bilder folder", "Could not load AppLinks.xlsx. Showing apps added directly to the portal."], "sv": ["Intern startsida för digitala verktyg, processstöd och förbättringsarbete.", "Sök app…", "Inga appar hittades.", "Intern app", "Öppna app", "Version 1.5 • Dometic Tidaholm • Intern appportal", "Uppdatera appar i AppLinks.xlsx • Bilder placeras i mappen bilder", "Kunde inte läsa AppLinks.xlsx. Visar appar som lagts till direkt i portalen."], "de": ["Interne Startseite für digitale Werkzeuge, Prozessunterstützung und kontinuierliche Verbesserung.", "Apps suchen…", "Keine Apps gefunden.", "Interne App", "App öffnen", "Version 1.5 • Dometic Tidaholm • Internes App-Portal", "Apps in AppLinks.xlsx aktualisieren • Bilder im Ordner bilder ablegen", "AppLinks.xlsx konnte nicht geladen werden. Direkt hinzugefügte Apps werden angezeigt."]};
 const appTranslations={"ErgonomicAnalysis": {"en": {"name": "Ergonomics analysis KIM 1", "desc": "Digital risk assessment for lifting and carrying according to KIM I. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 1", "desc": "Digitale Risikobewertung für Heben und Tragen gemäß KIM I. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "KIM2": {"en": {"name": "Ergonomics analysis KIM 2", "desc": "Digital risk assessment for pushing and pulling according to KIM II. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 2", "desc": "Digitale Risikobewertung für Schieben und Ziehen gemäß KIM II. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "KIM3": {"en": {"name": "Ergonomics analysis KIM 3", "desc": "Digital risk assessment for repetitive work according to KIM III. Calculates a risk score and creates a complete A4 report."}, "de": {"name": "Ergonomieanalyse KIM 3", "desc": "Digitale Risikobewertung für repetitive Arbeit gemäß KIM III. Berechnet den Risikowert und erstellt einen vollständigen A4-Bericht."}}, "Frekvensanalys": {"en": {"name": "Process observations", "desc": "Visualizes how time and activities are distributed across roles or processes. Reveals imbalances, overload and improvement opportunities."}, "de": {"name": "Prozessbeobachtungen", "desc": "Zeigt die Verteilung von Zeit und Tätigkeiten auf Rollen oder Prozesse. Macht Ungleichgewichte, Überlastung und Verbesserungspotenziale sichtbar."}}, "20CycleCheck": {"en": {"name": "20 Cycle Check", "desc": "Digital support for 20 Cycle Check and process observation. Captures variation, deviations and adherence to standards directly at the process."}, "de": {"name": "20 Cycle Check", "desc": "Digitale Unterstützung für 20 Cycle Check und Prozessbeobachtung. Erfasst Streuung, Abweichungen und die Einhaltung von Standards direkt am Prozess."}}, "steptimer": {"en": {"name": "Worksteps & Times", "desc": "Measures cycle time per process step in real time. Provides a quick overview of bottlenecks, variation and deviations from takt time."}, "de": {"name": "Arbeitsschritte & Zeiten", "desc": "Misst die Zykluszeit je Prozessschritt in Echtzeit. Zeigt Engpässe, Streuung und Abweichungen von der Taktzeit."}, "sv": {"name": "Moment-timer"}}, "Funktionsplaneraren": {"en": {"name": "Function planner", "desc": "Visualizes responsibilities and workload for indirect functions. Helps distribute tasks and maintain the right focus."}, "de": {"name": "Funktionsplaner", "desc": "Zeigt Verantwortlichkeiten und Arbeitsbelastung indirekter Funktionen. Unterstützt die Aufgabenverteilung und richtige Priorisierung."}}, "Tolkkalibrering": {"en": {"name": "Gauge calibration", "desc": "Digital app for calibrating hole gauges. Records measurements, calculates the largest deviation from ±0.02 mm and gives an immediate pass or fail result."}, "de": {"name": "Lehrenkalibrierung", "desc": "Digitale App zur Kalibrierung von Lochlehren. Erfasst Messwerte, berechnet die größte Abweichung von ±0,02 mm und zeigt sofort bestanden oder nicht bestanden."}}, "Flagg-generator": {"en": {"name": "Pallet label generator", "desc": "Generates and prints labels for tool pallets. Standardized labeling for clear identification and production traceability."}, "de": {"name": "Palettenetiketten-Generator", "desc": "Erstellt und druckt Kennzeichnungen für Werkzeugpaletten. Standardisierte Kennzeichnung für eindeutige Identifikation und Rückverfolgbarkeit in der Produktion."}}, "DometicPersonalHandbok": {"en": {"name": "Employee handbook", "desc": "Search procedures and employee information. Read Word and PowerPoint on your phone or open the original documents."}, "de": {"name": "Mitarbeiterhandbuch", "desc": "Suchen Sie nach Arbeitsanweisungen und Mitarbeiterinformationen. Lesen Sie Word und PowerPoint auf dem Smartphone oder öffnen Sie die Originaldokumente."}}};
@@ -110,7 +140,39 @@ let loadFailed=false;
 appTranslations['Dometic-AnalyzeMovements']={"sv":{"name":"Rörelser & Gångvägar","desc":"Kartlägg operatörens gångvägar i ett spagettidiagram. Följ sträcka, steg och gångtid under en processobservation."},"en":{"name":"Analyze Movements","desc":"Map operator walking paths in a spaghetti diagram. Track distance, steps and walking time during a process observation."},"de":{"name":"Bewegungen & Wege","desc":"Gehwege in einem Spaghetti-Diagramm erfassen. Strecke, Schritte und Gehzeit während einer Prozessbeobachtung verfolgen."}};
 function localized(app){const key=Object.keys(appTranslations).find(k=>app.url.toLowerCase().includes('/'+k.toLowerCase()+'/'));const custom=Object.fromEntries(Object.entries(app.i18n?.[lang]||{}).filter(([,v])=>v));return {...app,...appTranslations[key]?.[lang],...custom};}
 function filterApps(){const q=document.getElementById('search').value.toLocaleLowerCase().trim();render(apps.filter(a=>{const b=localized(a);return (b.name+' '+b.desc+' '+a.name).toLocaleLowerCase().includes(q);}));}
-function applyLanguage(){document.documentElement.lang=lang;document.querySelector('.subtitle').textContent=t(0);document.getElementById('search').placeholder=t(1);document.getElementById('search').setAttribute('aria-label',t(1));document.querySelector('.footer div').textContent=t(5);document.querySelector('.footer div:last-child').textContent=t(6);if(loadFailed)document.getElementById('notice').textContent=t(7);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));filterApps();}
+function applyLanguage(){updatePresentationLanguage();document.documentElement.lang=lang;document.querySelector('.subtitle').textContent=t(0);document.getElementById('search').placeholder=t(1);document.getElementById('search').setAttribute('aria-label',t(1));document.querySelector('.footer div').textContent=t(5);document.querySelector('.footer div:last-child').textContent=t(6);if(loadFailed)document.getElementById('notice').textContent=t(7);document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));filterApps();}
+
+const presentationTexts = {
+  sv: {heading:'PRESENTATIONSFILMER', description:'En gemensam bild av produktion, säkerhet, kvalitet och förbättringsarbete på Dometic Tidaholm.', watch:'Se filmen', direct:'Öppna filmen direkt', note:'Engelsk berättarröst och valbar engelsk textning. Använd helskärm för bästa visning.', close:'Stäng filmen'},
+  en: {heading:'PRESENTATION VIDEOS', description:'A shared view of production, safety, quality and improvement work at Dometic Tidaholm.', watch:'Watch video', direct:'Open video directly', note:'English narration and optional English captions. Use full screen for best viewing.', close:'Close video'},
+  de: {heading:'PRÄSENTATIONSFILME', description:'Ein gemeinsamer Überblick über Produktion, Sicherheit, Qualität und Verbesserungsarbeit bei Dometic Tidaholm.', watch:'Film ansehen', direct:'Video direkt öffnen', note:'Englischer Sprechertext und zuschaltbare englische Untertitel. Für die beste Ansicht den Vollbildmodus verwenden.', close:'Video schließen'}
+};
+function updatePresentationLanguage() {
+  const texts = presentationTexts[lang];
+  document.querySelectorAll('[data-presentation-text]').forEach(el => {el.textContent = texts[el.dataset.presentationText];});
+  document.getElementById('closePresentation').setAttribute('aria-label', texts.close);
+}
+const presentationDialog = document.getElementById('presentationDialog');
+const presentationVideo = document.getElementById('presentationVideo');
+document.getElementById('openPresentation').addEventListener('click', () => {
+  presentationDialog.showModal();
+  document.body.classList.add('tutorial-open');
+  document.getElementById('closePresentation').focus();
+  for (const track of presentationVideo.textTracks) track.mode = 'disabled';
+  presentationVideo.preload = 'auto';
+  presentationVideo.play().catch(() => {});
+});
+presentationVideo.addEventListener('loadedmetadata', () => {
+  for (const track of presentationVideo.textTracks) track.mode = 'disabled';
+});
+document.getElementById('closePresentation').addEventListener('click', () => presentationDialog.close());
+presentationDialog.addEventListener('close', () => {
+  presentationVideo.pause();
+  presentationVideo.currentTime = 0;
+  document.body.classList.remove('tutorial-open');
+  document.getElementById('openPresentation').focus();
+});
+
 const excelFile = "AppLinks.xlsx";
 const manualApps = [
   {"name":"Lunchkollen · Tidaholm","desc":"Dagens lunch och menyer från 14 restauranger i Tidaholm. De sex första tar Dometic lunchkuponger. Mobilanpassat med favoriter och veckomenyer.","url":"https://mrmartinpet.github.io/Dometic/lunchkollen/","image":"bilder/Lunchkollen.svg","category":"other","i18n":{"en":{"name":"Lunchkollen · Tidaholm","desc":"Lunch menus from 14 restaurants in Tidaholm. The first six accept Dometic lunch vouchers. Mobile-friendly with favorites and weekly menus."},"de":{"name":"Lunchkollen · Tidaholm","desc":"Mittagsmenüs von 14 Restaurants in Tidaholm. Die ersten sechs akzeptieren Dometic-Lunchgutscheine. Für Mobilgeräte optimiert."}}},
