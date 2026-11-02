@@ -34,6 +34,8 @@ const FACEBOOK_POSTS={
  ehns:{week:43,year:2026,url:'https://www.facebook.com/ehnskok/posts/1780033190794531/'}
 };
 function stockWeek(){return isoWeek(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));}
+function nextWeek(){const d=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Stockholm',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());const x=new Date(d+'T12:00:00Z');x.setUTCDate(x.getUTCDate()+7);return isoWeek(x.toISOString().slice(0,10));}
+function weekMatches(menu,w){return menu&&menu.week===w.week&&(menu.year==null||menu.year===w.year);}
 export function facebookImageUrls(html){
  const high=[...html.matchAll(/"contentUrl":"((?:\\.|[^"\\])*)"/g)].map(m=>{try{return JSON.parse('"'+m[1]+'"')}catch{return ''}}).filter(u=>{try{return new URL(u).hostname.endsWith('.fbcdn.net')}catch{return false}});
  return [...html.matchAll(/<img\b[^>]*>/gi)].map(m=>m[0]).filter(tag=>/scaledImage/i.test(tag)).map(tag=>{const url=decode(tag.match(/\bsrc="([^"]+)"/i)?.[1]||'');const file=url.split('?')[0].split('/').pop();return {url:high.find(u=>u.split('?')[0].split('/').pop()===file)||url,alt:decode(tag.match(/\balt="([^"]*)"/i)?.[1]||'')};}).filter(x=>{try{return new URL(x.url).hostname.endsWith('.fbcdn.net')}catch{return false}}).reverse().sort((a,b)=>Number(/bild av text|image of text/i.test(b.alt))-Number(/bild av text|image of text/i.test(a.alt))).slice(0,3);
@@ -64,7 +66,7 @@ export function facebookPostLinks(html,page){
  return found.slice(0,12);
 }
 async function facebookMenu(r,checkedAt){
- const expected=stockWeek(),seed=FACEBOOK_POSTS[r.id],page=new URL(r.facebook).pathname.split('/').filter(Boolean)[0];
+ const expected=stockWeek(),upcoming=nextWeek(),seed=FACEBOOK_POSTS[r.id],page=new URL(r.facebook).pathname.split('/').filter(Boolean)[0];
  const candidates=[];
  if(seed&&seed.week===expected.week&&seed.year===expected.year)candidates.push(seed.url);
  // Public Facebook pages do not reliably expose posts. Check several public views,
@@ -82,23 +84,25 @@ async function facebookMenu(r,checkedAt){
  for(const postUrl of candidates.slice(0,8)){
   try{
    const html=await htmlGet('https://www.facebook.com/plugins/post.php?href='+encodeURIComponent(postUrl)+'&show_text=true&width=500');
-   const parsed=parseFacebookPost(html);if(parsed.week!==expected.week||!parsed.publishedAt)continue;
+   const parsed=parseFacebookPost(html);if(![expected.week,upcoming.week].includes(parsed.week)||!parsed.publishedAt)continue;
    const age=Date.now()-new Date(parsed.publishedAt).getTime();if(age< -86400000||age>14*86400000)continue;
    const imageData=[];
    if(!parsed.menu)for(const pic of parsed.images.slice(0,1)){try{imageData.push(await imageInline(pic.url))}catch{}}
    if(!parsed.menu&&!imageData.length)continue;
-   return {...r,...parsed,images:undefined,postUrl,imageData,imageWeek:parsed.week,imageYear:expected.year,state:parsed.menu?'parsed':'image',checkedAt,menuFetchedAt:checkedAt};
+   const isNext=parsed.week===upcoming.week&&parsed.week!==expected.week;
+   if(isNext){const old=SNAPSHOT[r.id];return {...r,...old,upcomingMenu:parsed.menu?{...parsed.menu,year:upcoming.year}:null,upcomingImageData:imageData,upcomingImageWeek:upcoming.week,upcomingImageYear:upcoming.year,upcomingPostUrl:postUrl,checkedAt,state:old?.menu?'snapshot':old?.imageData?.length?'image':'unavailable',lastFetchError:null};}
+   return {...r,...parsed,images:undefined,postUrl,imageData,imageWeek:parsed.week,imageYear:expected.year,state:parsed.menu?'parsed':'image',snapshot:false,checkedAt,menuFetchedAt:checkedAt,lastFetchError:null};
   }catch{}
  }
  const old=SNAPSHOT[r.id];
- if(old)return {...r,...old,source:r.source,facebook:r.facebook,postUrl:old.postUrl||(/\/posts\//.test(old.source||'')?old.source:null),snapshot:true,state:old.menu?'snapshot':old.imageData?.length?'image':'unavailable',checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt};
- return {...r,state:'unavailable',menu:null,checkedAt};
+ if(old)return {...r,...old,source:r.source,facebook:r.facebook,postUrl:old.postUrl||(/\/posts\//.test(old.source||'')?old.source:null),snapshot:true,state:old.menu?'snapshot':old.imageData?.length?'image':'unavailable',checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt,lastFetchError:'Ingen ny verifierad Facebook-meny hittades'};
+ return {...r,state:'unavailable',menu:null,checkedAt,lastFetchError:'Inga tillgängliga offentliga Facebook-inlägg kunde verifieras'};
 }
 
 
 /** Fetch the published lunch menu; retry independent public WordPress and no-cache endpoints. */
 export async function fetchWebsiteMenu(r,checkedAt,request=fetch,expected=stockWeek()){
- const problems=[];
+ const problems=[];const upcoming=nextWeek();let nextMenu=null;
  const main=new URL(r.source),slug=main.pathname.split('/').filter(Boolean).at(-1);
  const targets=[{name:'Webbsida',url:r.source}];
  if(r.id==='helliden'){
@@ -116,7 +120,8 @@ export async function fetchWebsiteMenu(r,checkedAt,request=fetch,expected=stockW
     html=pages[0].content.rendered;
    }else html=await response.text();
    const menu=parseMenu(textFromHtml(html));
-   if(menu?.week===expected.week&&(menu.year==null||menu.year===expected.year)){
+   if(weekMatches(menu,upcoming)){nextMenu={...menu,year:upcoming.year};}
+   if(weekMatches(menu,expected)){
     return {...r,menu:{...menu,year:expected.year},state:'parsed',snapshot:false,checkedAt,menuFetchedAt:checkedAt,lastFetchError:null,fetchSource:target.name};
    }
    problems.push(target.name+': '+(menu?'visar vecka '+menu.week:'kunde inte tolka menyn'));
@@ -125,11 +130,11 @@ export async function fetchWebsiteMenu(r,checkedAt,request=fetch,expected=stockW
  const diagnostic=problems.join(' | ').slice(0,360);
  console.warn('Lunchkollen '+r.id+': '+diagnostic);
  const old=SNAPSHOT[r.id];
- if(old)return {...r,...old,source:r.source,state:'snapshot',snapshot:true,checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt,lastFetchError:diagnostic};
- return {...r,state:'unavailable',menu:null,checkedAt,lastFetchError:diagnostic};
+ if(old)return {...r,...old,source:r.source,upcomingMenu:nextMenu||old.upcomingMenu||null,state:'snapshot',snapshot:true,checkedAt,menuFetchedAt:old.menuFetchedAt||old.checkedAt,lastFetchError:nextMenu?'Nästa veckas meny hittad, aktuell vecka saknas':diagnostic};
+ return {...r,state:'unavailable',menu:null,upcomingMenu:nextMenu,checkedAt,lastFetchError:nextMenu?'Nästa veckas meny hittad, aktuell vecka saknas':diagnostic};
 }
 
-export function restorePrevious(records){for(const r of records||[]){if(r.menu||r.imageData?.length){const old=structuredClone(r);if(old.menu&&!old.menu.year&&(old.menuFetchedAt||old.checkedAt))old.menu.year=isoWeek((old.menuFetchedAt||old.checkedAt).slice(0,10)).year;SNAPSHOT[r.id]=old;}}}
+export function restorePrevious(records){for(const r of records||[]){if(r.menu||r.imageData?.length||r.upcomingMenu||r.upcomingImageData?.length){const old=structuredClone(r);if(old.menu&&!old.menu.year&&(old.menuFetchedAt||old.checkedAt))old.menu.year=isoWeek((old.menuFetchedAt||old.checkedAt).slice(0,10)).year;SNAPSHOT[r.id]=old;}}}
 export const initialSnapshots=SNAPSHOT;
 export async function fetchMenus(){
  const checkedAt=new Date().toISOString();
