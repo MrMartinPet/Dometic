@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-08T21:12:30.092Z",
+  "checkedAt": "2026-11-09T13:57:45.659Z",
   "restaurants": [
     {
       "id": "jives",
@@ -14,61 +14,6 @@
       "daily": true,
       "facebook": "https://www.facebook.com/jivestidaholm/",
       "menu": {
-        "week": 45,
-        "year": 2026,
-        "days": {
-          "Måndag": {
-            "dishes": [
-              "Grekisk biffar serveras med klyftpotatis & skysås",
-              "Husets fiskgratäng toppad med handskalade räkor och dill serveras med kokt potatis",
-              "Extrarätt: Pasta med Strimlad Fläsk och grönpepparsås"
-            ],
-            "dessert": ""
-          },
-          "Tisdag": {
-            "dishes": [
-              "Stekt fläsk serveras med raggmunk alt. löksås och kokt potatis",
-              "Panerad fisk, kokt potatis & skagenröra"
-            ],
-            "dessert": ""
-          },
-          "Onsdag": {
-            "dishes": [
-              "Fläskschnitzel serveras med sekt potatis, bearnaise, skysås & gröna ärtor",
-              "Citronbakad sejfilé med dill kokt potatis & vitvinsås"
-            ],
-            "dessert": ""
-          },
-          "Torsdag": {
-            "dishes": [
-              "ugnsgratinerad falukorv med kokt potatis & senapsås",
-              "Stekt strömming med skirat smör & potatismos"
-            ],
-            "dessert": ""
-          },
-          "Fredag": {
-            "dishes": [
-              "Örtstekt kycklingfilé serveras med saltrostat potatis & dragonsås",
-              "Fish and chips serveras med husets kalla sås"
-            ],
-            "dessert": "Jives Silvia kaka"
-          }
-        },
-        "vegetarian": "Vegoburgare med pommes och aioli",
-        "price": 139,
-        "includes": "måltidsdryck, kaffe & kaka",
-        "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
-      },
-      "state": "snapshot",
-      "snapshot": true,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
-      "menuFetchedAt": "2026-11-06T19:58:13.636Z",
-      "lastFetchError": "Nästa veckas meny hittad, aktuell vecka saknas",
-      "fetchSource": "Webbsida",
-      "rank": 1,
-      "imageData": [],
-      "upcomingImageData": [],
-      "upcomingMenu": {
         "week": 46,
         "year": 2026,
         "days": {
@@ -113,7 +58,16 @@
         "price": 139,
         "includes": "måltidsdryck, kaffe & kaka",
         "note": "Fredagsdessert ingår inte vid avhämtning eller utkörning."
-      }
+      },
+      "state": "parsed",
+      "snapshot": false,
+      "checkedAt": "2026-11-09T13:57:45.659Z",
+      "menuFetchedAt": "2026-11-09T13:57:45.659Z",
+      "lastFetchError": null,
+      "fetchSource": "Webbsida",
+      "rank": 1,
+      "imageData": [],
+      "upcomingImageData": []
     },
     {
       "id": "ehns",
@@ -128,67 +82,6 @@
       "daily": true,
       "facebook": "https://www.facebook.com/ehnskok/",
       "menu": {
-        "week": 45,
-        "year": 2026,
-        "days": {
-          "Måndag": {
-            "dishes": [
-              "Kålpudding serveras gräddsås, kokt potatis och lingon",
-              "Sej med dillsås serveras med kokt potatis"
-            ],
-            "dessert": ""
-          },
-          "Tisdag": {
-            "dishes": [
-              "Stekt fläsk med morotspannkaka alt. löksås serveras med kokt potatis",
-              "Kummel med ägg och persiljesås serveras med kokt potatis",
-              "Pasta med kyckling och parmesansås"
-            ],
-            "dessert": ""
-          },
-          "Onsdag": {
-            "dishes": [
-              "Helstekt karré serveras med vinbärsgräddsås och råstekt potatis",
-              "Örtbakad hoki med senapssås serveras med kokt potatis"
-            ],
-            "dessert": ""
-          },
-          "Torsdag": {
-            "dishes": [
-              "Pyttipanna med stekt ägg och rödbetor",
-              "Panerad torsk med remouladsås serveras med kokt potatis och gröna ärtor"
-            ],
-            "dessert": ""
-          },
-          "Fredag": {
-            "dishes": [
-              "Schnitzel serveras med paprika och tomatsås och råstekt potatis",
-              "Alaskafilé i gräslökssås serveras med kokt potatis"
-            ],
-            "dessert": "Dessert: Kladdkaka med grädde"
-          }
-        },
-        "vegetarian": "Rotfruktsbiffar serveras med kokt potatis och örtsås",
-        "price": null,
-        "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
-        "note": ""
-      },
-      "week": 45,
-      "publishedAt": "2026-11-01T19:39:15.000Z",
-      "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
-      "hours": "",
-      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid0q6yzqZ5ZXua6n7N41Jia76zrXtfEhxSeprWdfsMHJHg9p9QYR49oiWjQp6ZHyQbnl/",
-      "imageData": [],
-      "imageWeek": 45,
-      "imageYear": 2026,
-      "state": "snapshot",
-      "snapshot": false,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
-      "menuFetchedAt": "2026-11-06T19:58:13.636Z",
-      "lastFetchError": null,
-      "rank": 2,
-      "upcomingImageData": [],
-      "upcomingMenu": {
         "week": 46,
         "year": 2026,
         "days": {
@@ -234,9 +127,21 @@
         "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
         "note": ""
       },
-      "upcomingImageWeek": 46,
-      "upcomingImageYear": 2026,
-      "upcomingPostUrl": "https://www.facebook.com/ehnskok/posts/pfbid02uZV2mkZF53wFoV5AVAUt6UvgQkndTCjVcJ8RnRbhNDa6LrXXnAyLicj4w1Q62Y8hl/"
+      "week": 46,
+      "publishedAt": "2026-11-08T19:13:05.000Z",
+      "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
+      "hours": "",
+      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid0r1qqravtDo6ummd9iHx6pecXzQ2KrKEUBXEiCoJ4zK7BZvWuLuvXjkS2Kx4GBxYgl/",
+      "imageData": [],
+      "imageWeek": 46,
+      "imageYear": 2026,
+      "state": "parsed",
+      "snapshot": false,
+      "checkedAt": "2026-11-09T13:57:45.659Z",
+      "menuFetchedAt": "2026-11-09T13:57:45.659Z",
+      "lastFetchError": null,
+      "rank": 2,
+      "upcomingImageData": []
     },
     {
       "id": "lafamiglia",
@@ -263,7 +168,7 @@
       "imageYear": 2026,
       "state": "image",
       "snapshot": true,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "menuFetchedAt": "2026-11-06T19:58:13.636Z",
       "lastFetchError": "Ingen ny verifierad Facebook-meny hittades",
       "rank": 3,
@@ -282,7 +187,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -302,7 +207,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 5,
       "imageData": [],
       "upcomingImageData": []
@@ -321,7 +226,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 6,
       "imageData": [],
       "upcomingImageData": []
@@ -338,43 +243,44 @@
       "coupon": false,
       "daily": true,
       "menu": {
-        "week": 45,
+        "week": 46,
         "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
-              "Örtmarinerad kyckling med tzatziki samt rostad potatis",
-              "Vegetariskt: Morotsbiffar med tzatziki och rostad potatis"
+              "Slottets krämiga lasagne med basilikacremé",
+              "Vegetariskt: Linsgryta med spenat och tomat serveras med ris"
             ],
             "dessert": ""
           },
           "Tisdag": {
             "dishes": [
-              "Krämig fiskgratäng med citron och gräslök serveras med kokt potatis.",
-              "Vegetariskt: Paj med spenat, fetaost & soltorkade tomater och kall basilikacremé"
+              "Pytt i panna med ägg och rödbetor",
+              "Slottets pasta carbonara med bacon",
+              "Vegetariskt: Halloumipytt med rotfrukter samt stekt ägg"
             ],
             "dessert": ""
           },
           "Onsdag": {
             "dishes": [
-              "Pannbiff med potatismos, löksås, rårörda lingon samt pressgurka",
-              "Vegetariskt: Potatis och zucchiniplättar, serveras med bönkräm"
+              "Köttbullar med kokt potatis gräddsås rårörda lingon & pressgurka",
+              "Vegetariskt: Krämig pasta med pesto, mozzarella och spenat"
             ],
             "dessert": ""
           },
           "Torsdag": {
             "dishes": [
-              "Schnitzel med klyftpotatis, örtsmör, kapris & ansjovis",
-              "Vegetariskt: Linsgryta med kokosmjölk serveras med ris"
+              "Panerad fisk med potatismos och räkröra",
+              "Vegetariskt: Ugnsbakad butternutpumpa med bulgur samt en kall örtsås"
             ],
             "dessert": ""
           },
           "Fredag": {
             "dishes": [
-              "Slottsstek med gräddsås samt kokt potatis och gelé",
-              "Vegetariskt: Lasagne med spenat & zucchini toppas med rostade solrosfrön"
+              "Porterstek på vildsvins med gräddsås kokt potatis serveras med gelé",
+              "Vegetariskt: Bönbiffar med svamp och potatis serveras med linssallad och dillcremé"
             ],
-            "dessert": "Dessert: Bärkaka vaniljvisp"
+            "dessert": "Dessert: Kladdkaka med grädde"
           }
         },
         "vegetarian": "",
@@ -384,8 +290,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
-      "menuFetchedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
+      "menuFetchedAt": "2026-11-09T13:57:45.659Z",
       "lastFetchError": null,
       "fetchSource": "WordPress-API",
       "rank": 7,
@@ -405,7 +311,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -429,7 +335,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 9,
       "imageData": [],
       "upcomingImageData": []
@@ -447,7 +353,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 10,
       "imageData": [],
       "upcomingImageData": []
@@ -465,7 +371,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 11,
       "imageData": [],
       "upcomingImageData": []
@@ -483,7 +389,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 12,
       "imageData": [],
       "upcomingImageData": []
@@ -501,7 +407,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 13,
       "imageData": [],
       "upcomingImageData": []
@@ -520,7 +426,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-08T21:12:30.092Z",
+      "checkedAt": "2026-11-09T13:57:45.659Z",
       "rank": 14,
       "imageData": [],
       "upcomingImageData": []
