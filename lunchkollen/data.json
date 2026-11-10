@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-09T23:27:37.080Z",
+  "checkedAt": "2026-11-10T13:31:27.515Z",
   "restaurants": [
     {
       "id": "jives",
@@ -61,8 +61,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
-      "menuFetchedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
+      "menuFetchedAt": "2026-11-10T13:31:27.515Z",
       "lastFetchError": null,
       "fetchSource": "Webbsida",
       "rank": 1,
@@ -131,14 +131,14 @@
       "publishedAt": "2026-11-08T19:13:05.000Z",
       "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
       "hours": "",
-      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid0r1qqravtDo6ummd9iHx6pecXzQ2KrKEUBXEiCoJ4zK7BZvWuLuvXjkS2Kx4GBxYgl/",
+      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid02usHZ3Fri58eMcZwxHxvnCnjeEaMKeVJUAwKmfNDkzSR74bh2JqNAcrXpDSjN6xChl/",
       "imageData": [],
       "imageWeek": 46,
       "imageYear": 2026,
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
-      "menuFetchedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
+      "menuFetchedAt": "2026-11-10T13:31:27.515Z",
       "lastFetchError": null,
       "rank": 2,
       "upcomingImageData": []
@@ -168,7 +168,7 @@
       "imageYear": 2026,
       "state": "image",
       "snapshot": true,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "menuFetchedAt": "2026-11-06T19:58:13.636Z",
       "lastFetchError": "Ingen ny verifierad Facebook-meny hittades",
       "rank": 3,
@@ -187,7 +187,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -207,7 +207,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 5,
       "imageData": [],
       "upcomingImageData": []
@@ -226,7 +226,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 6,
       "imageData": [],
       "upcomingImageData": []
@@ -290,8 +290,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
-      "menuFetchedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
+      "menuFetchedAt": "2026-11-10T13:31:27.515Z",
       "lastFetchError": null,
       "fetchSource": "WordPress-API",
       "rank": 7,
@@ -311,7 +311,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -335,7 +335,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 9,
       "imageData": [],
       "upcomingImageData": []
@@ -353,7 +353,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 10,
       "imageData": [],
       "upcomingImageData": []
@@ -371,7 +371,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 11,
       "imageData": [],
       "upcomingImageData": []
@@ -389,7 +389,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 12,
       "imageData": [],
       "upcomingImageData": []
@@ -407,7 +407,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 13,
       "imageData": [],
       "upcomingImageData": []
@@ -426,7 +426,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-09T23:27:37.080Z",
+      "checkedAt": "2026-11-10T13:31:27.515Z",
       "rank": 14,
       "imageData": [],
       "upcomingImageData": []
