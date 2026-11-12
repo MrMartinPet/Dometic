@@ -20,3 +20,52 @@ dialog{border:1px solid #d6e4e9;border-radius:13px;color:var(--ink);width:min(55
 @media(max-width:920px){.shell{grid-template-columns:158px minmax(0,1fr)}.dashboard-grid{grid-template-columns:minmax(0,1fr)}.insights{grid-template-columns:1fr 1fr}}
 @media(max-width:690px){.shell{display:block}#mobile-nav{display:flex;background:#172b38;gap:5px;padding:7px 9px;overflow-x:auto;scrollbar-width:thin}#mobile-nav .nav-button{width:auto;white-space:nowrap;min-height:37px;padding:0 8px;margin:0}#mobile-nav .icon{width:14px;height:14px}.topbar .secondary{min-height:30px;color:#e2edf2;background:#293f4c;border-color:#49616d}.page-head{gap:6px;margin-bottom:14px}.page-head h1{font-size:35px}.brief-status{padding:0;margin-top:2px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:13px}.kpi{padding:9px}.kpi strong{font-size:27px}.kpi>span{font-size:10px}.workspace-filters{gap:6px;margin-bottom:14px}.workspace-filters .search{max-width:none;flex:0 0 100%}.workspace-filters .region{flex:1}.workspace-filters select{max-width:100%;width:100%}.hero{min-height:0;padding:16px 13px}.hero h2{font-size:26px}.insights{grid-template-columns:1fr}.story{padding:10px 8px}.story p{font-size:12px}.section-head h2{font-size:20px}}
 .mini-story{grid-template-columns:minmax(0,1fr) auto}.mini-story .source-link{max-width:94px;text-align:right;font-size:10px;line-height:1.25}.mini-story .source-link .icon{flex:none;width:12px;height:12px}
+
+/* Historical market and company data */
+.kpi-trend { text-align: left; }
+.kpi-trend .icon, .trend-card .icon { color: var(--teal); flex: none; }
+@media (min-width: 1150px) {
+  .kpis:not(.china-kpis) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (min-width: 691px) and (max-width: 1149px) {
+  .kpis:not(.china-kpis) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.trend-group { margin: 24px 0; }
+.trend-group h3 { margin: 0 0 5px; font-size: 16px; letter-spacing: -.02em; }
+.trend-group > p, .trend-method { margin: 0 0 10px; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.trend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 218px), 1fr)); gap: 10px; }
+.trend-card {
+  display: grid; align-content: start; gap: 6px; min-height: 102px; min-width: 0; text-align: left;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px;
+}
+.trend-card:hover { border-color: #6aaba0; background: #f8fdfb; }
+.trend-card-title { display: flex; align-items: start; justify-content: space-between; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.3; }
+.trend-card strong { color: #1d3949; font-size: 21px; letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.trend-card small { color: var(--muted); font-size: 11px; line-height: 1.35; }
+.trend-options { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 8px; }
+.trend-options [aria-pressed=true] { background: #e9f6f2; border-color: #6aaba0; color: #145b52; }
+.trend-snapshot { background: #eef7f5; border-radius: 8px; padding: 8px 11px; margin-bottom: 10px; }
+.trend-snapshot p { margin: 0 0 4px; }
+.trend-scope { margin: 8px 0 5px; }
+.trend-chart { width: 100%; height: auto; display: block; background: #f6faf9; border: 1px solid var(--line); border-radius: 8px; }
+.trend-chart text { fill: #3c5968; font-size: 12px; }
+.trend-chart .trend-gridline { stroke: #d3e1e4; stroke-width: 1; }
+.trend-chart polyline { fill: none; stroke: var(--teal); stroke-width: 2.6; stroke-linejoin: round; }
+.trend-chart circle { fill: #fff; stroke: var(--teal); stroke-width: 2.2; }
+.trend-table { margin: 10px 0 0; }
+.trend-table tbody th { background: #fff; }
+.trend-table td:nth-child(2) { font-variant-numeric: tabular-nums; }
+.trend-table td:nth-child(2), .trend-table th:nth-child(2) { text-align: right; padding-right: 12px; }
+.trend-timeline { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.trend-timeline li { padding: 10px 12px; background: #f5f9fa; border-radius: 8px; }
+.trend-timeline small, .trend-timeline strong { display: block; }
+.trend-timeline small { color: var(--muted); margin-bottom: 4px; }
+.trend-timeline p { margin: 5px 0; }
+@media (max-width: 690px) {
+  .trend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .trend-card { padding: 9px; min-height: 98px; }
+  .trend-card strong { font-size: 19px; }
+  .trend-card-title { gap: 3px; }
+  .trend-card-title .icon { width: 13px; height: 13px; }
+  .trend-table .source-link { line-height: 1.3; }
+}

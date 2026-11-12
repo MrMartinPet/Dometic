@@ -19,6 +19,7 @@ const icons = {
 
 const categories = [
   { id: 'all', name: 'Overview', icon: 'grid' },
+  { id: 'trends', name: 'Trends', icon: 'activity' },
   { id: 'china', name: 'China market', icon: 'globe' },
   { id: 'industry', name: 'Industry news', icon: 'globe' },
   { id: 'launch', name: 'Competitor launches', icon: 'box' },
@@ -33,16 +34,11 @@ const families = [
   'Access & vehicle hardware', 'Other RV equipment'
 ];
 
-const cards = [
-  ['European RV market', '−0.1%', 'Leisure vehicle registrations · Jan–Jul 2026 YoY', 'https://www.civd.de/news/caravan-salon-2026/'],
-  ['Germany · Motorhomes', '−7.2%', 'New registrations · Jan–Sep 2026 YoY', 'https://www.promobil.de/weitere-ratgeber/wohnmobil-flaute-im-sommer-neuzulassungen-brechen-um-fast-ein-drittel-ein/'],
-  ['German RV production', '≈99k', 'Leisure vehicles built · 2025', 'https://www.civd.de/en/news/01-2026-caravanning-market/'],
-  ['Trigano sales', '€3.8bn', 'Group sales · Fiscal year 2026', 'https://webdisclosure.com/press-release/trigano-epa-tri-20252026-sales-uqUY9lTTKsF']
-];
+const overviewTrends = ['europe-rv', 'germany-motorhomes', 'germany-production', 'trigano', 'china-rv'];
+const trendById = new Map(trendGroups.flatMap(({ entries }) => entries.map((trend) => [trend.id, trend])));
 
 const chinaMarketSource = 'https://www.jfdaily.com/staticsg/res/html/web/newsDetail.html?id=1193371';
 const chinaCards = [
-  ['China · RV registrations', '12,153', 'Self-propelled RVs · H1 2026', chinaMarketSource],
   ['China · RV registrations', '+32.6%', 'Self-propelled RVs · H1 2026 YoY', chinaMarketSource],
   ['China · Camping vehicles', '5,315', 'New registrations · H1 2026', chinaMarketSource],
   ['China · RV product filings', '18', 'MIIT notice batch 413 · Nov 2026', 'https://www.21rv.com/c/dbop4t6m168s738g1ssg'],
@@ -69,18 +65,56 @@ try {
 } catch {}
 const dialog = $('detail');
 let dialogTrigger;
+let activeTrend;
+let renderedChinaKpis;
 
 document.querySelectorAll('[data-icon]').forEach((element) => { element.innerHTML = icon(element.dataset.icon); });
 const nav = categories.map(({ id, name, icon: shape }) =>
   '<button class="nav-button" type="button" data-go="' + id + '" aria-pressed="false">' + icon(shape) + '<span>' + name + '</span></button>').join('');
 $('side-nav').innerHTML = nav;
 $('mobile-nav').innerHTML = nav;
-function renderKpis() {
-  const selected = state.category === 'china' || state.market === 'China' ? chinaCards :
-    state.market ? cards : [cards[0], cards[2], cards[3], chinaCards[0]];
-  $('kpis').innerHTML = selected.map(([label, value, period, url]) =>
-    '<a class="kpi" href="' + href(url) + '" target="_blank" rel="noopener noreferrer"><span>' + escape(label) + icon('external') + '</span><strong>' + escape(value) + '</strong><small>' + escape(period) + '</small></a>').join('');
+const number = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 });
+const compact = new Intl.NumberFormat('en-GB', { notation: 'compact', maximumFractionDigits: 1 });
+
+function trendHeadline(trend, useSnapshot) {
+  if (useSnapshot && trend.snapshot) return trend.snapshot;
+  const pane = trend.panes[0];
+  const [year, value] = pane.points.at(-1);
+  return trend.unit === 'vehicles'
+    ? { value: number.format(value), period: 'Vehicles · ' + year }
+    : { value: number.format(value), period: pane.label + ' · ' + trend.unit + ' · FY' + year };
 }
+
+function kpiTrend(id) {
+  const trend = trendById.get(id);
+  const { value, period } = trendHeadline(trend, true);
+  return '<button class="kpi kpi-trend" type="button" data-trend="' + id + '" aria-haspopup="dialog"><span>' +
+    escape(trend.title) + icon('activity') + '</span><strong>' + escape(value) + '</strong><small>' + escape(period) + '</small></button>';
+}
+
+function renderKpis() {
+  const china = state.category === 'china' || state.market === 'China';
+  if (renderedChinaKpis === china) return;
+  renderedChinaKpis = china;
+  const links = china ? chinaCards.map(([label, value, period, url]) =>
+    '<a class="kpi" href="' + href(url) + '" target="_blank" rel="noopener noreferrer"><span>' + escape(label) + icon('external') + '</span><strong>' + escape(value) + '</strong><small>' + escape(period) + '</small></a>').join('') : '';
+  $('kpis').innerHTML = (china ? ['china-rv'] : overviewTrends).map(kpiTrend).join('') + links;
+  $('kpis').classList.toggle('china-kpis', china);
+}
+
+function trendCard(trend) {
+  const latest = trend.activity
+    ? { value: 'Product activity', period: trend.activity[0].period }
+    : trendHeadline(trend, false);
+  return '<button class="trend-card" type="button" data-trend="' + trend.id + '" aria-haspopup="dialog">' +
+    '<span class="trend-card-title">' + escape(trend.title) + icon(trend.activity ? 'box' : 'activity') + '</span>' +
+    '<strong>' + escape(latest.value) + '</strong><small>' + escape(latest.period) + '</small></button>';
+}
+
+$('trend-groups').innerHTML = trendGroups.map(({ title, description, entries }) =>
+  '<section class="trend-group"><h3>' + escape(title) + '</h3><p>' + escape(description) + '</p><div class="trend-grid">' +
+  entries.map(trendCard).join('') + '</div></section>').join('') +
+  '<p class="trend-method">Sources are linked in each chart. Financial years, currencies and business scopes vary by company. Historical figures are updated when new source figures are reviewed.</p>';
 for (const family of families) $('family').add(new Option(family, family));
 
 function meta(story) {
@@ -139,7 +173,18 @@ function render() {
   document.querySelectorAll('nav [data-go]').forEach((button) => {
     button.setAttribute('aria-pressed', String(button.dataset.go === state.category));
   });
-  if (!state.brief) return;
+  const trends = state.category === 'trends';
+  $('kpis').hidden = $('update-filters').hidden = trends;
+  $('trends').hidden = !trends;
+  if (trends) {
+    $('overview').hidden = $('filtered').hidden = true;
+    return;
+  }
+  if (!state.brief) {
+    $('overview').hidden = state.category !== 'all';
+    $('filtered').hidden = true;
+    return;
+  }
   const stories = state.brief.stories;
   const overview = state.category === 'all' && !state.query && !state.market && !state.family;
   $('overview').hidden = !overview;
@@ -180,6 +225,65 @@ function openDialog(label, content, trigger) {
   $('dialog-type').textContent = label;
   $('dialog-content').innerHTML = content;
   dialog.showModal();
+}
+
+function trendChart(trend, pane) {
+  const left = 65;
+  const right = 400;
+  const top = 15;
+  const bottom = 148;
+  const wantedStep = Math.max(...pane.points.map(([, value]) => value)) / 4;
+  const magnitude = 10 ** Math.floor(Math.log10(wantedStep));
+  const step = [1, 2, 2.5, 5, 10].find((factor) => factor * magnitude >= wantedStep) * magnitude;
+  const ticks = Math.ceil(wantedStep * 4 / step);
+  const ceiling = ticks * step;
+  const height = bottom - top;
+  const positions = pane.points.map(([year, value], index) => ({
+    year, value,
+    x: left + 15 + (right - left - 30) * index / (pane.points.length - 1),
+    y: bottom - height * value / ceiling
+  }));
+  const grid = Array.from({ length: ticks + 1 }, (_, index) => {
+    const y = bottom - height * index / ticks;
+    return '<line class="trend-gridline" x1="' + left + '" x2="' + right + '" y1="' + y + '" y2="' + y + '"/>' +
+      '<text x="' + (left - 8) + '" y="' + y + '" text-anchor="end" dominant-baseline="middle">' +
+      escape(compact.format(index * step)) + '</text>';
+  }).join('');
+  const line = positions.map(({ x, y }) => x + ',' + y).join(' ');
+  const dots = positions.map(({ x, y, year, value }) =>
+    '<circle cx="' + x + '" cy="' + y + '" r="4.4"><title>' + year + ' · ' + escape(number.format(value) + ' ' + trend.unit) + '</title></circle>' +
+    '<text x="' + x + '" y="174" text-anchor="middle">' + year + '</text>').join('');
+  return '<svg class="trend-chart" viewBox="0 0 415 183" role="img" aria-label="' +
+    escape(pane.label + ' trend in ' + trend.unit + '. Exact values are listed below.') + '">' + grid +
+    '<polyline points="' + line + '"/>' + dots + '</svg>';
+}
+
+function renderTrendPane(trend, index) {
+  const pane = trend.panes[index];
+  $('trend-pane').innerHTML = '<p class="trend-scope">' + escape(pane.scope) + '</p>' + trendChart(trend, pane) +
+    '<table class="compare trend-table"><thead><tr><th scope="col">Year</th><th scope="col">' + escape(trend.unit === 'vehicles' ? 'Vehicles' : trend.unit) +
+    '</th><th scope="col">Source</th></tr></thead><tbody>' + pane.points.map(([year, value, source]) =>
+      '<tr><th scope="row">' + (trend.unit === 'vehicles' ? '' : 'FY') + year + '</th><td>' + escape(number.format(value)) +
+      '</td><td>' + sourceLink(trendSources[source]) + '</td></tr>').join('') + '</tbody></table>';
+}
+
+function showTrend(trend, trigger) {
+  activeTrend = trend;
+  const heading = '<h2 id="dialog-title">' + escape(trend.title) + '</h2>';
+  if (trend.activity) {
+    const items = trend.activity.map(({ period, title, detail, source }) =>
+      '<li><small>' + escape(period) + '</small><strong>' + escape(title) + '</strong><p>' + escape(detail) + '</p>' +
+      sourceLink(source) + '</li>').join('');
+    openDialog('PRODUCT ACTIVITY', heading + '<ul class="trend-timeline">' + items + '</ul>', trigger);
+    return;
+  }
+  const snapshot = trend.snapshot ? '<div class="trend-snapshot"><p>' + escape(trend.snapshot.detail) + '</p>' +
+    sourceLink(trendSources[trend.snapshot.source]) + '</div>' : '';
+  const controls = trend.panes.length > 1 ? '<div class="trend-options" role="group" aria-label="Chart view">' +
+    trend.panes.map(({ label }, index) => '<button type="button" class="secondary" data-trend-pane="' + index +
+      '" aria-controls="trend-pane" aria-pressed="' + (index === 0) + '">' + escape(label) + '</button>').join('') + '</div>' : '';
+  openDialog('HISTORICAL TREND', heading + snapshot + controls + '<div id="trend-pane" aria-live="polite"></div>', trigger);
+  renderTrendPane(trend, 0);
 }
 
 const installButton = $('install-app');
@@ -232,9 +336,16 @@ document.addEventListener('click', (event) => {
   const go = event.target.closest('[data-go]');
   const article = event.target.closest('[data-detail]');
   const save = event.target.closest('[data-save]');
+  const trend = event.target.closest('[data-trend]');
+  const pane = event.target.closest('[data-trend-pane]');
   if (go) {
     selectCategory(go.dataset.go);
     if (!go.closest('nav')) $('main').scrollIntoView({ block: 'start' });
+  } else if (trend) {
+    showTrend(trendById.get(trend.dataset.trend), trend);
+  } else if (pane) {
+    for (const button of pane.parentElement.children) button.setAttribute('aria-pressed', String(button === pane));
+    renderTrendPane(activeTrend, Number(pane.dataset.trendPane));
   } else if (article) {
     const story = state.brief.stories.find(({ id }) => id === article.dataset.detail);
     if (story) showStory(story, article);
@@ -260,7 +371,10 @@ $('about').addEventListener('click', (event) => {
   openDialog('MARKET BRIEF', '<h2 id="dialog-title">Brief status</h2><p>' + escape(date) + '</p><p>Coverage includes European and Chinese public OEM and supplier releases, trade associations, specialist press and owner forums. Dates and original sources are shown with updates. Forum posts represent individual experiences.</p>', event.currentTarget);
 });
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
-dialog.addEventListener('close', () => dialogTrigger?.focus());
+dialog.addEventListener('close', () => {
+  activeTrend = undefined;
+  dialogTrigger?.focus();
+});
 
 async function loadBrief() {
   const paths = location.hostname === 'mrmartinpet.github.io' ?

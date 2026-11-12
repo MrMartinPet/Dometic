@@ -10,8 +10,9 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./app-icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="./app-icon-192.png">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./app.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=trends-1">
+  <script src="./trend-data.js" defer></script>
+  <script src="./app.js?v=trends-1" defer></script>
 </head>
 <body>
 <a href="#main" class="skip">Skip to dashboard</a>
@@ -35,7 +36,7 @@
         <div id="brief-status" class="brief-status" role="status">Loading latest brief…</div>
       </section>
       <section class="kpis" id="kpis" aria-label="Key market indicators"></section>
-      <section class="filters workspace-filters" aria-label="Filter updates">
+      <section class="filters workspace-filters" id="update-filters" aria-label="Filter updates">
         <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Search news, brands or products" aria-label="Search updates"></label>
         <label class="region"><span data-icon="globe"></span><select id="region" aria-label="Filter by market"><option value="">All markets</option></select></label>
         <label class="region family-select"><span data-icon="box"></span><select id="family" aria-label="Filter by product family"><option value="">All products</option></select></label>
@@ -54,6 +55,10 @@
           </aside>
         </div>
       </div>
+      <section id="trends" aria-labelledby="trends-title" hidden>
+        <div class="section-head"><div><h2 id="trends-title">Market &amp; company trends</h2><p>Public registration statistics and company disclosures</p></div></div>
+        <div id="trend-groups"></div>
+      </section>
       <section id="filtered" class="feed" aria-labelledby="feed-title" hidden>
         <div class="section-head"><div><h2 id="feed-title">Updates</h2><p id="result-count" role="status"></p></div><button type="button" class="text-button" data-go="all">Back to overview <span data-icon="arrow"></span></button></div>
         <div class="feed-list" id="feed-list"></div>
