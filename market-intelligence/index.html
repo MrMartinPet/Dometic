@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#101f2b">
+  <title>Dometic | European &amp; China Sales and Market Intelligence Dashboard</title>
+  <meta name="description" content="RV and caravan market intelligence for Europe and China.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./app-icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./app-icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to dashboard</a>
+<div class="shell">
+  <aside class="sidebar" aria-label="Dashboard navigation">
+    <div class="brand"><img src="./dometic-logo.svg" alt="Dometic"><span>LVE EMEA · Commercial</span></div>
+    <nav id="side-nav" aria-label="Dashboard sections"></nav>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="breadcrumbs"><span class="mobile-brand"><img src="./dometic-logo.svg" alt="Dometic"></span><span class="crumb">LVE EMEA</span><span aria-hidden="true">/</span><strong>Commercial intelligence</strong></div>
+      <div class="top-actions">
+        <button id="install-app" class="secondary" type="button"><span data-icon="install"></span>Install app</button>
+        <button id="about" class="secondary" type="button"><span data-icon="activity"></span>Brief status</button>
+      </div>
+    </header>
+    <nav id="mobile-nav" aria-label="Dashboard sections"></nav>
+    <main id="main">
+      <section class="page-head">
+        <div><p class="eyebrow">EUROPE &amp; CHINA</p><h1>Sales &amp; Market Intelligence</h1><p class="intro">Sales, production and competitor activity across European and Chinese RV markets</p></div>
+        <div id="brief-status" class="brief-status" role="status">Loading latest brief…</div>
+      </section>
+      <section class="kpis" id="kpis" aria-label="Key market indicators"></section>
+      <section class="filters workspace-filters" aria-label="Filter updates">
+        <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Search news, brands or products" aria-label="Search updates"></label>
+        <label class="region"><span data-icon="globe"></span><select id="region" aria-label="Filter by market"><option value="">All markets</option></select></label>
+        <label class="region family-select"><span data-icon="box"></span><select id="family" aria-label="Filter by product family"><option value="">All products</option></select></label>
+      </section>
+      <div id="overview">
+        <div class="dashboard-grid">
+          <section class="feed" aria-labelledby="news-title">
+            <div class="section-head"><div><h2 id="news-title">Sales &amp; production news</h2><p>Industry news from OEMs, associations and trade press</p></div><button class="text-button" type="button" data-go="industry">All news <span data-icon="arrow"></span></button></div>
+            <div id="lead"></div>
+            <div class="feed-list" id="news-feed"></div>
+          </section>
+          <aside class="insights" aria-label="Product and customer watch">
+            <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="box"></span><div><h2>Competitor launches</h2><p>New products from RV and equipment manufacturers</p></div></div><div id="product-feed"></div><button class="text-button panel-more" data-go="launch" type="button">All competitor launches <span data-icon="arrow"></span></button></section>
+            <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="bars"></span><div><h2>Product benchmarks</h2><p>Side-by-side manufacturer specifications</p></div></div><div id="benchmark-feed"></div><button class="text-button panel-more" data-go="benchmark" type="button">All benchmarks <span data-icon="arrow"></span></button></section>
+            <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="message"></span><div><h2>Dometic product feedback</h2><p>Praise and reported issues from public sources</p></div></div><div id="feedback-feed"></div><button class="text-button panel-more" data-go="feedback" type="button">All feedback <span data-icon="arrow"></span></button></section>
+          </aside>
+        </div>
+      </div>
+      <section id="filtered" class="feed" aria-labelledby="feed-title" hidden>
+        <div class="section-head"><div><h2 id="feed-title">Updates</h2><p id="result-count" role="status"></p></div><button type="button" class="text-button" data-go="all">Back to overview <span data-icon="arrow"></span></button></div>
+        <div class="feed-list" id="feed-list"></div>
+      </section>
+      <footer><a href="https://www.dometic.com/en-gb/category/motorhome-and-van" target="_blank" rel="noopener noreferrer">Dometic RV &amp; Van portfolio</a><span> · </span><a href="https://www.caravan-salon.com/en/Visit/What_to_expect/Review" target="_blank" rel="noopener noreferrer">Image: Messe Düsseldorf</a></footer>
+    </main>
+  </div>
+</div>
+<dialog id="detail" aria-labelledby="dialog-title"><div class="dialog-shell"><div class="dialog-header"><span id="dialog-type" class="eyebrow"></span><form method="dialog"><button class="icon-button" type="submit" aria-label="Close"><span data-icon="close"></span></button></form></div><div id="dialog-content"></div></div></dialog>
+</body>
+</html>

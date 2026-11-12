@@ -1,0 +1,594 @@
+{
+  "revision": "2026-11-12",
+  "added": 3,
+  "stories": [
+    {
+      "category": "industry",
+      "family": "Vehicle market",
+      "date": "2026-11-11",
+      "title": "French RV dealers showcase 2027 models at eight November events",
+      "summary": "Camping-Car Magazine lists eight dealer events from 11–30 November, with 2027 models and offers on new and used vehicles. The Besançon show features 15 brands.",
+      "market": "France",
+      "links": [
+        {
+          "name": "Camping-Car Magazine",
+          "url": "https://www.camping-car.com/actualites/toute-l-actualite/8-salons-et-portes-ouvertes-dedies-au-camping-car-cette-semaine-pres-de-chez-vous/"
+        }
+      ],
+      "detail": "The report covers activity across multiple French regions, including dealer open days and exhibitions. This is a retail activity update.",
+      "id": "story-16031b67b46b9b7b8d3f"
+    },
+    {
+      "id": "knaus-q3",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-11",
+      "title": "Knaus Tabbert more than doubles adjusted EBITDA",
+      "summary": "Nine-month revenue fell to €697m while adjusted EBITDA rose to €40.5m. The German RV maker reported an order backlog of €461m at 30 September.",
+      "detail": "The company attributed the earnings improvement to higher total output, improved material cost ratios and cost measures. It described dealer ordering as cautious.",
+      "links": [
+        {
+          "name": "Aboutcamp BtoB",
+          "url": "https://www.aboutcampbtob.eu/knaus-tabbert-reports-improved-profitability-in-first-nine-months-of-2026-financial-year/"
+        }
+      ]
+    },
+    {
+      "id": "story-1acf2af1e9ded1b40b98",
+      "category": "launch",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-11",
+      "title": "Feixiang Yuanjie T7 covered by Chinese RV trade press",
+      "summary": "21RV profiles the Feixiang Yuanjie T7 low-profile motorhome built on the Ford T8 chassis.",
+      "detail": "This is an editorial product profile covering vehicle layout, carrying capacity and onboard utilities.",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbpsqj6m168s738g1us0"
+        }
+      ]
+    },
+    {
+      "id": "story-8b5c4c875bf8821a6bbb",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-10",
+      "title": "China’s 413th vehicle notice lists 18 RV filings",
+      "summary": "21RV reports 12 motorhome and six camping-vehicle filings from 14 manufacturers. Five of the vehicles were battery-electric.",
+      "detail": "These are product filings in the MIIT notice, not vehicle registrations or confirmed sales. 21RV counted no towable-caravan filings in this batch.",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbop4t6m168s738g1ssg"
+        }
+      ]
+    },
+    {
+      "id": "story-dc73ec61b597707fe107",
+      "category": "launch",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-04",
+      "title": "Qixing presents a hybrid SAIC MAXUS V90 motorhome",
+      "summary": "The Qixing Xingjian V90 CHEV uses a SAIC MAXUS diesel-hybrid base and a raising front roof section.",
+      "detail": "The design combines a lower travel profile with extra space when parked. The source is a Chinese trade-press product profile.",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dblc9rrpovls738e3n60"
+        }
+      ]
+    },
+    {
+      "id": "sweden-oct",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Sweden",
+      "date": "2026-11-02",
+      "title": "Swedish motorhome registrations edge up in October",
+      "summary": "Motorhome registrations rose 0.9% year over year to 332. Caravan registrations remained weak.",
+      "detail": "The Swedish trade association cautioned that preregistrations ahead of regulatory changes distort the comparison with retail demand.",
+      "links": [
+        {
+          "name": "HRF figures via MarketScreener",
+          "url": "https://uk.marketscreener.com/news/motorhome-registrations-edged-up-in-october-caravans-remained-weak-hrf-industry-statistics-ce785fd8de8ef626"
+        }
+      ]
+    },
+    {
+      "id": "de-registrations",
+      "category": "industry",
+      "market": "Germany",
+      "date": "2026-10-23",
+      "title": "German leisure vehicle registrations weaken",
+      "summary": "CIVD figures reported by promobil show motorhomes down 7.2% and caravans down 4.8% through September.",
+      "detail": "Germany registered 57,890 new motorhomes and 15,396 new caravans from January to September 2026. September alone was down 30.8% for motorhomes and 18.3% for caravans year over year.",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/weitere-ratgeber/wohnmobil-flaute-im-sommer-neuzulassungen-brechen-um-fast-ein-drittel-ein/"
+        },
+        {
+          "name": "CIVD",
+          "url": "https://www.civd.de/en/exposee/market-data/"
+        }
+      ],
+      "family": "Vehicle market"
+    },
+    {
+      "id": "story-a26bf63bc71183aa207a",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-10-15",
+      "title": "China records 12,153 self-propelled RV registrations in H1",
+      "summary": "Jiefang Daily reports a 32.6% year-on-year increase. Camping-vehicle registrations reached 5,315, up 64.2%.",
+      "detail": "Camping vehicles accounted for 43.7% of the self-propelled RV registrations cited in the report. The figures do not include towable caravans.",
+      "links": [
+        {
+          "name": "Jiefang Daily",
+          "url": "https://www.jfdaily.com/staticsg/res/html/web/newsDetail.html?id=1193371"
+        }
+      ]
+    },
+    {
+      "category": "industry",
+      "family": "Vehicle market",
+      "date": "2026-10-12",
+      "title": "Mercedes-Benz starts Marco Polo production in Ludwigsfelde",
+      "summary": "Camper conversion moves into a dedicated German production hall. The V-Class base is still built in Vitoria, Spain.",
+      "market": "Germany",
+      "links": [
+        {
+          "name": "Mercedes-Benz Media",
+          "url": "https://media.mercedes-benz.com/en/article/63e3633a-5979-41f1-bad3-8ade61e33d77"
+        },
+        {
+          "name": "Camper Professional Italia",
+          "url": "https://camperprofessional.it/mercedes-benz-marco-polo-al-via-la-produzione-nello-stabilimento-di-ludwigsfelde/"
+        }
+      ],
+      "detail": "Mercedes-Benz says the Marco Polo is now built entirely within its own manufacturing network. The new model was already available to order in Germany and other European markets at the time of the announcement.",
+      "id": "story-7b9bc2c88ce9b9ecfbac"
+    },
+    {
+      "category": "feedback",
+      "family": "Climate & ventilation",
+      "date": "2026-10-08",
+      "title": "Long-term review praises FanTastic Breathe 3100 ventilation",
+      "summary": "An Allt om husbilen reviewer reports less condensation and lingering odour after a year using the Dometic roof ventilator.",
+      "market": "Sweden",
+      "links": [
+        {
+          "name": "Allt om husbilen",
+          "url": "https://alltomhusbilen.se/langtidstest-allt-ljus-pa-dometic-fantastic-breathe-3100/"
+        }
+      ],
+      "detail": "The reviewer describes results from one motorhome and notes some operating sound that they did not find disruptive.",
+      "sentiment": "Positive",
+      "id": "story-4d8d14762e6197724be6"
+    },
+    {
+      "id": "trigano-sales",
+      "category": "industry",
+      "market": "Europe",
+      "date": "2026-09-23",
+      "title": "Trigano reports €3.8bn in annual sales",
+      "summary": "Fiscal-year sales grew 3.8%, with motorhome sales up 4.2%. Accessories and other services slipped 1.4%.",
+      "detail": "Trigano’s fiscal 2026 disclosure puts motorhome sales at €2.877bn and caravan sales at €137m. Trigano said it planned to keep motorhome production stable in the first half of the following fiscal year.",
+      "links": [
+        {
+          "name": "Trigano press release",
+          "url": "https://webdisclosure.com/press-release/trigano-epa-tri-20252026-sales-uqUY9lTTKsF"
+        }
+      ],
+      "family": "Vehicle market"
+    },
+    {
+      "id": "story-e4f07a9ee6201c97aad8",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-09-18",
+      "title": "China issues measures to support RV consumption",
+      "summary": "Ten ministries proposed improvements in campground infrastructure, vehicle-use rules and other parts of the RV market.",
+      "detail": "The government text covers motorhomes, towable caravans and camping vehicles.",
+      "links": [
+        {
+          "name": "Ministry of Culture and Tourism",
+          "url": "https://www.mct.gov.cn/whzx/whyw/202609/t20260918_967191.htm"
+        }
+      ]
+    },
+    {
+      "id": "dusseldorf",
+      "category": "industry",
+      "market": "Germany",
+      "date": "2026-09-06",
+      "title": "CARAVAN SALON draws 259,000 visitors",
+      "summary": "The Düsseldorf trade show hosted 834 exhibitors from 41 countries, according to the organiser.",
+      "detail": "The organiser’s recap includes an overview of vehicles and accessories showcased across 15 exhibition halls and an outdoor area.",
+      "links": [
+        {
+          "name": "Messe Düsseldorf",
+          "url": "https://www.caravan-salon.com/en/Visit/What_to_expect/Review"
+        }
+      ],
+      "family": "Vehicle market"
+    },
+    {
+      "id": "eu-registrations",
+      "category": "industry",
+      "market": "Europe",
+      "date": "2026-08-31",
+      "title": "European registrations hold close to last year",
+      "summary": "More than 149,000 leisure vehicles were registered across Europe in January–July 2026, down 0.1% year over year.",
+      "detail": "The trade press reported that motorhomes were slightly above their 2025 level across Europe while caravan registrations were down 0.9%.",
+      "links": [
+        {
+          "name": "Camping Business",
+          "url": "https://www.campingbusiness.eu/en/in-the-first-weekend-caravan-salon-dusseldorf-2026-attracts-more-than-85000-visitors/"
+        }
+      ],
+      "family": "Vehicle market"
+    },
+    {
+      "id": "dometic-rv-windows",
+      "category": "launch",
+      "family": "Windows, doors & blinds",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic previews new RV windows and blinds",
+      "summary": "The Caravan Salon announcement covers developments for the 2027 season across windows and blind systems.",
+      "detail": "Dometic’s European press release details the new RV window and blind portfolio for vehicle builders and customers.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://www.dometicgroup.com/en-us/press-media/news/emea/dometic-sets-new-standards-for-rv-windows-and-blinds"
+        }
+      ]
+    },
+    {
+      "id": "dometic-nrx50r",
+      "category": "launch",
+      "family": "Refrigeration",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic introduces the custom-panel NRX 50R",
+      "summary": "The compressor refrigerator lets vehicle builders and owners match the door finish to an RV interior.",
+      "detail": "The manufacturer describes a model designed around a customizable front panel for compact vehicle layouts.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://www.dometicgroup.com/en-us/press-media/news/emea/designed-by-you-new-dometic-nrx-50r-lets-owners-create-a-perfect-interior-match"
+        }
+      ]
+    },
+    {
+      "id": "dometic-solar",
+      "category": "launch",
+      "family": "Power & electronics",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic unveils BlackSolarPro panels",
+      "summary": "The new solar range targets onboard power in leisure vehicles.",
+      "detail": "Dometic presented the solar range as part of its 2027 RV product announcements at Caravan Salon.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://www.dometicgroup.com/en-us/press-media/news/emea/dometic-new-blacksolarpro-delivers-more-power-throughout-the-day"
+        }
+      ]
+    },
+    {
+      "id": "dometic-sanitation",
+      "category": "launch",
+      "family": "Sanitation & water",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic launches RV toilet conversion kits",
+      "summary": "The kits are aimed at upgrading existing RV bathrooms and expand the aftermarket offer.",
+      "detail": "Check the manufacturer’s release for the conversion options and compatibility for the specific vehicle or toilet.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://www.dometicgroup.com/en-us/press-media/news/emea/dometic-launches-toilet-conversion-kits-to-upgrade-rv-bathrooms"
+        }
+      ]
+    },
+    {
+      "id": "dometic-awning",
+      "category": "launch",
+      "family": "Awnings & outdoor",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic presents an all-season air awning",
+      "summary": "The residential air awning adds a three-metre-deep outdoor living space for caravan users.",
+      "detail": "Dometic describes a full, air-framed awning designed for all-season use.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://dometicgroup.com/sv-se/press-media/nyheter/emea/dometic-launches-first-residential-air-awning-for-all-season-use"
+        }
+      ]
+    },
+    {
+      "id": "dometic-kitchen",
+      "category": "launch",
+      "family": "Cooking & kitchen",
+      "market": "Europe",
+      "date": "2026-08-29",
+      "title": "Dometic presents a three-in-one RV cooking appliance",
+      "summary": "The AC MWAO 240 was announced as a compact cooking solution for RV kitchens.",
+      "detail": "Dometic included the appliance and the Van Cook FFD barbecue in its Caravan Salon 2026 kitchen announcements.",
+      "links": [
+        {
+          "name": "Dometic Group",
+          "url": "https://www.dometicgroup.com/en-us/press-media/press-kit/caravan-salon-2026"
+        }
+      ]
+    },
+    {
+      "id": "thetford-fridges",
+      "category": "launch",
+      "family": "Refrigeration",
+      "market": "Europe",
+      "date": "2026-08-28",
+      "title": "Thetford adds four 12 V compressor refrigerators",
+      "summary": "The 2027 range adds two compact TR models and two under-worktop T models, including options designed around a wheel arch.",
+      "detail": "The manufacturer lists TR1050, TR1065, T1080 and T1088. The range is intended for different layouts across caravans, campervans and motorhomes.",
+      "links": [
+        {
+          "name": "Thetford",
+          "url": "https://www.thetford.com/en/inspiration/new-products-2027-2/"
+        }
+      ]
+    },
+    {
+      "id": "lippert",
+      "category": "launch",
+      "family": "Access & vehicle hardware",
+      "market": "Europe",
+      "date": "2026-08-28",
+      "title": "Lippert showcases modular RV components",
+      "summary": "The European range includes the Libero step, Stable Door, drop-down beds and Power On Board electronics.",
+      "detail": "The launches span mechanical components and the connected Power Net ecosystem, illustrating an integrated product approach.",
+      "links": [
+        {
+          "name": "Caravan Trends",
+          "url": "https://www.caravantrends.com/lippert-5/"
+        }
+      ]
+    },
+    {
+      "category": "feedback",
+      "family": "Climate & ventilation",
+      "date": "2026-08-27",
+      "title": "Owner reports dissatisfaction with FreshJet FJ2200 cooling",
+      "summary": "A Swedish motorhome forum member described a disappointing experience with cooling on their FJ2200.",
+      "market": "Sweden",
+      "links": [
+        {
+          "name": "Husbilsklubben",
+          "url": "https://www.husbilsklubben.se/threads/vilket-takmonterat-klimatsystem-ska-man-v%C3%A4lja.142603/"
+        }
+      ],
+      "detail": "This is an individual owner report. The forum discussion does not establish a cause or show whether the issue occurs on other units.",
+      "sentiment": "Issue reported",
+      "id": "story-a65cc66f87d50b62cf14"
+    },
+    {
+      "category": "launch",
+      "family": "Power & electronics",
+      "date": "2026-07-21",
+      "title": "Truma announces iNet X (Pro) Panel 2",
+      "summary": "The new motorhome control panel adds a capacitive touchscreen and expanded integration. Truma announced dealer availability from autumn 2026.",
+      "market": "Europe",
+      "links": [
+        {
+          "name": "Truma",
+          "url": "https://www.truma.com/press-releases/greater-convenience-for-manufacturers-more-freedom-for-campers-truma-introduces-the-inet-x-pro-panel-2/"
+        }
+      ],
+      "detail": "The supplier highlighted additional mounting options and connectivity for OEM installations. The availability date reflects Truma’s announcement.",
+      "id": "story-bb41d40a2a50adbc2e45"
+    },
+    {
+      "category": "industry",
+      "family": "Vehicle market",
+      "date": "2026-01-19",
+      "title": "CIVD reports a reduction in German RV output",
+      "summary": "German manufacturers produced about 99,000 leisure vehicles in 2025, roughly 17% fewer than in 2024. Around 42,000 were exported.",
+      "market": "Germany",
+      "links": [
+        {
+          "name": "CIVD",
+          "url": "https://www.civd.de/en/news/01-2026-caravanning-market/"
+        }
+      ],
+      "detail": "CIVD said manufacturers reduced output and new vehicle shipments to manage dealer inventories. It separately reported 94,134 new registrations in Germany during 2025.",
+      "id": "story-b7817db25caea0656c53"
+    },
+    {
+      "id": "s4-owner",
+      "category": "feedback",
+      "market": "Sweden",
+      "date": "2023-08-03",
+      "sentiment": "Issue reported",
+      "title": "S4 owner discusses a blind repair",
+      "summary": "An iHusbil member describes a broken blind release and a search for S4 spare parts.",
+      "detail": "The thread captures individual experiences with the S4 family. It can be reviewed alongside support and warranty data to see whether the same issue appears elsewhere.",
+      "links": [
+        {
+          "name": "iHusbil",
+          "url": "https://forum.ihusbil.se/threads/dometic-seitz-windows-s4.3817/"
+        }
+      ],
+      "family": "Windows, doors & blinds"
+    },
+    {
+      "category": "benchmark",
+      "family": "Climate & ventilation",
+      "title": "Rooftop AC compared: Dometic FreshJet FJX4 and Truma Aventa",
+      "summary": "Both selected models publish 2,200 W of cooling. The manufacturers list different heating capacities and cooling currents.",
+      "market": "Europe",
+      "links": [
+        {
+          "name": "Dometic installation manual",
+          "url": "https://media.dometic.com/externalassets/dometic-freshjet-fjx4-2200_9600051002_121750.pdf"
+        },
+        {
+          "name": "Truma product specifications",
+          "url": "https://www.truma.com/products/air-conditioning-systems/aventa/aventa-compact-plus-2-generation/"
+        }
+      ],
+      "detail": "This compares the Dometic FJX4333EEH (FreshJet FJX4 2200) with the second-generation Truma Aventa Compact Plus. Figures are manufacturer specifications and do not establish comparative efficiency or noise.",
+      "comparisonHeaders": [
+        "Specification",
+        "Dometic FJX4333EEH",
+        "Truma Aventa Compact Plus (2nd gen)"
+      ],
+      "comparison": [
+        [
+          "Published cooling capacity",
+          "2,200 W (ISO 5151)",
+          "2,200 W"
+        ],
+        [
+          "Published heating capacity",
+          "1,000 W (ISO 5151)",
+          "1,500 W"
+        ],
+        [
+          "Published cooling current",
+          "4.6 A rated",
+          "5 A at 230 V"
+        ]
+      ],
+      "id": "story-ffb2b9fa81465696f417"
+    },
+    {
+      "id": "combineo",
+      "category": "launch",
+      "market": "Europe",
+      "title": "Truma expands CombiNeo adoption with vehicle makers",
+      "summary": "The heating and hot-water system is reaching more OEM models, with Truma listing several European vehicle manufacturers.",
+      "detail": "Truma lists brands including Rapido, Swift, Frankia and Notin among vehicle manufacturers using CombiNeo.",
+      "links": [
+        {
+          "name": "Truma",
+          "url": "https://camp.truma.com/en/combineo/"
+        }
+      ],
+      "family": "Climate & ventilation"
+    },
+    {
+      "id": "s4-vs-rw",
+      "category": "benchmark",
+      "market": "Europe",
+      "title": "RV windows compared: Dometic S4 and Carbest RW Eco",
+      "summary": "Acrylic glazing and integrated blinds on the S4 versus safety glass and optional blinds on the RW Eco.",
+      "detail": "A comparison of published manufacturer specifications at product-family level. Confirm dimensions and installation requirements for the exact model before making an OEM comparison.",
+      "comparison": [
+        [
+          "Glazing",
+          "Double acrylic",
+          "Tinted safety glass"
+        ],
+        [
+          "Frame",
+          "Polyurethane",
+          "Aluminium"
+        ],
+        [
+          "Blind and insect screen",
+          "Integrated",
+          "Optional kit"
+        ]
+      ],
+      "links": [
+        {
+          "name": "Dometic S4",
+          "url": "https://www.dometic.com/sv-se/produkt/dometic-s4-9104100179?v=9104115546"
+        },
+        {
+          "name": "Carbest catalogue",
+          "url": "https://www.reimo.com/media/reimo-com/media/pdf/53/7d/74/Carbest_Katalog_2026_Gesamt_EN-SUED_web.pdf"
+        }
+      ],
+      "family": "Windows, doors & blinds"
+    },
+    {
+      "id": "freshjet-owner",
+      "category": "feedback",
+      "market": "UK",
+      "sentiment": "Positive",
+      "title": "FreshJet owner highlights quieter operation",
+      "summary": "A MotorhomeFun member describes the FreshJet FJZ7 2200 as quieter than the units they had owned before.",
+      "detail": "This is a single owner’s experience with their installation. The thread discusses different air conditioners for camper vans.",
+      "links": [
+        {
+          "name": "MotorhomeFun",
+          "url": "https://www.motorhomefun.co.uk/forum/threads/air-conditioning-in-camper-vans.339923/"
+        }
+      ],
+      "family": "Climate & ventilation"
+    },
+    {
+      "id": "story-3553c0c04d8b28c623e1",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-12",
+      "title": "Hannes Basic XL: Warum Hannes Camper auf Teilintegrierte setzt & wer dahintersteckt",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/6-98-meter-und-bis-zu-fuenf-schlafplaetze-hannes-basic-xl-2027/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-233682a4cb141c6f4710",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-11",
+      "title": "Frankia Reisemobile: Lesertest 2027 mit neuen Modellen",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/frankia-reisemobile-lesertest-2027/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-d6a6515c43ad138eb6e2",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-10",
+      "title": "自驾活动来啦！2026尚游房车南太行寻秋",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbpdvb6m168s738g1ufg"
+        }
+      ],
+      "language": "zh-CN"
+    }
+  ],
+  "marketChecks": {
+    "China": "2026-11-12T10:14:33.286189+00:00",
+    "Europe": "2026-11-12T10:14:33.286189+00:00"
+  },
+  "lastScan": "2026-11-12T10:14:33.286189+00:00"
+}
