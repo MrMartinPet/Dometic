@@ -195,3 +195,53 @@ dialog{border:1px solid #d6e4e9;border-radius:13px;color:var(--ink);width:min(55
 .registration-track { height: 8px; border-radius: 3px; background: #f0f4f6; }
 .registration-track > span { display: block; height: 100%; border-radius: inherit; background: var(--chart-fill); }
 .registration-row:last-child .registration-track > span { background: var(--chart-ink); }
+
+/* Light, translucent market panels */
+.workspace {
+  background: radial-gradient(ellipse at 15% 7%, #d7f0ea 0, transparent 37%),
+    radial-gradient(ellipse at 88% 12%, #dbe9fc 0, transparent 36%), #f4f7fb;
+}
+main { max-width: none; padding-inline: clamp(13px, 1.6vw, 29px); }
+.topbar { padding-inline: clamp(13px, 1.6vw, 29px); }
+.sidebar nav { overflow-y: auto; }
+.kpi, .overview-panel, .side-card, .directory-card {
+  background: linear-gradient(145deg, #ffffffef, #ffffffa8);
+  border-color: #ffffff;
+  box-shadow: 0 1px 1px #274b6518, 0 8px 23px #274b6510;
+  backdrop-filter: blur(14px);
+}
+.kpi:hover { background: #ffffff; border-color: #a2c7c1; }
+.kpi-trend { --kpi-accent: #277d6d; border-top: 2px solid var(--kpi-accent); }
+.kpi-trend[data-trend="germany-rv"], .kpi-trend[data-trend="germany-production"] { --kpi-accent: #387bb2; }
+.kpi-trend[data-trend="trigano"] { --kpi-accent: #8056ab; }
+.kpi-trend[data-trend="china-rv"] { --kpi-accent: #6a62b2; }
+.kpi-trend .icon, .kpi-change { color: var(--kpi-accent); }
+.market-map { background: linear-gradient(145deg, #d9edf1, #eff7fa 65%, #e5e7fa); }
+.map-dot { background: #39ac988c; border-color: #197e72; }
+.china-marker .map-dot { background: #897ad2a6; border-color: #6551b3; }
+.map-legend span:nth-child(2) i { background: #897ad2; }
+.registration-comparison { --chart-ink: #208d79; --chart-fill: #7acac180; }
+.registration-comparison.chart-blue { --chart-ink: #3d7db3; --chart-fill: #7bb5e680; }
+.registration-row:last-child .registration-track > span { background: linear-gradient(90deg, var(--chart-fill), var(--chart-ink)); }
+.registration-track { height: 10px; }
+.chart-blue { --chart-ink: #396ba9; --chart-fill: #95bbeb58; }
+.chart-plot polyline { stroke-width: 2.6; }
+.trend-chart polyline, .trend-chart circle { stroke: #3c7bb1; }
+
+.other-feedback { --accent:#6e57a2; --tint:#f0ecfb; }
+.tag.mixed { background: #f6efe0; color: #745422; }
+.directory-filters { flex-wrap: wrap; }
+.directory-filters .search { width: min(100%, 290px); }
+.directory-filters input, .directory-filters select { width: 100%; max-width: none; font-size: 12px; }
+.directory-count { font-size: 12px; color: var(--muted); margin: 10px 0; }
+.directory-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 10px; }
+.directory-card { display: grid; align-content: start; gap: 8px; border: 1px solid #dce7ed; border-radius: 9px; padding: 12px; }
+.directory-card h3 { font-size: 14px; margin: 0 0 4px; }
+.directory-card p { font-size: 11px; color: var(--muted); margin: 0; }
+.directory-card .source-link { justify-self: start; }
+#new-brand-feed .directory-card { grid-template-columns: minmax(0, 1fr) auto; border: 0; border-radius: 0; border-top: 1px solid var(--line); box-shadow: none; background: none; padding: 8px 0; }
+#new-brand-feed .directory-card .source-link { max-width: 100px; text-align: right; }
+@media (min-width: 1300px) {
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .insights { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}

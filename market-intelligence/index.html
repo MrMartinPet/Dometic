@@ -10,9 +10,10 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./app-icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="./app-icon-192.png">
-  <link rel="stylesheet" href="./style.css?v=registration-ytd-1">
+  <link rel="stylesheet" href="./style.css?v=market-directory-1">
   <script src="./trend-data.js?v=registration-ytd-1" defer></script>
-  <script src="./app.js?v=registration-ytd-1" defer></script>
+  <script src="./industry-data.js?v=market-directory-1" defer></script>
+  <script src="./app.js?v=market-directory-1" defer></script>
 </head>
 <body>
 <a href="#main" class="skip">Skip to dashboard</a>
@@ -111,6 +112,7 @@
         <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Search news, brands or products" aria-label="Search updates"></label>
         <label class="region"><span data-icon="globe"></span><select id="region" aria-label="Filter by market"><option value="">All markets</option></select></label>
         <label class="region family-select"><span data-icon="box"></span><select id="family" aria-label="Filter by product family"><option value="">All products</option></select></label>
+        <label id="sentiment-filter" class="region" hidden><span data-icon="message"></span><select id="sentiment" aria-label="Filter by feedback sentiment"><option value="">All feedback</option><option value="Positive">Positive</option><option value="Issue reported">Negative · reported issues</option><option value="Mixed">Mixed</option></select></label>
       </section>
       <div id="overview">
         <div class="dashboard-grid">
@@ -122,6 +124,8 @@
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="box"></span><div><h2>Product news</h2><p>New products from RV and equipment manufacturers</p></div></div><div id="product-feed"></div><button class="text-button panel-more" data-go="launch" type="button">All product news <span data-icon="arrow"></span></button></section>
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="bars"></span><div><h2>Product benchmarks</h2><p>Side-by-side manufacturer specifications</p></div></div><div id="benchmark-feed"></div><button class="text-button panel-more" data-go="benchmark" type="button">All benchmarks <span data-icon="arrow"></span></button></section>
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="message"></span><div><h2>Dometic product feedback</h2><p>Praise and reported issues from public sources</p></div></div><div id="feedback-feed"></div><button class="text-button panel-more" data-go="feedback" type="button">All feedback <span data-icon="arrow"></span></button></section>
+            <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="message"></span><div><h2>Feedback on other brands</h2><p>Individual experiences from public owner forums</p></div></div><div id="other-feedback-feed"></div><button class="text-button panel-more" data-go="other-feedback" type="button">See product feedback <span data-icon="arrow"></span></button></section>
+            <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="layers"></span><div><h2>New RV brands</h2><p>Recently announced brands and their manufacturers</p></div></div><div id="new-brand-feed"></div><button class="text-button panel-more" data-go="directory" type="button">Open manufacturer directory <span data-icon="arrow"></span></button></section>
           </aside>
         </div>
       </div>
@@ -129,8 +133,20 @@
         <div class="section-head"><div><h2 id="trends-title">Market &amp; company trends</h2><p>Public registration statistics and company disclosures</p></div></div>
         <div id="trend-groups"></div>
       </section>
+      <section id="directory" aria-labelledby="directory-title" hidden>
+        <div class="section-head"><div><h2 id="directory-title">RV manufacturer directory</h2><p>Publicly listed companies and brands in Europe and China</p></div></div>
+        <div class="filters directory-filters">
+          <label class="search"><span data-icon="search"></span><input id="directory-search" type="search" placeholder="Find a brand or manufacturer" aria-label="Search manufacturers"></label>
+          <label class="region"><select id="directory-region" aria-label="Filter manufacturers by region"><option value="">All regions</option><option>Europe</option><option>China</option></select></label>
+          <label class="region"><select id="directory-scope" aria-label="Filter by launch status"><option value="">All entries</option><option value="recent">Recent brand launches</option></select></label>
+        </div>
+        <p id="directory-count" class="directory-count" role="status"></p>
+        <div id="directory-list" class="directory-list"></div>
+        <div id="directory-sources" class="dialog-links" aria-label="Industry directories"></div>
+      </section>
       <section id="filtered" class="feed" aria-labelledby="feed-title" hidden>
         <div class="section-head"><div><h2 id="feed-title">Updates</h2><p id="result-count" role="status"></p></div><button type="button" class="text-button" data-go="all">Back to overview <span data-icon="arrow"></span></button></div>
+        <p id="feedback-context" class="directory-count" hidden>Individual owner reports from public sources. Open each source for the full context.</p>
         <div class="feed-list" id="feed-list"></div>
       </section>
       <footer><a href="https://www.dometic.com/en-gb/category/motorhome-and-van" target="_blank" rel="noopener noreferrer">Dometic RV &amp; Van portfolio</a></footer>

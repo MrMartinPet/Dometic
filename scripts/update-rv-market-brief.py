@@ -9,10 +9,12 @@ from hashlib import sha256
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+import os
 import re
 from urllib.parse import urljoin, urlsplit, urlunsplit
 from urllib.request import Request, urlopen
 from xml.etree import ElementTree
+from zoneinfo import ZoneInfo
 
 
 @dataclass(frozen=True)
@@ -37,6 +39,16 @@ OUTSIDE_EUROPE = re.compile(r"\b(australia\w*|new zealand|canada|united states|n
 VEHICLE_LAUNCH = re.compile(r"\b(launch(?:es|ed)?|introduc\w*|unveil\w*|debut\w*|stellt .+ vor|startet .+ modell|neu:|neuheit)\b|新品|新款|发布|上市|亮相", re.I)
 MARKET_EVENT = re.compile(r"\b(registration\w*|sales|production|orders|industry|regulation\w*|dealers?|financial|association|zulassung\w*|produktion|absatz|umsatz)\b|工信部|公告|协会|销量|注册|政策|展会|开业", re.I)
 FORUM_PRODUCT = re.compile(r"\b(dometic|waeco|seitz|freshjet|freshlight|fantastic breathe)\b", re.I)
+OTHER_PRODUCTS = (
+    ("Thetford", re.compile(r"\bthetford\b", re.I)),
+    ("Truma", re.compile(r"\btruma\b", re.I)),
+    ("Lippert", re.compile(r"\blippert\b", re.I)),
+    ("Maxxair", re.compile(r"\bmaxx(?:air|fan)\b", re.I)),
+    ("Indel B", re.compile(r"\bindel\s+b\b", re.I)),
+    ("Webasto", re.compile(r"\bwebasto\b", re.I)),
+)
+OTHER_PRAISE = re.compile(r"\b(works (?:well|great)|very quiet|happy with|excellent|reliable)\b", re.I)
+OTHER_ISSUE = re.compile(r"\b(stopped working|not working|not cooling|not heating|not cold|failed|won.t start)\b", re.I)
 POSITIVE = re.compile(r"\b(recommend\w*|excellent|works well|very quiet|impressed)\b", re.I)
 ISSUE = re.compile(r"\b(fault\w*|problem\w*|broken|stopped working|issue\w*|leak\w*|not working)\b", re.I)
 DATE = re.compile(r"20\d{2}[-/]\d{1,2}[-/]\d{1,2}")
@@ -142,7 +154,7 @@ def make_story(source, url, title, published, category, sentiment=None):
     story = {
         "id": "story-" + sha256(key.encode()).hexdigest()[:20],
         "category": category,
-        "family": "Vehicle market" if category != "feedback" else "Other RV equipment",
+        "family": "Other RV equipment" if category in ("feedback", "other-feedback") else "Vehicle market",
         "market": source.market,
         "date": published.isoformat(),
         "title": title[:170],
@@ -162,18 +174,29 @@ def forum_items(source, xml, earliest, today, seen):
     for item in root.findall("./channel/item"):
         title = clean(item.findtext("title", ""))
         url = public_url(item.findtext("link", ""), source.url)
-        match = FORUM_PRODUCT.search(title)
-        if not match or not url or url.rstrip("/") in seen or not re.fullmatch(source.article_path, urlsplit(url).path):
+        if not url or url.rstrip("/") in seen or not re.fullmatch(source.article_path, urlsplit(url).path):
             continue
         try:
             published = parsedate_to_datetime(item.findtext("pubDate", "")).date()
         except (ValueError, TypeError):
             continue
-        positive, issue = bool(POSITIVE.search(title)), bool(ISSUE.search(title))
-        if not earliest <= published <= today or not (positive or issue):
+        if not earliest <= published <= today:
+            continue
+        domestic = FORUM_PRODUCT.search(title)
+        brands = [brand for brand, pattern in OTHER_PRODUCTS if pattern.search(title)]
+        if domestic:
+            positive, issue = bool(POSITIVE.search(title)), bool(ISSUE.search(title))
+        elif len(brands) == 1 and "?" not in title:
+            positive, issue = bool(OTHER_PRAISE.search(title)), bool(OTHER_ISSUE.search(title))
+        else:
+            continue
+        if not (positive or issue):
             continue
         sentiment = "Mixed" if positive and issue else "Positive" if positive else "Issue reported"
-        yield make_story(source, url, title, published, "feedback", sentiment)
+        story = make_story(source, url, title, published, "feedback" if domestic else "other-feedback", sentiment)
+        if not domestic:
+            story["brand"] = brands[0]
+        yield story
 
 
 def article_items(source, html, earliest, today, seen):
@@ -226,9 +249,17 @@ def canonical(url):
 
 def main():
     now = datetime.now(timezone.utc)
-    today = now.date()
+    stockholm = ZoneInfo("Europe/Stockholm")
+    today = now.astimezone(stockholm).date()
     earliest = today - timedelta(days=3)
     feed = json.loads(FEED.read_text(encoding="utf-8"))
+    checks = feed.get("marketChecks", {})
+    if os.environ.get("BACKUP_SCAN") == "true" and all(
+        checks.get(region) and datetime.fromisoformat(checks[region]).astimezone(stockholm).date() == today
+        for region in ("Europe", "China")
+    ):
+        print("Europe and China have already been scanned today.")
+        return
     existing = feed["stories"]
     seen_urls = {canonical(link["url"]) for item in existing for link in item["links"]}
     seen_titles = {clean(item["title"]).casefold() for item in existing}
@@ -237,7 +268,6 @@ def main():
 
     additions = []
     counts = {"China": 0, "Europe": 0}
-    checks = feed.get("marketChecks", {})
     stamp = now.isoformat()
     for source, items in results:
         if items is None:
@@ -247,11 +277,13 @@ def main():
         for item in sorted(items, key=lambda story: story["date"], reverse=True):
             url = canonical(item["links"][0]["url"])
             title = clean(item["title"]).casefold()
-            if counts[region] == 4 or url in seen_urls or title in seen_titles:
+            feedback = item["category"] == "other-feedback"
+            if (not feedback and counts[region] == 4) or url in seen_urls or title in seen_titles:
                 continue
             seen_urls.add(url)
             seen_titles.add(title)
-            counts[region] += 1
+            if not feedback:
+                counts[region] += 1
             additions.append(item)
 
     if not any(value == stamp for value in checks.values()):
@@ -268,6 +300,7 @@ def main():
     feed["stories"].extend([item for item in combined if not item.get("summary") and not item.get("comparison")][:120])
     FEED.write_text(json.dumps(feed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Added {counts['Europe']} European and {counts['China']} Chinese headlines.")
+    print(f"Added {sum(item['category'] == 'other-feedback' for item in additions)} owner discussions about other brands.")
 
 
 if __name__ == "__main__":

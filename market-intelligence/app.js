@@ -25,6 +25,8 @@ const categories = [
   { id: 'launch', name: 'Product news', icon: 'box' },
   { id: 'benchmark', name: 'Product benchmarks', icon: 'bars' },
   { id: 'feedback', name: 'Dometic feedback', icon: 'message' },
+  { id: 'other-feedback', name: 'Feedback on other brands', icon: 'message' },
+  { id: 'directory', name: 'RV manufacturer directory', icon: 'layers' },
   { id: 'saved', name: 'Saved updates', icon: 'bookmark' }
 ];
 
@@ -67,6 +69,7 @@ const escape = (value = '') => String(value).replace(/[&<>"']/g, (character) => 
 const icon = (name) => '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + icons[name] + '</svg>';
 const categoryFor = (id) => categories.find((item) => item.id === id);
 const formatDate = (date) => new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'Europe/Stockholm' }).format(new Date(date));
+const formatScan = (date) => new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Stockholm' }).format(new Date(date));
 const href = (value) => {
   try { const url = new URL(value); return url.protocol === 'https:' ? escape(url.href) : ''; } catch { return ''; }
 };
@@ -74,7 +77,7 @@ const sourceLink = (source) =>
   '<a class="source-link" href="' + href(source.url) + '" aria-label="Open source: ' + escape(source.name) + '" target="_blank" rel="noopener noreferrer">' +
   escape(source.name) + ' ' + icon('external') + '</a>';
 
-const state = { category: 'all', market: '', family: '', query: '', brief: null };
+const state = { category: 'all', market: '', family: '', query: '', sentiment: '', brief: null };
 const savedKey = 'dometic-nicole-saved-v1';
 let saved = new Set();
 try {
@@ -220,8 +223,8 @@ $('trend-groups').innerHTML = trendGroups.map(({ title, description, entries }) 
 for (const family of families) $('family').add(new Option(family, family));
 
 function meta(story) {
-  const parts = [story.family, story.market, story.date ? formatDate(story.date) : ''].filter(Boolean).map((part) => '<span>' + escape(part) + '</span>');
-  const tag = story.sentiment ? '<span class="tag' + (story.sentiment === 'Positive' ? '' : ' negative') + '">' + escape(story.sentiment) + '</span>' : '';
+  const parts = [story.brand, story.family, story.market, story.date ? formatDate(story.date) : ''].filter(Boolean).map((part) => '<span>' + escape(part) + '</span>');
+  const tag = story.sentiment ? '<span class="tag' + (story.sentiment === 'Issue reported' ? ' negative' : story.sentiment === 'Mixed' ? ' mixed' : '') + '">' + escape(story.sentiment) + '</span>' : '';
   return '<div class="story-meta">' + parts.join('<span class="dot"></span>') + tag + '</div>';
 }
 
@@ -258,9 +261,33 @@ function matchesCategory(story, category) {
 
 function overviewStories(stories, category, limit) {
   const items = stories.filter((story) => matchesCategory(story, category));
-  if (category !== 'feedback') return items.slice(0, limit);
+  if (category !== 'feedback' && category !== 'other-feedback') return items.slice(0, limit);
   const highlights = ['Positive', 'Issue reported'].map((sentiment) => items.find((story) => story.sentiment === sentiment)).filter(Boolean);
   return [...highlights, ...items.filter((story) => !highlights.includes(story))].slice(0, limit);
+}
+
+function directoryCard(entry) {
+  return '<article class="directory-card"><div><h3>' + escape(entry.name) + '</h3><p>' +
+    [entry.affiliation, entry.type, entry.launch].filter(Boolean).map(escape).join(' · ') +
+    '</p></div>' + sourceLink(entry.source) + '</article>';
+}
+
+function renderDirectory() {
+  const search = $('directory-search').value.trim().toLowerCase();
+  const region = $('directory-region').value;
+  const recent = $('directory-scope').value === 'recent';
+  const matches = rvDirectory.filter((entry) =>
+    (!region || entry.region === region) && (!recent || entry.launch) &&
+    [entry.name, entry.affiliation, entry.type].join(' ').toLowerCase().includes(search)
+  );
+  $('directory-count').textContent = matches.length + ' of ' + rvDirectory.length + ' listed entries';
+  $('directory-list').innerHTML = matches.map(directoryCard).join('') || '<p class="empty">No matching manufacturers.</p>';
+}
+
+$('new-brand-feed').innerHTML = newBrands.map(directoryCard).join('');
+$('directory-sources').innerHTML = Object.values(directorySources).map(sourceLink).join('');
+for (const id of ['directory-search', 'directory-region', 'directory-scope']) {
+  $(id).addEventListener(id === 'directory-search' ? 'input' : 'change', renderDirectory);
 }
 
 function render() {
@@ -269,12 +296,17 @@ function render() {
     button.setAttribute('aria-pressed', String(button.dataset.go === state.category));
   });
   const trends = state.category === 'trends';
+  const directory = state.category === 'directory';
+  const feedback = ['feedback', 'other-feedback'].includes(state.category);
   const overview = state.category === 'all' && !state.query && !state.market && !state.family;
   $('market-visuals').hidden = !overview;
-  $('kpis').hidden = $('update-filters').hidden = trends;
+  $('kpis').hidden = $('update-filters').hidden = trends || directory;
+  $('directory').hidden = !directory;
+  $('sentiment-filter').hidden = $('feedback-context').hidden = !feedback;
   $('trends').hidden = !trends;
-  if (trends) {
+  if (trends || directory) {
     $('overview').hidden = $('filtered').hidden = true;
+    if (directory) renderDirectory();
     return;
   }
   if (!state.brief) {
@@ -288,7 +320,7 @@ function render() {
   if (overview) {
     const news = stories.filter((story) => story.category === 'industry');
     $('news-feed').innerHTML = news.length ? news.slice(0, 5).map((story) => renderStory(story, true)).join('') : '<p class="empty">No market updates.</p>';
-    for (const [section, id, limit] of [['launch', 'product-feed', 3], ['benchmark', 'benchmark-feed', 2], ['feedback', 'feedback-feed', 2]]) {
+    for (const [section, id, limit] of [['launch', 'product-feed', 3], ['benchmark', 'benchmark-feed', 2], ['feedback', 'feedback-feed', 2], ['other-feedback', 'other-feedback-feed', 2]]) {
       $(id).innerHTML = overviewStories(stories, section, limit).map(renderMini).join('') || '<p class="panel-empty">No updates in this section.</p>';
     }
     return;
@@ -298,8 +330,8 @@ function render() {
       (state.category === 'saved' ? saved.has(story.id) : matchesCategory(story, state.category));
     const market = !state.market || story.market === state.market;
     const family = !state.family || story.family === state.family;
-    const text = [story.title, story.summary, story.family, story.market, ...story.links.map((link) => link.name)].join(' ').toLowerCase();
-    return category && market && family && text.includes(state.query);
+    const text = [story.title, story.summary, story.family, story.market, story.brand, ...story.links.map((link) => link.name)].join(' ').toLowerCase();
+    return category && market && family && (!state.sentiment || story.sentiment === state.sentiment) && text.includes(state.query);
   });
   $('feed-title').textContent = state.category === 'all' ? 'Search results' : categoryFor(state.category).name;
   $('result-count').textContent = matches.length + (matches.length === 1 ? ' update' : ' updates');
@@ -308,9 +340,9 @@ function render() {
 
 function selectCategory(category) {
   state.category = category;
-  state.query = state.family = '';
+  state.query = state.family = state.sentiment = '';
   state.market = category === 'china' ? 'China' : '';
-  $('search').value = $('family').value = '';
+  $('search').value = $('family').value = $('sentiment').value = '';
   $('region').value = state.market;
   render();
 }
@@ -461,10 +493,14 @@ $('region').addEventListener('change', (event) => {
   render();
 });
 $('family').addEventListener('change', (event) => { state.family = event.target.value; render(); });
+$('sentiment').addEventListener('change', (event) => { state.sentiment = event.target.value; render(); });
 $('about').addEventListener('click', (event) => {
   const brief = state.brief;
-  const date = brief?.lastScan ? 'Last successful scan: ' + formatDate(brief.lastScan) + '.' : 'Latest editorial brief: ' + (brief ? formatDate(brief.revision) + '.' : 'unavailable.');
-  openDialog('MARKET BRIEF', '<h2 id="dialog-title">Brief status</h2><p>' + escape(date) + '</p><p>Coverage includes European and Chinese public OEM and supplier releases, trade associations, specialist press and owner forums. Dates and original sources are shown with updates. Forum posts represent individual experiences.</p>', event.currentTarget);
+  const date = brief?.lastScan ? 'Last successful scan: ' + formatScan(brief.lastScan) + ' (Stockholm).' : 'Latest editorial brief: ' + (brief ? formatDate(brief.revision) + '.' : 'unavailable.');
+  const checks = Object.entries(brief?.marketChecks || {}).map(([market, stamp]) => escape(market + ' · ' + formatScan(stamp))).join('<br>');
+  openDialog('MARKET BRIEF', '<h2 id="dialog-title">Brief status</h2><p>' + escape(date) +
+    '</p><p>Scheduled daily at 07:00 Stockholm time.</p>' + (checks ? '<p>' + checks + '</p>' : '') +
+    '<p>Coverage includes specialist press, trade associations and public owner forums.</p>', event.currentTarget);
 });
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
 dialog.addEventListener('close', () => {
@@ -481,12 +517,14 @@ async function loadBrief() {
       if (!response.ok) continue;
       const brief = await response.json();
       if (!Array.isArray(brief.stories)) continue;
+      const originalUrls = new Set(brief.stories.flatMap((story) => story.links.map(({ url }) => url.replace(/\/$/, ''))));
+      brief.stories.push(...otherBrandFeedback.filter((story) => !originalUrls.has(story.links[0].url.replace(/\/$/, ''))));
       brief.stories.sort((left, right) => (right.date || '').localeCompare(left.date || ''));
       state.brief = brief;
       const markets = [...new Set(brief.stories.map((story) => story.market))].sort();
       for (const market of markets) $('region').add(new Option(market, market));
       $('region').value = state.market;
-      $('brief-status').textContent = brief.lastScan ? 'Last scan ' + formatDate(brief.lastScan) : 'Brief · ' + formatDate(brief.revision);
+      $('brief-status').textContent = brief.lastScan ? 'Last scan ' + formatScan(brief.lastScan) : 'Brief · ' + formatDate(brief.revision);
       render();
       return;
     } catch {}
