@@ -36,6 +36,24 @@ const families = [
 
 const overviewTrends = ['europe-rv', 'germany-motorhomes', 'germany-production', 'trigano', 'china-rv'];
 const trendById = new Map(trendGroups.flatMap(({ entries }) => entries.map((trend) => [trend.id, trend])));
+const overviewMeasures = {
+  'europe-rv': { label: 'Europe · RV registrations', period: '2025 full year' },
+  'germany-motorhomes': { label: 'Germany · Motorhomes', value: '61,447', period: 'Jan–Oct 2026', change: '−8.1%' },
+  'germany-production': { label: 'Germany · RV production', period: '2025 full year' },
+  trigano: { label: 'Trigano · Group sales', value: '€3.80bn', period: 'FY2026' },
+  'china-rv': { label: 'China · Motorhomes', value: '12,153', period: 'H1 2026', change: '+32.6%' }
+};
+// Positions share the viewBox of the locally hosted Natural Earth map.
+const mapMarkets = [
+  ['uk-motorhomes', 'UK', 134, 111],
+  ['france-motorhomes', 'France', 165, 184],
+  ['germany-motorhomes', 'Germany', 236, 136],
+  ['italy-motorhomes', 'Italy', 249, 216],
+  ['spain-motorhomes', 'Spain', 119, 244],
+  ['sweden-motorhomes', 'Sweden', 272, 44],
+  ['netherlands-motorhomes', 'Netherlands', 191, 123],
+  ['china-rv', 'China', 435, 226]
+];
 
 const chinaMarketSource = 'https://www.jfdaily.com/staticsg/res/html/web/newsDetail.html?id=1193371';
 const chinaCards = [
@@ -75,6 +93,12 @@ $('side-nav').innerHTML = nav;
 $('mobile-nav').innerHTML = nav;
 const number = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 });
 const compact = new Intl.NumberFormat('en-GB', { notation: 'compact', maximumFractionDigits: 1 });
+const percent = new Intl.NumberFormat('en-GB', { style: 'percent', signDisplay: 'exceptZero', minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const changeBetween = (current, previous) => percent.format(current / previous - 1).replace('-', '−');
+
+function latestChange(points) {
+  return changeBetween(points.at(-1)[1], points.at(-2)[1]);
+}
 
 function trendHeadline(trend, useSnapshot) {
   if (useSnapshot && trend.snapshot) return trend.snapshot;
@@ -87,6 +111,15 @@ function trendHeadline(trend, useSnapshot) {
 
 function kpiTrend(id) {
   const trend = trendById.get(id);
+  if (state.category !== 'china' && state.market !== 'China') {
+    const { label, value, period, change } = overviewMeasures[id];
+    const points = trend.panes[0].points;
+    const delta = change || latestChange(points);
+    return '<button class="kpi kpi-trend" type="button" data-trend="' + id + '" aria-haspopup="dialog"><span>' +
+      escape(label) + icon('activity') + '</span><strong>' + escape(value || number.format(points.at(-1)[1])) +
+      '</strong><small class="kpi-period"><span>' + escape(period) + '</span><span class="kpi-change" aria-label="' +
+      escape(delta + ' year over year') + '">' + escape(delta) + ' <span>YoY</span></span></small></button>';
+  }
   const { value, period } = trendHeadline(trend, true);
   return '<button class="kpi kpi-trend" type="button" data-trend="' + id + '" aria-haspopup="dialog"><span>' +
     escape(trend.title) + icon('activity') + '</span><strong>' + escape(value) + '</strong><small>' + escape(period) + '</small></button>';
@@ -101,6 +134,58 @@ function renderKpis() {
   $('kpis').innerHTML = (china ? ['china-rv'] : overviewTrends).map(kpiTrend).join('') + links;
   $('kpis').classList.toggle('china-kpis', china);
 }
+
+function renderMarketMap() {
+  const map = $('market-map');
+  map.insertAdjacentHTML('beforeend', mapMarkets.map(([id, name, x, y]) => {
+      const points = trendById.get(id).panes[0].points;
+      const [year, value] = points.at(-1);
+      const china = id === 'china-rv';
+      const metric = china ? 'leisure vehicles' : 'motorhomes';
+      const change = latestChange(points);
+      const label = name + ', ' + number.format(value) + ' new ' + metric + ' in ' + year + ', ' + change + ' year over year';
+      const size = china ? 23 : Math.round(14 + Math.sqrt(value / 75368) * 21);
+      return '<button class="map-marker' + (china ? ' china-marker' : '') + '" type="button" data-trend="' + id +
+        '" aria-haspopup="dialog" aria-label="' + escape(label) + '" style="--map-x:' + (x / 5.2) + '%;--map-y:' +
+        (y / 2.98) + '%;--dot-size:' + size + 'px"><span class="map-dot" aria-hidden="true"></span><span class="map-name" aria-hidden="true">' +
+        escape(name) + '</span><span class="visual-tooltip" aria-hidden="true"><b>' + escape(name) + '</b><span>' +
+        number.format(value) + ' ' + metric + ' · ' + year + '</span><small>' + escape(change) + ' vs ' +
+        points.at(-2)[0] + '</small></span></button>';
+    }).join(''));
+}
+
+function renderOverviewChart(id, label, unit, color, scaleStep) {
+  const trend = trendById.get(id);
+  const points = trend.panes[0].points;
+  const ceiling = Math.ceil(Math.max(...points.map(([, value]) => value)) / scaleStep) * scaleStep;
+  const positions = points.map(([year, value], index) => ({
+    year, value, x: 14 + 292 * index / (points.length - 1), y: 48 - value / ceiling * 39
+  }));
+  const line = positions.map(({ x, y }) => x + ',' + y).join(' ');
+  const markers = positions.map(({ year, value, x, y }, index) => {
+    const prior = points[index - 1];
+    const delta = prior ? '<small>' + escape(changeBetween(value, prior[1])) + ' vs ' + prior[0] + '</small>' : '';
+    return '<button type="button" class="chart-point' + (index === positions.length - 1 ? ' last-point' : '') +
+      '" style="--chart-x:' + (x / 3.2) + '%;--chart-y:' + (y / .54) + '%" data-trend="' + id +
+      '" aria-haspopup="dialog" aria-label="' + escape(label + ', ' + year + ', ' + number.format(value) + ' ' + unit) +
+      '"><span class="visual-tooltip" aria-hidden="true"><b>' + year + ' · ' + number.format(value) + '</b><span>' +
+      escape(unit) + '</span>' + delta + '</span></button>';
+  }).join('');
+  return '<article class="overview-chart ' + color + '"><div class="overview-chart-head"><button class="story-title" type="button" data-trend="' +
+    id + '" aria-haspopup="dialog">' + escape(label) + ' ' + icon('arrow') + '</button><span>' +
+    number.format(points.at(-1)[1]) + ' ' + escape(unit) +
+    '</span></div><div class="chart-plot"><svg viewBox="0 0 320 54" preserveAspectRatio="none" aria-hidden="true">' +
+    '<path class="chart-grid" d="M0 9H320 M0 29H320 M0 48H320"/><polygon points="14,48 ' + line + ' 306,48"/>' +
+    '<polyline points="' + line + '"/></svg>' + markers + '</div><div class="chart-years" aria-hidden="true">' +
+    positions.map(({ year, x }) => '<span style="left:' + (x / 3.2) + '%">' + year + '</span>').join('') + '</div></article>';
+}
+
+renderMarketMap();
+$('overview-charts').innerHTML = [
+  ['europe-rv', 'European registrations', 'vehicles', 'chart-teal', 50000],
+  ['germany-production', 'German RV production', 'vehicles', 'chart-blue', 50000],
+  ['dometic', 'Dometic Land Vehicles · EMEA', 'SEK million', 'chart-purple', 2000]
+].map((chart) => renderOverviewChart(...chart)).join('');
 
 function trendCard(trend) {
   const latest = trend.activity
@@ -123,14 +208,14 @@ function meta(story) {
   return '<div class="story-meta">' + parts.join('<span class="dot"></span>') + tag + '</div>';
 }
 
-function renderStory(story) {
+function renderStory(story, compact = false) {
   const category = categoryFor(story.category);
   const isSaved = saved.has(story.id);
   const label = isSaved ? 'Remove saved update' : 'Save update';
   const comparison = story.comparison ? '<button class="story-title source-link" type="button" data-detail="' + escape(story.id) + '">View comparison</button>' : '';
   return '<article class="story ' + category.id + '"><div class="story-icon">' + icon(category.icon) + '</div>' +
     '<div>' + meta(story) + '<h3><button class="story-title" type="button" data-detail="' + escape(story.id) + '">' + escape(story.title) + '</button></h3>' +
-    (story.summary ? '<p>' + escape(story.summary) + '</p>' : '') + '<div class="story-links">' + storySources(story) + comparison + '</div></div>' +
+    (!compact && story.summary ? '<p>' + escape(story.summary) + '</p>' : '') + '<div class="story-links">' + storySources(story) + comparison + '</div></div>' +
     '<button class="icon-button" type="button" data-save="' + escape(story.id) + '" aria-label="' + label + '" title="' + label + '" aria-pressed="' + isSaved + '">' + icon('bookmark') + '</button></article>';
 }
 
@@ -161,19 +246,14 @@ function overviewStories(stories, category, limit) {
   return [...highlights, ...items.filter((story) => !highlights.includes(story))].slice(0, limit);
 }
 
-function renderLead(story) {
-  return '<article class="hero"><div class="hero-photo" aria-hidden="true"></div><div class="hero-content"><div class="hero-tag">' +
-    escape(story.market.toUpperCase()) + (story.date ? ' · ' + escape(formatDate(story.date)) : '') +
-    '</div><h2>' + escape(story.title) + '</h2><p>' + escape(story.summary) +
-    '</p><button class="text-button" type="button" data-detail="' + escape(story.id) + '">Read update ' + icon('arrow') + '</button></div></article>';
-}
-
 function render() {
   renderKpis();
   document.querySelectorAll('nav [data-go]').forEach((button) => {
     button.setAttribute('aria-pressed', String(button.dataset.go === state.category));
   });
   const trends = state.category === 'trends';
+  const overview = state.category === 'all' && !state.query && !state.market && !state.family;
+  $('market-visuals').hidden = !overview;
   $('kpis').hidden = $('update-filters').hidden = trends;
   $('trends').hidden = !trends;
   if (trends) {
@@ -186,13 +266,11 @@ function render() {
     return;
   }
   const stories = state.brief.stories;
-  const overview = state.category === 'all' && !state.query && !state.market && !state.family;
   $('overview').hidden = !overview;
   $('filtered').hidden = overview;
   if (overview) {
     const news = stories.filter((story) => story.category === 'industry');
-    $('lead').innerHTML = news.length ? renderLead(news[0]) : '';
-    $('news-feed').innerHTML = news.length > 1 ? news.slice(1, 5).map(renderStory).join('') : '<p class="empty">No further market updates.</p>';
+    $('news-feed').innerHTML = news.length ? news.slice(0, 5).map((story) => renderStory(story, true)).join('') : '<p class="empty">No market updates.</p>';
     for (const [section, id, limit] of [['launch', 'product-feed', 3], ['benchmark', 'benchmark-feed', 2], ['feedback', 'feedback-feed', 2]]) {
       $(id).innerHTML = overviewStories(stories, section, limit).map(renderMini).join('') || '<p class="panel-empty">No updates in this section.</p>';
     }
@@ -208,7 +286,7 @@ function render() {
   });
   $('feed-title').textContent = state.category === 'all' ? 'Search results' : categoryFor(state.category).name;
   $('result-count').textContent = matches.length + (matches.length === 1 ? ' update' : ' updates');
-  $('feed-list').innerHTML = matches.length ? matches.map(renderStory).join('') : '<div class="empty"><strong>No matching updates</strong><button class="secondary" type="button" data-go="all">Reset filters</button></div>';
+  $('feed-list').innerHTML = matches.length ? matches.map((story) => renderStory(story)).join('') : '<div class="empty"><strong>No matching updates</strong><button class="secondary" type="button" data-go="all">Reset filters</button></div>';
 }
 
 function selectCategory(category) {

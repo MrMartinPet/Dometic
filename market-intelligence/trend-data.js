@@ -4,6 +4,8 @@ const trendSources = {
   civdMonthly: { name: 'CIVD monthly figures', url: 'https://www.civd.de/en/artikel/monthly-registrations/' },
   civdEuropeYtd: { name: 'CIVD · Caravan Salon 2026', url: 'https://www.civd.de/news/caravan-salon-2026/' },
   civdOct: { name: 'CIVD · November 2026 release', url: 'https://www.presseportal.de/pm/50926/6389204' },
+  production22: { name: 'CIVD · German production 2022', url: 'https://www.civd.de/en/news/german-leisure-vehicles-are-in-strong-demand-throughout-europe/' },
+  production23: { name: 'CIVD · German production 2023', url: 'https://www.civd.de/news/deutschland-groesster-caravaning-markt-europas-01-2024/' },
   chinaH1: { name: 'People’s Daily · Chinese', url: 'https://sh.people.com.cn/n2/2026/0831/c134768-41682751.html' },
   thor25: { name: 'THOR FY2025 filing', url: 'https://www.sec.gov/Archives/edgar/data/730263/000073026325000019/R33.htm' },
   thor26: { name: 'THOR FY2026 filing', url: 'https://www.sec.gov/Archives/edgar/data/730263/000073026326000027/R35.htm' },
@@ -18,6 +20,17 @@ const trendSources = {
 };
 
 const trendPoints = (firstYear, values, source) => values.map((value, index) => [firstYear + index, value, source]);
+
+const motorhomeTrend = (id, country, values) => ({
+  id: id + '-motorhomes',
+  title: country + ' · Motorhomes',
+  unit: 'vehicles',
+  panes: [{
+    label: 'Full years',
+    scope: 'New motorhome registrations in ' + country + ', January to December.',
+    points: trendPoints(2021, values, 'civd2026')
+  }]
+});
 
 const trendGroups = [
   {
@@ -52,7 +65,7 @@ const trendGroups = [
       {
         id: 'germany-production', title: 'German RV production', unit: 'vehicles',
         panes: [
-          { label: 'Full years', scope: 'Motorhomes and caravans built by German manufacturers. Totals add the two production figures in each cited CIVD yearbook.', points: [[2024, 118820, 'civd2025'], [2025, 99358, 'civd2026']] }
+          { label: 'Full years', scope: 'Motorhomes and caravans built by German manufacturers. The 2024 and 2025 totals add the two vehicle categories in the cited CIVD yearbooks.', points: [[2022, 129287, 'production22'], [2023, 133568, 'production23'], [2024, 118820, 'civd2025'], [2025, 99358, 'civd2026']] }
         ]
       },
       {
@@ -67,6 +80,10 @@ const trendGroups = [
           { label: 'Full years', scope: 'New motorhome registrations in the United Kingdom, January to December.', points: trendPoints(2021, [14074, 11823, 12179, 16447, 16668], 'civd2026') }
         ]
       },
+      motorhomeTrend('italy', 'Italy', [7113, 5828, 5833, 6967, 7709]),
+      motorhomeTrend('spain', 'Spain', [6175, 5323, 5270, 6461, 6126]),
+      motorhomeTrend('sweden', 'Sweden', [5066, 3498, 2676, 2865, 4201]),
+      motorhomeTrend('netherlands', 'Netherlands', [3164, 2260, 2230, 2465, 2937]),
       {
         id: 'china-rv', title: 'China · RV registrations', unit: 'vehicles',
         snapshot: { value: '12,153', period: 'Self-propelled RVs · H1 2026', detail: 'People’s Daily reported 12,153 self-propelled RV registrations in H1 2026. This narrower vehicle category and shorter period have their own reporting basis.', source: 'chinaH1' },
