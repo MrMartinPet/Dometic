@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-12",
-  "added": 0,
+  "revision": "2026-11-13",
+  "added": 3,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,54 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-ead1ebfaf429a08da3f2",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-13",
+      "title": "欧美房车行情分化降温！2026年前三季度：全球房车竞争逻辑已改变",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbqndhum168s738g20h0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-a90058b7a1f324b6be95",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-12",
+      "title": "四驱软连接方舱，直抵戈壁深处！新星北斗Y600C-70 硬核穿越房车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbqm4fum168s738g20b0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-e6868c333cf557f622b0",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-12",
+      "title": "Verbrennungstoilette im Offroad-Campervan: Vanme Black Stallion",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/verbrennungstoilette-im-offroad-campervan-vanme-black-stallion-2021/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-3553c0c04d8b28c623e1",
       "category": "industry",
       "family": "Vehicle market",
@@ -587,8 +635,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-12T10:17:31.816391+00:00",
-    "Europe": "2026-11-12T10:17:31.816391+00:00"
+    "China": "2026-11-13T08:25:23.867558+00:00",
+    "Europe": "2026-11-13T08:25:23.867558+00:00"
   },
-  "lastScan": "2026-11-12T10:17:31.816391+00:00"
+  "lastScan": "2026-11-13T08:25:23.867558+00:00"
 }
