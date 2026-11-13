@@ -4,6 +4,8 @@ const trendSources = {
   civdMonthly: { name: 'CIVD monthly figures', url: 'https://www.civd.de/en/artikel/monthly-registrations/' },
   civdEuropeYtd: { name: 'CIVD · Caravan Salon 2026', url: 'https://www.civd.de/news/caravan-salon-2026/' },
   civdOct: { name: 'CIVD · November 2026 release', url: 'https://www.presseportal.de/pm/50926/6389204' },
+  kbaOct25: { name: 'KBA figures · ABF Hannover', url: 'https://www.abf-hannover.de/de/presse/pressemitteilungen/abf/tore-auf-fuer-die-caravaning-urlaubswelt-special-guests-friso-richter' },
+  ecfH1: { name: 'ECF figures · THOR annual report', url: 'https://www.sec.gov/Archives/edgar/data/730263/000114036126041742/ef20084458_ars.pdf' },
   production22: { name: 'CIVD · German production 2022', url: 'https://www.civd.de/en/news/german-leisure-vehicles-are-in-strong-demand-throughout-europe/' },
   production23: { name: 'CIVD · German production 2023', url: 'https://www.civd.de/news/deutschland-groesster-caravaning-markt-europas-01-2024/' },
   chinaH1: { name: 'People’s Daily · Chinese', url: 'https://sh.people.com.cn/n2/2026/0831/c134768-41682751.html' },
@@ -15,11 +17,21 @@ const trendSources = {
   knaus25: { name: 'Knaus Tabbert FY2025 results', url: 'https://www.knaustabbert.de/en/press/press-releases/annual-report-2025/' },
   lippert: { name: 'LCI Industries FY2025 filing', url: 'https://www.sec.gov/Archives/edgar/data/763744/000076374426000011/lcii-20251231.htm' },
   indel24: { name: 'Indel B FY2024 report', url: 'https://www.indelbgroup.com/downloads/5730/5726/Financial_Report_2024.pdf' },
-  indel25: { name: 'Indel B FY2025 results presentation', url: 'https://www.marketscreener.com/news/indel-b-s-p-a-fy-2025-consolidated-financial-results-presentation-ce7e50d8d08bf422' },
-  dometic: { name: 'Dometic FY2025 report', url: 'https://www.dometicgroup.com/media/tjwj0nbj/dometic_asr_2025_eng_linked_250319.pdf' }
+  indel25: { name: 'Indel B FY2025 results presentation', url: 'https://www.marketscreener.com/news/indel-b-s-p-a-fy-2025-consolidated-financial-results-presentation-ce7e50d8d08bf422' }
 };
 
 const trendPoints = (firstYear, values, source) => values.map((value, index) => [firstYear + index, value, source]);
+
+const germanyOctober = {
+  motorhomes: [[2025, 66898, 'kbaOct25'], [2026, 61447, 'civdOct']],
+  caravans: [[2025, 17334, 'kbaOct25'], [2026, 16392, 'civdOct']]
+};
+const sumRegistrations = (motorhomes, caravans) =>
+  motorhomes.map(([year, value, source], index) => [year, value + caravans[index][1], source]);
+const europeJune = {
+  motorhomes: trendPoints(2025, [95151, 97657], 'ecfH1'),
+  caravans: trendPoints(2025, [31302, 31220], 'ecfH1')
+};
 
 const motorhomeTrend = (id, country, values) => ({
   id: id + '-motorhomes',
@@ -39,26 +51,43 @@ const trendGroups = [
     entries: [
       {
         id: 'europe-rv', title: 'European RV market', unit: 'vehicles',
-        snapshot: { value: '−0.1%', period: 'New registrations · Jan–Jul 2026 YoY', detail: 'CIVD reported more than 149,000 European leisure vehicle registrations in Jan–Jul 2026, down 0.1% from the same period in 2025.', source: 'civdEuropeYtd' },
+        snapshot: { value: '>149,000', change: '−0.1%', period: 'Jan–Jul 2026', detail: 'CIVD reported more than 149,000 European leisure vehicle registrations in Jan–Jul 2026, down 0.1% from the same period in 2025. Exact counts for both years are available for January–June.', source: 'civdEuropeYtd' },
+        comparisonPane: 3,
         panes: [
           { label: 'All leisure vehicles', scope: 'The sum of the new motorhome and caravan registrations in CIVD’s European tables.', points: trendPoints(2021, [260987, 219349, 210343, 221207, 215611], 'civd2026') },
           { label: 'Motorhomes', scope: 'New motorhome registrations in the European markets covered by CIVD.', points: trendPoints(2021, [181516, 147804, 146490, 160342, 161369], 'civd2026') },
-          { label: 'Caravans', scope: 'New caravan registrations in the European markets covered by CIVD.', points: trendPoints(2021, [79471, 71545, 63853, 60865, 54242], 'civd2026') }
+          { label: 'Caravans', scope: 'New caravan registrations in the European markets covered by CIVD.', points: trendPoints(2021, [79471, 71545, 63853, 60865, 54242], 'civd2026') },
+          { label: 'Jan–Jun · Total', scope: 'New motorhomes, campervans and caravans across the European Caravan Federation’s reporting markets, January–June in both years.', points: sumRegistrations(europeJune.motorhomes, europeJune.caravans) },
+          { label: 'Jan–Jun · Motorhomes', scope: 'New motorhomes and campervans across the European Caravan Federation’s reporting markets, January–June in both years.', points: europeJune.motorhomes },
+          { label: 'Jan–Jun · Caravans', scope: 'New caravans across the European Caravan Federation’s reporting markets, January–June in both years.', points: europeJune.caravans }
+        ]
+      },
+      {
+        id: 'germany-rv', title: 'Germany · RV registrations', unit: 'vehicles',
+        comparisonPane: 1,
+        panes: [
+          { label: 'Full years', scope: 'Total new motorhome and caravan registrations in Germany, January–December.', points: sumRegistrations(
+            trendPoints(2021, [81420, 66507, 68469, 74718, 75368], 'civd2026'),
+            trendPoints(2021, [24718, 24478, 21896, 21674, 18766], 'civd2026')
+          ) },
+          { label: 'Jan–Oct · Total', scope: 'Total new motorhome and caravan registrations in Germany, January–October in both years.', points: sumRegistrations(germanyOctober.motorhomes, germanyOctober.caravans) },
+          { label: 'Jan–Oct · Motorhomes', scope: 'New motorhome registrations in Germany, January–October in both years.', points: germanyOctober.motorhomes },
+          { label: 'Jan–Oct · Caravans', scope: 'New caravan registrations in Germany, January–October in both years.', points: germanyOctober.caravans }
         ]
       },
       {
         id: 'germany-motorhomes', title: 'Germany · Motorhomes', unit: 'vehicles',
-        snapshot: { value: '−8.1%', period: 'Jan–Oct 2026 vs Jan–Oct 2025', detail: '61,447 new motorhomes registered in Jan–Oct 2026, down 8.1% from the same months in 2025.', source: 'civdOct' },
         panes: [
           { label: 'Full years', scope: 'New motorhome registrations in Germany, January to December.', points: trendPoints(2021, [81420, 66507, 68469, 74718, 75368], 'civd2026') },
+          { label: 'Jan–Oct', scope: 'New motorhome registrations from January to October in each year.', points: germanyOctober.motorhomes },
           { label: 'Jan–Sep', scope: 'New motorhome registrations from January to September in each year.', points: trendPoints(2023, [57376, 63046, 62374, 57890], 'civdMonthly') }
         ]
       },
       {
         id: 'germany-caravans', title: 'Germany · Caravans', unit: 'vehicles',
-        snapshot: { value: '−5.4%', period: 'Jan–Oct 2026 vs Jan–Oct 2025', detail: '16,392 new caravans registered in Jan–Oct 2026, down 5.4% from the same months in 2025.', source: 'civdOct' },
         panes: [
           { label: 'Full years', scope: 'New caravan registrations in Germany, January to December.', points: trendPoints(2021, [24718, 24478, 21896, 21674, 18766], 'civd2026') },
+          { label: 'Jan–Oct', scope: 'New caravan registrations from January to October in each year.', points: germanyOctober.caravans },
           { label: 'Jan–Sep', scope: 'New caravan registrations from January to September in each year.', points: trendPoints(2023, [18752, 18339, 16180, 15396], 'civdMonthly') }
         ]
       },
@@ -133,13 +162,6 @@ const trendGroups = [
         id: 'indel', title: 'Indel B', unit: 'EUR million',
         panes: [
           { label: 'Group revenue', scope: 'Consolidated total revenue across all business lines, including mobile cooling. Fiscal year ends in December.', points: [[2023, 226.5, 'indel24'], [2024, 203.5, 'indel24'], [2025, 207.4, 'indel25']] }
-        ]
-      },
-      {
-        id: 'dometic', title: 'Dometic · Land Vehicles', unit: 'SEK million',
-        panes: [
-          { label: 'EMEA', scope: 'Reported net sales for EMEA within Dometic’s Land Vehicles segment. Fiscal year ends in December.', points: trendPoints(2023, [6739, 6084, 5250], 'dometic') },
-          { label: 'Global', scope: 'Worldwide net sales for Dometic’s Land Vehicles segment. Fiscal year ends in December.', points: trendPoints(2023, [12424, 10858, 9169], 'dometic') }
         ]
       },
       {

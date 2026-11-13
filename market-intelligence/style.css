@@ -137,7 +137,6 @@ dialog{border:1px solid #d6e4e9;border-radius:13px;color:var(--ink);width:min(55
 .overview-chart { min-width: 0; display: flex; flex-direction: column; --chart-ink: #207b70; --chart-fill: #edf7f3; }
 .overview-chart + .overview-chart { border-top: 1px solid #e6eef0; padding-top: 8px; }
 .chart-blue { --chart-ink: #326f97; --chart-fill: #edf5fa; }
-.chart-purple { --chart-ink: #685797; --chart-fill: #f1eef8; }
 .overview-chart-head { display: flex; align-items: start; justify-content: space-between; gap: 7px; margin-bottom: 3px; }
 .overview-chart-head .story-title { font-size: 12px; line-height: 1.2; }
 .overview-chart-head .icon { width: 12px; height: 12px; color: var(--chart-ink); }
@@ -177,3 +176,22 @@ dialog{border:1px solid #d6e4e9;border-radius:13px;color:var(--ink);width:min(55
   .map-legend a { margin-left: 0; }
   .chart-plot { height: 64px; }
 }
+
+.registration-comparison {
+  --chart-ink: #207b70; --chart-fill: #dcefe9;
+  display: grid; align-content: center; gap: 5px; width: 100%; padding: 7px 0 10px;
+  border: 0; border-bottom: 1px solid #e6eef0; text-align: left; color: var(--ink); background: transparent;
+}
+.registration-comparison.chart-blue { --chart-ink: #326f97; --chart-fill: #deecf6; }
+.registration-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 3px 8px; margin-bottom: 2px; font-size: 12px; }
+.registration-heading .icon { width: 12px; height: 12px; color: var(--chart-ink); }
+.registration-heading > span { color: var(--muted); font-size: 11px; }
+.registration-comparison:hover .registration-heading > strong { text-decoration: underline; text-underline-offset: 3px; }
+.registration-row {
+  display: grid; grid-template-columns: 32px minmax(0, 1fr) 56px; align-items: center;
+  gap: 7px; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums;
+}
+.registration-row > strong { text-align: right; color: var(--ink); }
+.registration-track { height: 8px; border-radius: 3px; background: #f0f4f6; }
+.registration-track > span { display: block; height: 100%; border-radius: inherit; background: var(--chart-fill); }
+.registration-row:last-child .registration-track > span { background: var(--chart-ink); }

@@ -22,7 +22,7 @@ const categories = [
   { id: 'trends', name: 'Trends', icon: 'activity' },
   { id: 'china', name: 'China market', icon: 'globe' },
   { id: 'industry', name: 'Industry news', icon: 'globe' },
-  { id: 'launch', name: 'Competitor launches', icon: 'box' },
+  { id: 'launch', name: 'Product news', icon: 'box' },
   { id: 'benchmark', name: 'Product benchmarks', icon: 'bars' },
   { id: 'feedback', name: 'Dometic feedback', icon: 'message' },
   { id: 'saved', name: 'Saved updates', icon: 'bookmark' }
@@ -34,11 +34,11 @@ const families = [
   'Access & vehicle hardware', 'Other RV equipment'
 ];
 
-const overviewTrends = ['europe-rv', 'germany-motorhomes', 'germany-production', 'trigano', 'china-rv'];
+const overviewTrends = ['europe-rv', 'germany-rv', 'germany-production', 'trigano', 'china-rv'];
 const trendById = new Map(trendGroups.flatMap(({ entries }) => entries.map((trend) => [trend.id, trend])));
 const overviewMeasures = {
-  'europe-rv': { label: 'Europe · RV registrations', period: '2025 full year' },
-  'germany-motorhomes': { label: 'Germany · Motorhomes', value: '61,447', period: 'Jan–Oct 2026', change: '−8.1%' },
+  'europe-rv': { label: 'Europe · RV registrations' },
+  'germany-rv': { label: 'Germany · RV registrations' },
   'germany-production': { label: 'Germany · RV production', period: '2025 full year' },
   trigano: { label: 'Trigano · Group sales', value: '€3.80bn', period: 'FY2026' },
   'china-rv': { label: 'China · Motorhomes', value: '12,153', period: 'H1 2026', change: '+32.6%' }
@@ -113,11 +113,15 @@ function kpiTrend(id) {
   const trend = trendById.get(id);
   if (state.category !== 'china' && state.market !== 'China') {
     const { label, value, period, change } = overviewMeasures[id];
-    const points = trend.panes[0].points;
-    const delta = change || latestChange(points);
-    return '<button class="kpi kpi-trend" type="button" data-trend="' + id + '" aria-haspopup="dialog"><span>' +
-      escape(label) + icon('activity') + '</span><strong>' + escape(value || number.format(points.at(-1)[1])) +
-      '</strong><small class="kpi-period"><span>' + escape(period) + '</span><span class="kpi-change" aria-label="' +
+    const comparison = trend.panes[trend.comparisonPane];
+    const points = (comparison || trend.panes[0]).points;
+    const [year, latest] = points.at(-1);
+    const snapshot = trend.comparisonPane === undefined ? undefined : trend.snapshot;
+    const delta = snapshot?.change || change || latestChange(points);
+    const date = snapshot?.period || period || comparison.label.split(' · ')[0] + ' ' + year;
+    return '<button class="kpi kpi-trend" type="button" data-trend="' + id + '" data-comparison aria-haspopup="dialog"><span>' +
+      escape(label) + icon('activity') + '</span><strong>' + escape(snapshot?.value || value || number.format(latest)) +
+      '</strong><small class="kpi-period"><span>' + escape(date) + '</span><span class="kpi-change" aria-label="' +
       escape(delta + ' year over year') + '">' + escape(delta) + ' <span>YoY</span></span></small></button>';
   }
   const { value, period } = trendHeadline(trend, true);
@@ -180,12 +184,25 @@ function renderOverviewChart(id, label, unit, color, scaleStep) {
     positions.map(({ year, x }) => '<span style="left:' + (x / 3.2) + '%">' + year + '</span>').join('') + '</div></article>';
 }
 
+function renderRegistrationComparison(id, label, color) {
+  const trend = trendById.get(id);
+  const pane = trend.panes[trend.comparisonPane];
+  const maximum = Math.max(...pane.points.map(([, value]) => value));
+  const bars = pane.points.map(([year, value]) =>
+    '<span class="registration-row"><span>' + year + '</span><span class="registration-track" aria-hidden="true">' +
+    '<span style="width:' + (value / maximum * 100).toFixed(1) + '%"></span></span><strong>' + number.format(value) + '</strong></span>'
+  ).join('');
+  return '<button class="registration-comparison ' + color + '" type="button" data-trend="' + id +
+    '" data-comparison aria-haspopup="dialog"><span class="registration-heading"><strong>' + escape(label) +
+    ' ' + icon('arrow') + '</strong><span>' + escape(pane.label.split(' · ')[0]) + ' · ' +
+    escape(latestChange(pane.points)) + '</span></span>' + bars + '</button>';
+}
+
 renderMarketMap();
-$('overview-charts').innerHTML = [
-  ['europe-rv', 'European registrations', 'vehicles', 'chart-teal', 50000],
-  ['germany-production', 'German RV production', 'vehicles', 'chart-blue', 50000],
-  ['dometic', 'Dometic Land Vehicles · EMEA', 'SEK million', 'chart-purple', 2000]
-].map((chart) => renderOverviewChart(...chart)).join('');
+$('overview-charts').innerHTML =
+  renderRegistrationComparison('europe-rv', 'Europe · New registrations', 'chart-teal') +
+  renderRegistrationComparison('germany-rv', 'Germany · New registrations', 'chart-blue') +
+  renderOverviewChart('germany-production', 'German RV production', 'vehicles', 'chart-blue', 50000);
 
 function trendCard(trend) {
   const latest = trend.activity
@@ -357,11 +374,12 @@ function showTrend(trend, trigger) {
   }
   const snapshot = trend.snapshot ? '<div class="trend-snapshot"><p>' + escape(trend.snapshot.detail) + '</p>' +
     sourceLink(trendSources[trend.snapshot.source]) + '</div>' : '';
+  const initialPane = trigger.hasAttribute('data-comparison') ? (trend.comparisonPane ?? 0) : 0;
   const controls = trend.panes.length > 1 ? '<div class="trend-options" role="group" aria-label="Chart view">' +
     trend.panes.map(({ label }, index) => '<button type="button" class="secondary" data-trend-pane="' + index +
-      '" aria-controls="trend-pane" aria-pressed="' + (index === 0) + '">' + escape(label) + '</button>').join('') + '</div>' : '';
+      '" aria-controls="trend-pane" aria-pressed="' + (index === initialPane) + '">' + escape(label) + '</button>').join('') + '</div>' : '';
   openDialog('HISTORICAL TREND', heading + snapshot + controls + '<div id="trend-pane" aria-live="polite"></div>', trigger);
-  renderTrendPane(trend, 0);
+  renderTrendPane(trend, initialPane);
 }
 
 const installButton = $('install-app');
