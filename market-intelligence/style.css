@@ -245,3 +245,72 @@ main { max-width: none; padding-inline: clamp(13px, 1.6vw, 29px); }
   .dashboard-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .insights { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
 }
+
+/* Desktop overview fits the viewport. News and product cards scroll independently. */
+:where(.news-preview, .insights):focus-visible { outline: 2px solid #137a91; outline-offset: -2px; }
+
+@media (min-width: 1050px) and (min-height: 620px) {
+  .is-overview .topbar { height: 49px; }
+  .is-overview main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(222px, 23%, 345px);
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "title title" "kpis kpis" "filters filters" "visuals rail" "footer footer";
+    gap: 10px 13px;
+    height: calc(100dvh - 49px);
+    padding-block: 14px 8px;
+  }
+  .is-overview .page-head { grid-area: title; margin: 0; }
+  .is-overview .page-head h1 { font-size: clamp(29px, 3vw, 43px); margin-top: 4px; }
+  .is-overview .kpis:not(.china-kpis) { grid-area: kpis; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; gap: 8px; }
+  .is-overview .kpi { padding: 8px 10px; }
+  .is-overview .kpi strong { font-size: clamp(23px, 2.25vw, 33px); margin: 3px 0 2px; }
+  .is-overview .workspace-filters { grid-area: filters; margin: 0; }
+  .is-overview .workspace-filters .search, .is-overview .workspace-filters .region { min-height: 32px; height: 32px; }
+  .is-overview footer { grid-area: footer; padding: 0; }
+  .is-overview .market-visuals {
+    grid-area: visuals;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr);
+    gap: 10px;
+    margin: 0;
+  }
+  .is-overview .overview-panel { display: flex; flex-direction: column; min-height: 0; padding: 11px; }
+  .is-overview .map-stage {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    min-height: 0;
+    container-type: size;
+  }
+  .is-overview .market-map { width: min(100%, 174.5cqh); }
+  .is-overview .map-marker { width: clamp(24px, 1.9vw, 34px); height: clamp(24px, 1.9vw, 34px); }
+  .is-overview .map-dot { width: calc(var(--dot-size) * .8); height: calc(var(--dot-size) * .8); }
+  .is-overview .map-name { top: calc(50% + var(--dot-size) * .4 + 2px); }
+  .is-overview #overview-charts { grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 5px; min-height: 0; }
+  .is-overview .registration-comparison { padding-block: 4px; }
+  .is-overview .chart-plot { min-height: 35px; }
+  .is-overview #overview { grid-area: rail; min-height: 0; }
+  .is-overview .dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    height: 100%;
+    gap: 10px;
+  }
+  .is-overview .dashboard-grid > .feed { display: flex; flex-direction: column; min-height: 0; }
+  .is-overview .dashboard-grid .section-head { min-height: 0; margin-bottom: 5px; flex-wrap: wrap; gap: 0 8px; }
+  .is-overview .dashboard-grid .section-head h2 { font-size: 15px; }
+  .is-overview .news-preview, .is-overview .insights {
+    overflow: auto;
+    min-height: 0;
+    scrollbar-width: thin;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+  .is-overview .news-preview { flex: 1; }
+  .is-overview .news-preview .story { padding: 7px; }
+  .is-overview .insights { display: block; padding-right: 2px; }
+  .is-overview .insights .side-card { padding: 9px; }
+  .is-overview .insights .side-card + .side-card { margin-top: 7px; }
+}

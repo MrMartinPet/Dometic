@@ -10,10 +10,10 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./app-icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="./app-icon-192.png">
-  <link rel="stylesheet" href="./style.css?v=market-directory-1">
+  <link rel="stylesheet" href="./style.css?v=overview-layout-1">
   <script src="./trend-data.js?v=registration-ytd-1" defer></script>
   <script src="./industry-data.js?v=market-directory-1" defer></script>
-  <script src="./app.js?v=market-directory-1" defer></script>
+  <script src="./app.js?v=overview-layout-1" defer></script>
 </head>
 <body>
 <a href="#main" class="skip">Skip to dashboard</a>
@@ -22,7 +22,7 @@
     <div class="brand"><img src="./dometic-logo.svg" alt="Dometic"><span>LVE EMEA · Commercial</span></div>
     <nav id="side-nav" aria-label="Dashboard sections"></nav>
   </aside>
-  <div class="workspace">
+  <div class="workspace is-overview">
     <header class="topbar">
       <div class="breadcrumbs"><span class="mobile-brand"><img src="./dometic-logo.svg" alt="Dometic"></span><span class="crumb">LVE EMEA</span><span aria-hidden="true">/</span><strong>Commercial intelligence</strong></div>
       <div class="top-actions">
@@ -37,10 +37,16 @@
         <div id="brief-status" class="brief-status" role="status">Loading latest brief…</div>
       </section>
       <section class="kpis" id="kpis" aria-label="Key market indicators"></section>
+      <section class="filters workspace-filters" id="update-filters" aria-label="Filter updates">
+        <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Search news, brands or products" aria-label="Search updates"></label>
+        <label class="region"><span data-icon="globe"></span><select id="region" aria-label="Filter by market"><option value="">All markets</option></select></label>
+        <label class="region family-select"><span data-icon="box"></span><select id="family" aria-label="Filter by product family"><option value="">All products</option></select></label>
+        <label id="sentiment-filter" class="region" hidden><span data-icon="message"></span><select id="sentiment" aria-label="Filter by feedback sentiment"><option value="">All feedback</option><option value="Positive">Positive</option><option value="Issue reported">Negative · reported issues</option><option value="Mixed">Mixed</option></select></label>
+      </section>
       <section id="market-visuals" class="market-visuals" aria-label="Market overview">
         <section class="overview-panel map-panel" aria-labelledby="map-title">
           <div class="visual-head"><div><h2 id="map-title">RV registrations</h2><p>2025 full year</p></div><span class="visual-icon" data-icon="globe"></span></div>
-          <div class="market-map" id="market-map">
+          <div class="map-stage"><div class="market-map" id="market-map">
             <svg class="map-base" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="520" height="298" viewBox="0 0 520 298">
               <desc>Country boundaries from Natural Earth 1:110m, public domain. https://www.naturalearthdata.com/about/terms-of-use/</desc>
               <defs><clipPath id="europe"><rect width="520" height="298" rx="10"/></clipPath></defs>
@@ -101,6 +107,7 @@
               </svg>
             </svg>
           </div>
+          </div>
           <div class="map-legend"><span><i></i>Europe · Motorhomes</span><span><i></i>China · All leisure vehicles</span><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">Map: Natural Earth</a></div>
         </section>
         <section class="overview-panel charts-panel" aria-labelledby="charts-title">
@@ -108,19 +115,13 @@
           <div id="overview-charts"></div>
         </section>
       </section>
-      <section class="filters workspace-filters" id="update-filters" aria-label="Filter updates">
-        <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Search news, brands or products" aria-label="Search updates"></label>
-        <label class="region"><span data-icon="globe"></span><select id="region" aria-label="Filter by market"><option value="">All markets</option></select></label>
-        <label class="region family-select"><span data-icon="box"></span><select id="family" aria-label="Filter by product family"><option value="">All products</option></select></label>
-        <label id="sentiment-filter" class="region" hidden><span data-icon="message"></span><select id="sentiment" aria-label="Filter by feedback sentiment"><option value="">All feedback</option><option value="Positive">Positive</option><option value="Issue reported">Negative · reported issues</option><option value="Mixed">Mixed</option></select></label>
-      </section>
       <div id="overview">
         <div class="dashboard-grid">
           <section class="feed" aria-labelledby="news-title">
             <div class="section-head"><h2 id="news-title">Sales &amp; production news</h2><button class="text-button" type="button" data-go="industry">All news <span data-icon="arrow"></span></button></div>
-            <div class="feed-list news-preview" id="news-feed"></div>
+            <div class="feed-list news-preview" id="news-feed" role="region" aria-label="Latest sales and production news" tabindex="0"></div>
           </section>
-          <aside class="insights" aria-label="Products and feedback">
+          <aside class="insights" aria-label="Products and feedback" tabindex="0">
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="box"></span><div><h2>Product news</h2><p>New products from RV and equipment manufacturers</p></div></div><div id="product-feed"></div><button class="text-button panel-more" data-go="launch" type="button">All product news <span data-icon="arrow"></span></button></section>
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="bars"></span><div><h2>Product benchmarks</h2><p>Side-by-side manufacturer specifications</p></div></div><div id="benchmark-feed"></div><button class="text-button panel-more" data-go="benchmark" type="button">All benchmarks <span data-icon="arrow"></span></button></section>
             <section class="side-card"><div class="side-heading"><span class="panel-icon" data-icon="message"></span><div><h2>Dometic product feedback</h2><p>Praise and reported issues from public sources</p></div></div><div id="feedback-feed"></div><button class="text-button panel-more" data-go="feedback" type="button">All feedback <span data-icon="arrow"></span></button></section>

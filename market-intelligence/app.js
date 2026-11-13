@@ -299,6 +299,7 @@ function render() {
   const directory = state.category === 'directory';
   const feedback = ['feedback', 'other-feedback'].includes(state.category);
   const overview = state.category === 'all' && !state.query && !state.market && !state.family;
+  $('main').parentElement.classList.toggle('is-overview', overview);
   $('market-visuals').hidden = !overview;
   $('kpis').hidden = $('update-filters').hidden = trends || directory;
   $('directory').hidden = !directory;
@@ -310,7 +311,7 @@ function render() {
     return;
   }
   if (!state.brief) {
-    $('overview').hidden = state.category !== 'all';
+    $('overview').hidden = !overview;
     $('filtered').hidden = true;
     return;
   }
