@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-13",
-  "added": 0,
+  "revision": "2026-11-14",
+  "added": 1,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-733f1d0a9a1360705a53",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-13",
+      "title": "Schlechter Absatz neuer Wohnmobile: Haben die Deutschen keine Lust mehr auf Camping?",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/weitere-ratgeber/schlechter-absatz-neuer-wohnmobile-haben-die-deutschen-keine-lust-mehr-auf-camping/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-ead1ebfaf429a08da3f2",
       "category": "industry",
       "family": "Vehicle market",
@@ -635,8 +651,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-13T08:54:16.661897+00:00",
-    "Europe": "2026-11-13T08:54:16.661897+00:00"
+    "China": "2026-11-14T12:50:22.914472+00:00",
+    "Europe": "2026-11-14T12:50:22.914472+00:00"
   },
-  "lastScan": "2026-11-13T08:54:16.661897+00:00"
+  "lastScan": "2026-11-14T12:50:22.914472+00:00"
 }
