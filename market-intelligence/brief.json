@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-14",
+  "revision": "2026-11-15",
   "added": 1,
   "stories": [
     {
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-67b3e3df3d17eccc225e",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-13",
+      "title": "开拖挂要增驾C6吗？全国31省份可增驾C6驾校汇总（含电话、学费）",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbrcp06m168s738g2300"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-733f1d0a9a1360705a53",
       "category": "industry",
       "family": "Vehicle market",
@@ -651,8 +667,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-14T12:50:22.914472+00:00",
-    "Europe": "2026-11-14T12:50:22.914472+00:00"
+    "China": "2026-11-15T13:17:50.997977+00:00",
+    "Europe": "2026-11-15T13:17:50.997977+00:00"
   },
-  "lastScan": "2026-11-14T12:50:22.914472+00:00"
+  "lastScan": "2026-11-15T13:17:50.997977+00:00"
 }
