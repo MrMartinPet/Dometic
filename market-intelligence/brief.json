@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-15",
-  "added": 1,
+  "revision": "2026-11-16",
+  "added": 2,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,38 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-006384938a240ea4af00",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-16",
+      "title": "可下地库的 6 座升顶纯电旅居搭子！齐星・云途 mini 纯电宿营车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbtagoum168s738g23v0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-447eba4a0fc4b4307f4e",
+      "category": "launch",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-13",
+      "title": "大通房车 × 禾木联名新车 \"禾家\" 正式上市",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbr9suum168s738g221g"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-67b3e3df3d17eccc225e",
       "category": "industry",
       "family": "Vehicle market",
@@ -667,8 +699,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-15T13:17:50.997977+00:00",
-    "Europe": "2026-11-15T13:17:50.997977+00:00"
+    "China": "2026-11-16T14:30:27.712689+00:00",
+    "Europe": "2026-11-16T14:30:27.712689+00:00"
   },
-  "lastScan": "2026-11-15T13:17:50.997977+00:00"
+  "lastScan": "2026-11-16T14:30:27.712689+00:00"
 }
