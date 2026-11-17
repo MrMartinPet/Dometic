@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-16",
-  "added": 2,
+  "revision": "2026-11-17",
+  "added": 5,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,85 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-d3ef826537af600a0e3c",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-17",
+      "title": "专访｜中国汽车工业协会房车分会主任委员黄建：顶层设计落地，房车产业迎来黄金发展期",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbtukdmm168s738g26ug"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-11dc2b1ab3a40144d786",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-17",
+      "title": "6 Schlafplätze auf 3,70 m: Offroad-Wohnwagen Hunter Nature NTR 4X mit Pop-up-Dach",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/wohnwagen/neuheiten/6-schlafplaetze-auf-3-70-m-hunter-nature-ntr-4x-mit-pop-up-dach/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-dea1d42cc544bcf45335",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-17",
+      "title": "Vom Selbstausbau zum Vanme-Camper: Die bewegende Geschichte des Homer",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/vom-selbstausbau-zum-vanme-camper-die-bewegende-geschichte-des-homer/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-820af1ebc82be465870f",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-16",
+      "title": "五明治箱体 + 20.5 度电！途佳星空2号豪沃悍将Pro长线旅居轻卡房车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbt9f4um168s738g23eg"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-4438d1c717fb93004049",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Europe",
+      "date": "2026-11-16",
+      "title": "European leisure vehicle registrations see slight decline in 2026 so far",
+      "summary": "",
+      "links": [
+        {
+          "name": "Aboutcamp BtoB",
+          "url": "https://www.aboutcampbtob.eu/european-leisure-vehicle-registrations-see-slight-decline-in-2026-so-far/"
+        }
+      ]
+    },
+    {
       "id": "story-006384938a240ea4af00",
       "category": "industry",
       "family": "Vehicle market",
@@ -699,8 +778,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-16T14:30:27.712689+00:00",
-    "Europe": "2026-11-16T14:30:27.712689+00:00"
+    "China": "2026-11-17T15:21:40.242606+00:00",
+    "Europe": "2026-11-17T15:21:40.242606+00:00"
   },
-  "lastScan": "2026-11-16T14:30:27.712689+00:00"
+  "lastScan": "2026-11-17T15:21:40.242606+00:00"
 }
