@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-17",
-  "added": 5,
+  "revision": "2026-11-18",
+  "added": 3,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,54 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-922a51c375eaa980420c",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-18",
+      "title": "3.98 万，轻量好拖！尚乐微型拖挂房车，新手玩家的露营神车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbugh46m168s738g27t0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-0afa5fe0d2dd0beb50fb",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-18",
+      "title": "Honda könnte bald Caravans bauen: Base Station Prototype mit Aufstelldach",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/wohnwagen/neuheiten/base-station-prototype-mit-aufstelldach-ist-honda-auf-dem-weg-zum-wohnwagenhersteller/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-74bfa168c3a146e1a9a1",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-17",
+      "title": "专访｜中国旅游车船协会副会长兼秘书长宋磊：国务院办公厅转发文化和旅游部等部门《关于促进房车消费的若干措施》的通知开启行业协同发展新周期",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dbtsrq6m168s738g255g"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-d3ef826537af600a0e3c",
       "category": "industry",
       "family": "Vehicle market",
@@ -778,8 +826,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-17T15:21:40.242606+00:00",
-    "Europe": "2026-11-17T15:21:40.242606+00:00"
+    "China": "2026-11-18T14:56:14.919034+00:00",
+    "Europe": "2026-11-18T14:56:14.919034+00:00"
   },
-  "lastScan": "2026-11-17T15:21:40.242606+00:00"
+  "lastScan": "2026-11-18T14:56:14.919034+00:00"
 }
