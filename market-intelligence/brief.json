@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-19",
-  "added": 5,
+  "revision": "2026-11-20",
+  "added": 2,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,38 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-1d375a4912ac4719b7af",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-20",
+      "title": "Mallorca mauert Camper ein: Stadt Palma baut Grenze um Wohnwagensiedlung",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/weitere-ratgeber/die-mauer-von-palma-de-mallorca-stadt-pfercht-wohnwagensiedlung-ein/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-2a79497935c18b56bd02",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-19",
+      "title": "Offroad-Wohnwagen im Squaredrop-Format: Modern Buggy Hopper 5 WL",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/wohnwagen/neuheiten/offroad-wohnwagen-im-squaredrop-format-modern-buggy-hopper-5-wl/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-a78c4cc16c4af1f7b9fc",
       "category": "industry",
       "family": "Vehicle market",
@@ -905,8 +937,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-19T15:02:44.648185+00:00",
-    "Europe": "2026-11-19T15:02:44.648185+00:00"
+    "China": "2026-11-20T14:44:56.705828+00:00",
+    "Europe": "2026-11-20T14:44:56.705828+00:00"
   },
-  "lastScan": "2026-11-19T15:02:44.648185+00:00"
+  "lastScan": "2026-11-20T14:44:56.705828+00:00"
 }
