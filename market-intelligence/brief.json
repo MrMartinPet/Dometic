@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-20",
-  "added": 2,
+  "revision": "2026-11-21",
+  "added": 1,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-fb50ec983d323d268969",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-20",
+      "title": "9 Schlafplätze im Wohnwagen: US-Gigant Forest River Airelume 260",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/wohnwagen/neuheiten/neun-schlafplaetze-ohne-slide-out-forest-river-airelume-260/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-1d375a4912ac4719b7af",
       "category": "industry",
       "family": "Vehicle market",
@@ -938,7 +954,7 @@
   ],
   "marketChecks": {
     "China": "2026-11-20T14:44:56.705828+00:00",
-    "Europe": "2026-11-20T14:44:56.705828+00:00"
+    "Europe": "2026-11-21T14:00:08.761253+00:00"
   },
-  "lastScan": "2026-11-20T14:44:56.705828+00:00"
+  "lastScan": "2026-11-21T14:00:08.761253+00:00"
 }
