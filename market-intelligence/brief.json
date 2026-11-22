@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-21",
-  "added": 0,
+  "revision": "2026-11-22",
+  "added": 1,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-4f8af89285586419a24d",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-22",
+      "title": "Da wird der VW Caddy zum Wohntraum: The Cubert sieht einfach schick aus",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/vom-hochdachkombi-zum-wohntraum-the-cubert-sieht-einfach-schick-aus/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-fb50ec983d323d268969",
       "category": "industry",
       "family": "Vehicle market",
@@ -953,8 +969,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-21T14:39:32.546424+00:00",
-    "Europe": "2026-11-21T14:39:32.546424+00:00"
+    "China": "2026-11-22T13:54:46.859900+00:00",
+    "Europe": "2026-11-22T13:54:46.859900+00:00"
   },
-  "lastScan": "2026-11-21T14:39:32.546424+00:00"
+  "lastScan": "2026-11-22T13:54:46.859900+00:00"
 }
