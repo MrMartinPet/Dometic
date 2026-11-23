@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-22",
+  "revision": "2026-11-23",
   "added": 1,
   "stories": [
     {
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-4dd827d53f1afa5289da",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-23",
+      "title": "Schlafplatz im 3,40-Meter-Keicar: Der neue Minicamper Suzuki Spacia Base",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/schlafplatz-im-3-40-meter-keicar-der-neue-suzuki-spacia-base/"
+        }
+      ],
+      "language": "de"
+    },
+    {
       "id": "story-4f8af89285586419a24d",
       "category": "industry",
       "family": "Vehicle market",
@@ -969,8 +985,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-22T13:54:46.859900+00:00",
-    "Europe": "2026-11-22T13:54:46.859900+00:00"
+    "China": "2026-11-23T17:04:44.194438+00:00",
+    "Europe": "2026-11-23T17:04:44.194438+00:00"
   },
-  "lastScan": "2026-11-22T13:54:46.859900+00:00"
+  "lastScan": "2026-11-23T17:04:44.194438+00:00"
 }
