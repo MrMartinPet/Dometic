@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-23",
+  "revision": "2026-11-24",
   "added": 1,
   "stories": [
     {
@@ -538,6 +538,22 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-a40c7bdcd2accd4b507b",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-23",
+      "title": "专访｜北京房车露营自驾旅游协会秘书长刘小龙：明晰市场机遇，锚定华北落地路径",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc1utlscgpns73f966sg"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-4dd827d53f1afa5289da",
       "category": "industry",
       "family": "Vehicle market",
@@ -985,8 +1001,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-23T17:04:44.194438+00:00",
-    "Europe": "2026-11-23T17:04:44.194438+00:00"
+    "China": "2026-11-24T16:50:26.955526+00:00",
+    "Europe": "2026-11-24T16:50:26.955526+00:00"
   },
-  "lastScan": "2026-11-23T17:04:44.194438+00:00"
+  "lastScan": "2026-11-24T16:50:26.955526+00:00"
 }
