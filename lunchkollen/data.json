@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-23T16:03:59.492Z",
+  "checkedAt": "2026-11-24T15:56:16.463Z",
   "restaurants": [
     {
       "id": "jives",
@@ -61,8 +61,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
-      "menuFetchedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
+      "menuFetchedAt": "2026-11-24T15:56:16.463Z",
       "lastFetchError": null,
       "fetchSource": "Webbsida",
       "rank": 1,
@@ -82,60 +82,63 @@
       "daily": true,
       "facebook": "https://www.facebook.com/ehnskok/",
       "menu": {
-        "week": 47,
+        "week": 48,
         "year": 2026,
         "days": {
           "Måndag": {
             "dishes": [
-              "Pannbiff med stekt lök serveras med gräddsås, kokt potatis och lingon",
-              "Sej med ägg och persiljesås serveras med kokt potatis",
-              "Tisdag:​",
-              "Stekt fläsk med Raggmunk alt. löksås",
-              "Hokifilé med tomat och fänkål serveras med kokt potatis",
-              "Chili con carne med ris"
+              "Köttfärslimpa serveras med gräddsky, kokt potatis och lingon",
+              "Hokifilé i räksås serveras med kokt potatis"
+            ],
+            "dessert": ""
+          },
+          "Tisdag": {
+            "dishes": [
+              "Stekt fläsk med morotspannkaka alt. löksås, kokt potatis och lingon",
+              "Laxpasta med spenat och dill"
             ],
             "dessert": ""
           },
           "Onsdag": {
             "dishes": [
-              "Baconlindad kycklingfilé med parmesansås serveras med rostad potatis",
-              "Kummel med citron och dragonsås serveras med kokt potatis"
+              "Baconlindad fläskfilé serveras med bearnaisesås och klyftpotatis",
+              "Stekt strömming med potatismos, skirat smör och lingon"
             ],
             "dessert": ""
           },
           "Torsdag": {
             "dishes": [
-              "Fläskfilégryta med bacon serveras med klyftpotatis",
-              "Panerad Flundra med skarpsås serveras med potatismos och gröna ärtor"
+              "Hemgjord Lasagne med husets ketchup",
+              "Panerad spätta med syrlig remuladsås serveras med kokt potatis"
             ],
             "dessert": ""
           },
           "Fredag": {
             "dishes": [
-              "Fläsknoisette med Champinjonsås och stekt potatis med bacon och purjolök",
-              "Fiskgryta med saffran"
+              "Husets schnitzel med kantarellsås serveras med stekt potatis och gröna ärtor",
+              "Sej med dillsås serveras med kokt potatis"
             ],
             "dessert": ""
           }
         },
-        "vegetarian": "Pasta med grönsaksragu",
+        "vegetarian": "Rotfruktsbiffar med stekt potatis serveras med aioli",
         "price": null,
         "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
         "note": ""
       },
-      "week": 47,
-      "publishedAt": "2026-11-15T19:21:08.000Z",
+      "week": 48,
+      "publishedAt": "2026-11-22T20:17:57.000Z",
       "includes": "Salladsbuffé, hembakat bröd, kaffe och kaka",
-      "hours": "",
-      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid02m7Tueuf14redVvrNme31HvhJvuQ3XR4vfe7T3Viro9Pvr3RW61xEsBxLMxJy3nX1l/",
+      "hours": "11:30-14:00",
+      "postUrl": "https://www.facebook.com/ehnskok/posts/pfbid0CAwrxPvCqmE5NYzoho2KiDwHV262JJBBr47VFqhjXeEytEkWaDD7WjSb4JjsHHbCl/",
       "imageData": [],
-      "imageWeek": 47,
+      "imageWeek": 48,
       "imageYear": 2026,
-      "state": "snapshot",
-      "snapshot": true,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
-      "menuFetchedAt": "2026-11-20T21:50:53.975Z",
-      "lastFetchError": "Ingen ny verifierad Facebook-meny hittades",
+      "state": "parsed",
+      "snapshot": false,
+      "checkedAt": "2026-11-24T15:56:16.463Z",
+      "menuFetchedAt": "2026-11-24T15:56:16.463Z",
+      "lastFetchError": null,
       "rank": 2,
       "upcomingImageData": []
     },
@@ -164,7 +167,7 @@
       "imageYear": 2026,
       "state": "image",
       "snapshot": true,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "menuFetchedAt": "2026-11-17T14:31:50.793Z",
       "lastFetchError": "Ingen ny verifierad Facebook-meny hittades",
       "rank": 3,
@@ -183,7 +186,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "dessert": "Dessert ingår enligt turistinformationen. Sort anges inte.",
       "includes": "Allmän information – dagens exakta bufférätter och pris är inte bekräftade.",
       "rank": 4,
@@ -203,7 +206,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 5,
       "imageData": [],
       "upcomingImageData": []
@@ -222,7 +225,7 @@
       "facebook": "https://www.facebook.com/fyranhuset/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 6,
       "imageData": [],
       "upcomingImageData": []
@@ -285,8 +288,8 @@
       },
       "state": "parsed",
       "snapshot": false,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
-      "menuFetchedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
+      "menuFetchedAt": "2026-11-24T15:56:16.463Z",
       "lastFetchError": null,
       "fetchSource": "WordPress-API",
       "rank": 7,
@@ -306,7 +309,7 @@
       "daily": false,
       "menu": null,
       "state": "general",
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "images": [
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-pizza-m.m-sommar-rtt.jpg",
         "https://www.turbinentidaholm.se/images/2026/05/06/meny-2026-sommar-mackor-m.m.-rtt.jpg"
@@ -330,7 +333,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 9,
       "imageData": [],
       "upcomingImageData": []
@@ -348,7 +351,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 10,
       "imageData": [],
       "upcomingImageData": []
@@ -366,7 +369,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 11,
       "imageData": [],
       "upcomingImageData": []
@@ -384,7 +387,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 12,
       "imageData": [],
       "upcomingImageData": []
@@ -402,7 +405,7 @@
       "daily": false,
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 13,
       "imageData": [],
       "upcomingImageData": []
@@ -421,7 +424,7 @@
       "facebook": "https://www.facebook.com/atitathaifood/",
       "state": "general",
       "menu": null,
-      "checkedAt": "2026-11-23T16:03:59.492Z",
+      "checkedAt": "2026-11-24T15:56:16.463Z",
       "rank": 14,
       "imageData": [],
       "upcomingImageData": []
