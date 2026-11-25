@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-24",
-  "added": 1,
+  "revision": "2026-11-25",
+  "added": 4,
   "stories": [
     {
       "category": "industry",
@@ -538,6 +538,70 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-3b054917de1d313a095b",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-25",
+      "title": "赫希车展黑马！老牌 B 型房车品牌跨界拖挂，一出即王炸",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc39q9kcgpns73f969sg"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-bd28c04a7a0ad3eee9be",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-25",
+      "title": "尚游房车南太行寻秋：红旗渠的精神礼物",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc34nhscgpns73f96990"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-ed5fb43aa015dced0a0d",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-24",
+      "title": "小巧好开好停！5座家用＋露营一车两用，季候风江铃福顺宿营车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc1uqvccgpns73f966r0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-09b5afd448508d9113a9",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-24",
+      "title": "整车招商正式开启！第 28 届北京国际房车露营展览会火热招商中！",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc2j8l4cgpns73f96840"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-a40c7bdcd2accd4b507b",
       "category": "industry",
       "family": "Vehicle market",
@@ -1001,8 +1065,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-24T16:50:26.955526+00:00",
-    "Europe": "2026-11-24T16:50:26.955526+00:00"
+    "China": "2026-11-25T16:38:29.336357+00:00",
+    "Europe": "2026-11-25T16:38:29.336357+00:00"
   },
-  "lastScan": "2026-11-24T16:50:26.955526+00:00"
+  "lastScan": "2026-11-25T16:38:29.336357+00:00"
 }
