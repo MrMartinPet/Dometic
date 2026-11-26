@@ -1,5 +1,5 @@
 {
-  "revision": "2026-11-25",
+  "revision": "2026-11-26",
   "added": 4,
   "stories": [
     {
@@ -538,6 +538,70 @@
       "family": "Climate & ventilation"
     },
     {
+      "id": "story-551ee60947ce8738ce3f",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-26",
+      "title": "20万内，能升顶、能越野！艺程依维柯得意A35宿营车，小车身大玩法",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc3uvg4cgpns73f96apg"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-14712b3f3a0b7d2f29be",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-26",
+      "title": "Maut, Digital-Vignette, Free Flow: Das ändert sich 2027 für Camper",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/weitere-ratgeber/digitale-vignette-free-flow-maut-das-aendert-sich-2027-fuer-camper/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-39d2e570cda26124a367",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-26",
+      "title": "Dusche unter der Arbeitsfläche: Erfinderischer Camper von Van Mania",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/neuheiten/dusche-unter-der-arbeitsflaeche-erfinderischer-camper-von-van-mania/"
+        }
+      ],
+      "language": "de"
+    },
+    {
+      "id": "story-fa9e3d834959e5a1c655",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-25",
+      "title": "超稳！半价拿下进口级品质英式拖挂，爱科双轴英式拖挂房车阿纳塔尔675",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc2khhscgpns73f968gg"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
       "id": "story-3b054917de1d313a095b",
       "category": "industry",
       "family": "Vehicle market",
@@ -1065,8 +1129,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-25T16:38:29.336357+00:00",
-    "Europe": "2026-11-25T16:38:29.336357+00:00"
+    "China": "2026-11-26T16:12:12.099787+00:00",
+    "Europe": "2026-11-26T16:12:12.099787+00:00"
   },
-  "lastScan": "2026-11-25T16:38:29.336357+00:00"
+  "lastScan": "2026-11-26T16:12:12.099787+00:00"
 }
