@@ -1,6 +1,6 @@
 {
   "revision": "2026-11-27",
-  "added": 1,
+  "added": 3,
   "stories": [
     {
       "category": "industry",
@@ -536,6 +536,54 @@
         }
       ],
       "family": "Climate & ventilation"
+    },
+    {
+      "id": "story-6d9c1f65801e98e381d3",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-27",
+      "title": "15.98 万起轻旅居神器，上班代步周末露营两不误！先锋官短轴低顶升顶宿营车",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc4jfi28118c73b3fan0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-9518bb03f1ef8caa9745",
+      "category": "launch",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-27",
+      "title": "新车上市｜驿舟 808 大 C 新能源房车正式发布，官方指导价 27.98 万",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc4imp24qj3s7394s5c0"
+        }
+      ],
+      "language": "zh-CN"
+    },
+    {
+      "id": "story-13b2ce9f02d7b3d426ba",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "China",
+      "date": "2026-11-27",
+      "title": "新能源宿营车持续发力！工信部第 414 批房车公告，22 款新品即将发布",
+      "summary": "",
+      "links": [
+        {
+          "name": "21RV",
+          "url": "https://www.21rv.com/c/dc4h6gq4qj3s7394s4r0"
+        }
+      ],
+      "language": "zh-CN"
     },
     {
       "id": "story-9e003ade4e0f017a7a10",
@@ -1145,8 +1193,8 @@
     }
   ],
   "marketChecks": {
-    "China": "2026-11-26T16:12:12.099787+00:00",
-    "Europe": "2026-11-27T15:57:29.723516+00:00"
+    "China": "2026-11-27T16:40:33.669960+00:00",
+    "Europe": "2026-11-27T16:40:33.669960+00:00"
   },
-  "lastScan": "2026-11-27T15:57:29.723516+00:00"
+  "lastScan": "2026-11-27T16:40:33.669960+00:00"
 }
