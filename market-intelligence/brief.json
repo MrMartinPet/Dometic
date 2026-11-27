@@ -1,6 +1,6 @@
 {
-  "revision": "2026-11-26",
-  "added": 4,
+  "revision": "2026-11-27",
+  "added": 1,
   "stories": [
     {
       "category": "industry",
@@ -536,6 +536,22 @@
         }
       ],
       "family": "Climate & ventilation"
+    },
+    {
+      "id": "story-9e003ade4e0f017a7a10",
+      "category": "industry",
+      "family": "Vehicle market",
+      "market": "Germany",
+      "date": "2026-11-27",
+      "title": "Faltwände statt Zeltstoff: neu aufgelegter Aliner Classic LXE",
+      "summary": "",
+      "links": [
+        {
+          "name": "promobil",
+          "url": "https://www.promobil.de/wohnwagen/neuheiten/faltwaende-statt-zeltstoff-aliner-classic-lxe/"
+        }
+      ],
+      "language": "de"
     },
     {
       "id": "story-551ee60947ce8738ce3f",
@@ -1130,7 +1146,7 @@
   ],
   "marketChecks": {
     "China": "2026-11-26T16:12:12.099787+00:00",
-    "Europe": "2026-11-26T16:12:12.099787+00:00"
+    "Europe": "2026-11-27T15:57:29.723516+00:00"
   },
-  "lastScan": "2026-11-26T16:12:12.099787+00:00"
+  "lastScan": "2026-11-27T15:57:29.723516+00:00"
 }
